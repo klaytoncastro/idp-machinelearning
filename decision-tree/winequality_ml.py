@@ -31,6 +31,21 @@ from sklearn.ensemble import ExtraTreesClassifier
 modelo = ExtraTreesClassifier()
 modelo.fit(x_train, y_train)
 
-# Apresentando o resultado 
+# Apresentando a Acurácia do modelo
 resultado = modelo.score(x_test, y_test)
 print ("Acurácia:", resultado)
+
+# Adicionando a verificação da Precisão, Recall e F1-Score
+from sklearn.metrics import precision_score, recall_score, f1_score
+
+# Fazendo previsões no conjunto de teste
+y_pred = modelo.predict(x_test)
+
+# Calculando as métricas
+precisao = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+print(f'Precisão: {precisao}')
+print(f'Recall: {recall}')
+print(f'F1-score: {f1}')
