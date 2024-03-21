@@ -46,6 +46,30 @@ precisao = precision_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred)
 f1 = f1_score(y_test, y_pred)
 
-print(f'Precisão: {precisao}')
-print(f'Recall: {recall}')
-print(f'F1-score: {f1}')
+print("Precisão:", precisao)
+print("Recall:", recall)
+print("F1-score:", f1)
+
+from sklearn.metrics import confusion_matrix, classification_report
+
+"""
+# Calculando e exibindo a matriz de confusão. A orientação padrão é a seguinte:
+[0,0]: Verdadeiros Negativos (VN) - Previsões corretamente identificadas como negativas.
+[0,1]: Falsos Positivos (FP) - Previsões incorretamente identificadas como positivas.
+[1,0]: Falsos Negativos (FN) - Previsões incorretamente identificadas como negativas.
+[1,1]: Verdadeiros Positivos (VP) - Previsões corretamente identificadas como positivas.
+"""
+
+conf_matrix = confusion_matrix(y_test, y_pred)
+print("Matriz de Confusão:")
+print(conf_matrix)
+
+"""
+# Calculando e exibindo as métricas de classificação. 
+Se algumas classes têm muito mais amostras do que outras, isso pode influenciar o desempenho e confiabilidade do modelo. 
+O "support" refere-se à quantidade de ocorrências da classe específica no conjunto de dados, sendo útil para verificar desbalanceamentos.  
+A "macro avg" calcula a média aritmética das métricas (precisão, recall, F1-score) para cada classe, sem considerar o número de instâncias em cada classe (support). 
+A "weighted avg" calcula a média ponderada das métricas para cada classe, considerando o número de instâncias em cada classe (support). 
+"""
+print("Relatório de Classsificação:")
+print(classification_report(y_test, y_pred))
