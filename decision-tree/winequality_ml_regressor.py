@@ -42,6 +42,7 @@ from sklearn.model_selection import train_test_split
 # Assuming x is your feature set and y is the target variable
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
+'''
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.feature_selection import RFE
@@ -65,6 +66,7 @@ x_test_rfe = rfe.transform(x_test_scaled)
 pca = PCA(n_components=0.95)  # Mantém 95% da variancia
 x_train_pca = pca.fit_transform(x_train_rfe)
 x_test_pca = pca.transform(x_test_rfe)
+'''
 
 #from sklearn.ensemble import ExtraTreesClassifier
 #modelo = ExtraTreesClassifier()
@@ -74,14 +76,28 @@ modelo = ExtraTreesRegressor()
 
 modelo.fit(x_train, y_train)
 
-resultado = modelo.score(x_test, y_test)
-print ("Acurácia:", resultado)
-
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import numpy as np
 
 # Realizar previsões com o modelo
-y_pred = modelo.predict(x_test)  # Supondo que este seja o passo de previsão no seu fluxo
+y_pred = modelo.predict(x_test)  # Previsão no seu fluxo
+
+resultado = modelo.score(x_test, y_test)
+print ("Acurácia:", resultado)
+
+'''
+# Cálculo das métricas usando os valores previstos
+mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+# Imprimindo as métricas ajustadas
+print("MSE:", mse)
+print("RMSE:", rmse)
+print("MAE:", mae)
+print("R²:", r2)
+'''
 
 # Arredondamento das previsões para o inteiro mais próximo
 y_pred_arredondado = np.round(y_pred)
