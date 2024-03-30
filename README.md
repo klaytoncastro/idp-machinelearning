@@ -1,12 +1,14 @@
 # Machine Learning - Desafio 01
 
-Para enfatizar a importância da estatística descritiva em seu conjunto de dados, vamos abordar as características principais de cada variável. Isso inclui calcular medidas de tendência central (média, mediana), dispersão (desvio padrão, intervalo interquartil), além de explorar a distribuição de cada variável (contagem, valores únicos, possíveis outliers) e a relação entre as variáveis e a classe alvo (vinhos tintos/brancos e qualidade). 
+Para enfatizar a importância da estatística descritiva em seu conjunto de dados, é importante abordar as características de cada variável (impacto das features). 
 
-- Utilize Pandas e Numpy para manipulação dos dados, Seaborn ou Matplotlib para visualização e Scikit-Learn para Machine Learning. 
+Isso inclui calcular medidas de tendência central (média, mediana), dispersão (desvio padrão, intervalo interquartil), além de explorar a distribuição de cada variável (contagem, valores únicos, possíveis outliers) e a relação entre as variáveis e a classe alvo (vinhos tintos/brancos e qualidade). 
+
+- Utilize Pandas e Numpy para manipulação dos dados, Seaborn ou Matplotlib para visualização e Scikit-Learn para criar seu modelo de Machine Learning. 
 
 - Carregue o Dataset em formato CSV, realize as operaçoes e manipulação dos dados conforme necessário em seus DataFrames. 
 
-- Visualização Geral: Obtenha uma visão geral do dataset através do método `.describe()` para as variáveis numéricas e `.info()` para uma visão geral do tipo de dados e valores ausentes.
+- Visualização Geral: Obtenha uma visão geral do dataset através dos métodos `.describe()` e `.info()` para uma visão geral do tipo de dados e valores ausentes.
 
 - Análise Descritiva: Obtenha as medidas de tendência central e dispersão para cada variável.
 
@@ -18,10 +20,12 @@ Para enfatizar a importância da estatística descritiva em seu conjunto de dado
 
 - Conforme exposto em Sala de Aula, adotamos o algoritimo `ExtraTrees` para criar um modelo básico de Machine Learning para as tarefas de classificar os vinhos em tintos ou brancos e predizer a qualidade (nota) conforme análise de suas propriedades químicas. 
 
-- Teste outros algoritmos para tarefas de classificação (color) e regressão (quality), conforme pesquisa do trabalho em grupo e a apresentação já realizada em sala de aula.    
+- Teste outros algoritmos para tarefas de classificação (color) e regressão (quality), conforme sua pesquisa em grupo apresentada em sala de aula.    
 
 - Otimize o desempenho utilizando como base as métricas obtidas no modelo original com `ExtraTreesClassifier` e, especialmente `ExtraTreesRegressor`, onde há maior margem para otimização. 
 
-- Observe a relação com a Variável Alvo: Explore como as variáveis numéricas se relacionam com a variável alvo (quality). Quais variáveis podem ser removidas no modelo? Após remover essas variáveis, como se comportam as métricas de avaliação? 
+- Observe a relação com a Variável Alvo: Explore como as variáveis numéricas se relacionam com a variável alvo (quality). Quais variáveis podem ser removidas no modelo? Após remover essas variáveis, como se ajusta o modelo e se comportam as métricas de avaliação? 
 
-- Os estudantes que conseguirem realizar uma otimização receberão pontuação extra! Boa Sorte! 
+- Os estudantes que conseguirem realizar uma otimização receberão pontuação extra! 
+
+**Boa Sorte!** 

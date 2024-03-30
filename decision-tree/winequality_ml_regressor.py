@@ -1,3 +1,6 @@
+#pip install pandas
+
+# Importando o dataset
 import pandas as pd
 
 url = 'https://raw.githubusercontent.com/klaytoncastro/idp-machinelearning/main/decision-tree/winequality-merged.csv'
@@ -10,16 +13,24 @@ print(arquivo.info())
 # Descrição estatística das variáveis numéricas
 print(arquivo.describe())
 
+# Verificando a quantidade de cada tipo nas amostras 
 print(arquivo['color'].value_counts())
 
+#pip install matplotlib
+
+# Gerando histogramas
 import matplotlib.pyplot as plt
 arquivo.hist(figsize=(20, 15), bins=20)
 plt.show()
 
+#Gerando boxplots
 arquivo.boxplot(figsize=(20, 10), rot=90)
 plt.show()
 
-# Check if 'color column exists in the DataFrame
+# Transformando a variável categórica em numérica
+
+pd.set_option('future.no_silent_downcasting', True) # Configuração do modeo de downcast
+
 if 'color' in arquivo.columns:
     print("Column 'color' exists in the DataFrame.")
     # Replace 'red' with 0 and 'white' with 1
@@ -28,8 +39,10 @@ if 'color' in arquivo.columns:
 else:
     print("Column 'color' does not exist in the DataFrame.")
 
-# Display the first few rows of the DataFrame
+# Verificando a transformação. 
 print(arquivo.head())
+
+# Dropando a coluna da variável alvo. 
 
 #y = arquivo['color']
 #X = arquivo.drop('color', axis = 1)
@@ -37,9 +50,11 @@ print(arquivo.head())
 y = arquivo['quality']
 X = arquivo.drop('quality', axis = 1)
 
+# Definindo X como features e y como variável alvo e efetuando a divisão dos dados para treinamento e teste
+
+# pip install scikit-learn
 from sklearn.model_selection import train_test_split
 
-# Assuming x is your feature set and y is the target variable
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
 '''
@@ -68,6 +83,8 @@ x_train_pca = pca.fit_transform(x_train_rfe)
 x_test_pca = pca.transform(x_test_rfe)
 '''
 
+# Definindo o algoritimo e treinando o modelo
+
 #from sklearn.ensemble import ExtraTreesClassifier
 #modelo = ExtraTreesClassifier()
 
@@ -76,16 +93,19 @@ modelo = ExtraTreesRegressor()
 
 modelo.fit(x_train, y_train)
 
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-import numpy as np
-
-# Realizar previsões com o modelo
-y_pred = modelo.predict(x_test)  # Previsão no seu fluxo
+# Apresentando o resultado
 
 resultado = modelo.score(x_test, y_test)
 print ("Acurácia:", resultado)
 
-'''
+# Verificando as métricas base
+
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import numpy as np
+
+# Realizar previsões com o modelo
+y_pred = modelo.predict(x_test)  
+
 # Cálculo das métricas usando os valores previstos
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
@@ -97,7 +117,6 @@ print("MSE:", mse)
 print("RMSE:", rmse)
 print("MAE:", mae)
 print("R²:", r2)
-'''
 
 # Arredondamento das previsões para o inteiro mais próximo
 y_pred_arredondado = np.round(y_pred)
@@ -127,16 +146,18 @@ criterio_acuracia = 1
 acuracia_ajustada = np.mean(diferencas_absolutas <= criterio_acuracia)
 
 # Exibindo a acurácia ajustada
-print("Acurácia ajustada (proporção de previsões dentro de ±1 da real):", acuracia_ajustada)
+print("Acurácia ajustada (previsões dentro de ±1):", acuracia_ajustada)
 
 resultado = modelo.score(x_test, y_test)
 print ("Acurácia:", resultado)
 
+# Realizando previsões com o modelo
+y_pred = modelo.predict(x_test)  
+
+# Calculando as métricas, onde y_pred contém as previsões e y_test os valores reais
+
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
-# Supondo que y_pred seja as suas previsões e y_test os valores reais
-
-# Calculando as métricas
 mse = mean_squared_error(y_test, y_pred)
 rmse = mse ** 0.5
 mae = mean_absolute_error(y_test, y_pred)
@@ -146,20 +167,30 @@ r2 = r2_score(y_test, y_pred)
 print("MSE:", mse)
 print("RMSE:", rmse)
 print("MAE:", mae)
+print("R2:", r2)
 
 """
+Acurácia: 0.5391484512911533
+
 MSE : 1.2343589743589745
 RMSE : 1.1110170900391112
 MAE : 0.8261538461538461
 R² : -0.6161209584924814
+
 -----
+
+Acurácia ajustada:
+(proporção de previsões dentro de ±1 da real):
+0.966153846153846
+
 MSE ajustado: 0.4323076923076923
 RMSE ajustado: 0.6575010968110184
 MAE ajustado: 0.35025641025641024
 R² ajustado: 0.453820531776159
-
-Acurácia ajustada
-(proporção de previsões dentro de ±1 da real):
-0.9661538461538461
 -----
+
+MSE: 0.3517955897435898
+RMSE: 0.5931235872426504
+MAE: 0.39974358974358976
+R2: 0.5391484512911533
 """
