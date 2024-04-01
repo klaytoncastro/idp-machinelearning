@@ -57,7 +57,7 @@ from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
-'''
+"""
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.feature_selection import RFE
@@ -81,12 +81,9 @@ x_test_rfe = rfe.transform(x_test_scaled)
 pca = PCA(n_components=0.95)  # Mantém 95% da variancia
 x_train_pca = pca.fit_transform(x_train_rfe)
 x_test_pca = pca.transform(x_test_rfe)
-'''
+"""
 
 # Definindo o algoritimo e treinando o modelo
-
-#from sklearn.ensemble import ExtraTreesClassifier
-#modelo = ExtraTreesClassifier()
 
 from sklearn.ensemble import ExtraTreesRegressor
 modelo = ExtraTreesRegressor()
@@ -98,39 +95,48 @@ modelo.fit(x_train, y_train)
 resultado = modelo.score(x_test, y_test)
 print ("Acurácia:", resultado)
 
-# Verificando as métricas base
-
+#### Verificando as métricas base 
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import numpy as np
 
-# Realizar previsões com o modelo
+# Realizando previsões com o modelo
 y_pred = modelo.predict(x_test)  
 
-# Cálculo das métricas usando os valores previstos
+# Calculando as métricas, onde y_pred contém as previsões e y_test os valores reais
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 mae = mean_absolute_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
 
-# Imprimindo as métricas ajustadas
+# Imprimindo as métricas
 print("MSE:", mse)
 print("RMSE:", rmse)
 print("MAE:", mae)
 print("R²:", r2)
 
+"""
+Acurácia: 0.5391484512911533
+
+MSE : 1.2343589743589745
+RMSE : 1.1110170900391112
+MAE : 0.8261538461538461
+R² : -0.6161209584924814
+"""
+
 # Arredondamento das previsões para o inteiro mais próximo
+import numpy as np
 y_pred_arredondado = np.round(y_pred)
 
-# Ajuste dos valores previstos arredondados para garantir que estejam dentro da escala de 1 a 10
+# Ajuste dos valores previstos para garantir que estejam dentro da escala de inteiros de 1 a 10
 y_pred_ajustado = np.clip(y_pred_arredondado, 1, 10)
 
-# Cálculo das métricas usando os valores previstos ajustados
+# Recálculo das métricas usando os valores previstos ajustados
 mse = mean_squared_error(y_test, y_pred_ajustado)
 rmse = np.sqrt(mse)
 mae = mean_absolute_error(y_test, y_pred_ajustado)
 r2 = r2_score(y_test, y_pred_ajustado)
 
-# Imprimindo as métricas ajustadas
+# Reimprimindo as métricas ajustadas
 print("MSE ajustado:", mse)
 print("RMSE ajustado:", rmse)
 print("MAE ajustado:", mae)
@@ -148,37 +154,7 @@ acuracia_ajustada = np.mean(diferencas_absolutas <= criterio_acuracia)
 # Exibindo a acurácia ajustada
 print("Acurácia ajustada (previsões dentro de ±1):", acuracia_ajustada)
 
-resultado = modelo.score(x_test, y_test)
-print ("Acurácia:", resultado)
-
-# Realizando previsões com o modelo
-y_pred = modelo.predict(x_test)  
-
-# Calculando as métricas, onde y_pred contém as previsões e y_test os valores reais
-
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-
-mse = mean_squared_error(y_test, y_pred)
-rmse = mse ** 0.5
-mae = mean_absolute_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-
-# Imprimindo as métricas
-print("MSE:", mse)
-print("RMSE:", rmse)
-print("MAE:", mae)
-print("R2:", r2)
-
 """
-Acurácia: 0.5391484512911533
-
-MSE : 1.2343589743589745
-RMSE : 1.1110170900391112
-MAE : 0.8261538461538461
-R² : -0.6161209584924814
-
------
-
 Acurácia ajustada:
 (proporção de previsões dentro de ±1 da real):
 0.966153846153846
@@ -187,10 +163,4 @@ MSE ajustado: 0.4323076923076923
 RMSE ajustado: 0.6575010968110184
 MAE ajustado: 0.35025641025641024
 R² ajustado: 0.453820531776159
------
-
-MSE: 0.3517955897435898
-RMSE: 0.5931235872426504
-MAE: 0.39974358974358976
-R2: 0.5391484512911533
 """
