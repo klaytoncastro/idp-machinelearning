@@ -16,7 +16,8 @@ Este repositório está organizado em subpastas, cada uma dedicada a um desafio 
 
 Cada desafio é uma oportunidade para aplicar o conhecimento adquirido em aula, explorar novas ferramentas e técnicas, e resolver problemas reais usando datasets autênticos. Desde a análise exploratória de dados até a construção e otimização de modelos de machine learning, você terá a chance de se aprofundar nos conceitos de ciência de dados, envolvendo machine learning, análise, visualização e storytelling de dados.
 
-| # | Descrição | Prazo | 
+| #  | Descrição            | Prazo      |
+|----|----------------------|------------|
 | 01 | [Árvore de Decisão](./decision-tree/README.md) | 12/04/2024 |
 
 Fique atento(a) às atualizações, pois novos desafios serão adicionados ao longo do curso!
