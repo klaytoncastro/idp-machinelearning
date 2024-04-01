@@ -78,7 +78,7 @@ print("F1 Score:", f1_score(y_test, y_pred, average='macro'))
 
 ## Tarefa 02
 
-Para a tarefa de regressão — prever um número inteiro, no caso a qualidade do vinho, existem vários algoritmos no Scikit-Learn além da implementação robusta de Árvore de Decisão com o `ExtraTreesRegressor`. Dentre as alternativas populares temos: 
+Para a tarefa de regressão — prever um número inteiro, no caso a qualidade do vinho, existem vários algoritmos no Scikit-Learn além da implementação robusta de Árvore de Decisão com o `ExtraTreesRegressor` que utilizamos. Dentre as alternativas populares temos: 
 
 ### Support Vector Machine (SVM) para Regressão (SVR)
 
@@ -124,9 +124,9 @@ from sklearn.ensemble import RandomForestRegressor
 modelo_rfr = RandomForestRegressor()
 ```
 
-### Avaliação
+### Avaliação dos Modelos
 
-Ao invés de Precision, Recall, F1-Score, que são métricas adequadas para tarefas de classificação, utilize MSE, RMSE, MAE e coeficiente R2, que são adequadas a um problema de regressão. 
+Ao invés de Precision, Recall, F1-Score, que são métricas adequadas para tarefas de classificação, utilize MSE, RMSE, MAE e coeficiente R2, que são adequadas a um problema de regressão e verifique o desempenho de seu modelo. 
 
 ```python
 # Calculando as métricas, onde y_pred contém as previsões e y_test os valores reais
