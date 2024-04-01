@@ -20,9 +20,133 @@
 
 - Para isso adotamos o algoritimo `ExtraTrees` para criar um modelo básico de Machine Learning, utilizando o conceito de árvore de decisão para as tarefas de classificar os vinhos em tintos ou brancos e, em seguida, para predizer a qualidade (nota) conforme análise de suas propriedades químicas. 
 
+## Tarefa 01: 
+
 - Teste outros algoritmos para tarefas de classificação (color) e regressão (quality), conforme a pesquisa em grupo apresentada em sala de aula. 
 
-- Observe a relação com a variável alvo: explore como as variáveis numéricas se relacionam com a variável alvo (quality). Quais variáveis podem ser removidas no modelo? Após remover essas variáveis, como se ajusta o modelo e se comportam as métricas de avaliação? 
+- Para problemas de classificação, além do algoritmo `ExtraTreesClassifier`, que faz uma robusta implementação baseada em Árvore de Decisão, `Naive Bayes` e `Support Vector Machine (SVM)` são alternativas populares, dependendo da natureza dos dados e do problema específico que você está tentando resolver. 
+
+### Usando Naive Bayes para Classificação
+
+O Naive Bayes é uma técnica de classificação baseada em aplicar o teorema de Bayes com a "ingenuidade" de supor independência entre os preditores. É fácil de construir e particularmente útil para grandes volumes de dados. Além disso, é eficaz em problemas de classificação multinomial e binomial. 
+
+Existem diferentes implementações de Naive Bayes no Scikit-Learn, adequados para diferentes tipos de dados:
+
+- GaussianNB: Usado em classificação onde as features são contínuas e seguem uma distribuição normal.
+- MultinomialNB: Bom para quando suas features são contagens ou frequências de termos (comumente usado em classificação de texto).
+- BernoulliNB: Adequado para features binárias.
+
+Teste as implementações e avalie os resultados: 
+
+```python
+
+from sklearn.naive_bayes import GaussianNB
+
+# Para dados com features contínuas que seguem uma distribuição aproximadamente normal
+modelo_nb = GaussianNB()
+
+modelo_nb.fit(X_train, y_train)
+y_pred = modelo_nb.predict(X_test)
+
+```
+
+### Usando SVM para Classificação
+
+O Support Vector Machine (SVM) é um método poderoso e versátil para tarefas de classificação e detecção de outliers. Para classificação, especialmente em casos de categorias claramente distintas, o SVM pode ser eficaz. O `Scikit-Learn` oferece várias implementações do SVM, incluindo SVC (Support Vector Classification), que é mais comumente usado para problemas de classificação. Teste e avalie os resultados: 
+
+```python
+from sklearn.svm import SVC
+# Inicializando o classificador SVM com um kernel. O padrão é 'rbf', mas pode ser alterado para 'linear', 'poly', etc.
+modelo_svm = SVC(kernel='linear')
+
+modelo_svm.fit(X_train, y_train)
+y_pred = modelo_svm.predict(X_test)
+```
+
+### Avaliação dos Modelos
+
+Após treinar o seu modelo, você precisa avaliar o quão bem ele performa. Para classificação, vimos que métricas comuns incluem acurácia, precisão, recall, e a F1-score. O Scikit-Learn fornece funções prontas para calcular essas métricas:
+
+```python
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+print("Acurácia:", accuracy_score(y_test, y_pred))
+print("Precisão:", precision_score(y_test, y_pred, average='macro'))
+print("Recall:", recall_score(y_test, y_pred, average='macro'))
+print("F1 Score:", f1_score(y_test, y_pred, average='macro'))
+```
+
+## Tarefa 02
+
+Para a tarefa de regressão — prever um número inteiro, no caso a qualidade do vinho, existem vários algoritmos no Scikit-Learn além da implementação robusta de Árvore de Decisão com o `ExtraTreesRegressor`. Dentre as alternativas populares temos: 
+
+### Support Vector Machine (SVM) para Regressão (SVR)
+
+O SVM não serve apenas para classificação. O Support Vector Regression (SVR) é a versão do SVM usada para problemas de regressão. O SVR pode ser eficaz em espaços de alta dimensão e em casos onde o número de dimensões excede o número de amostras.
+
+```python
+from sklearn.svm import SVR
+
+modelo_svr = SVR(kernel='linear') # Você pode experimentar com diferentes kernels como 'linear', 'poly', 'rbf'.
+```
+
+### Regressão Linear
+
+Um dos métodos mais simples e amplamente usados. Bom ponto de partida para problemas de regressão devido à sua simplicidade e interpretabilidade.
+
+```python
+from sklearn.linear_model import LinearRegression
+
+modelo_lr = LinearRegression()
+```
+
+### Regressão Ridge
+
+```python
+from sklearn.linear_model import Ridge
+
+modelo_ridge = Ridge(alpha=1.0) # O parâmetro alpha controla a força da regularização.
+```
+
+### Regressão Lasso
+
+```python
+from sklearn.linear_model import Lasso
+
+modelo_lasso = Lasso(alpha=0.1)
+```
+
+### Random Forest Regressor
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+
+modelo_rfr = RandomForestRegressor()
+```
+
+### Avaliação
+
+Ao invés de Precision, Recall, F1-Score, que são métricas adequadas para tarefas de classificação, utilize MSE, RMSE, MAE e coeficiente R2, que são adequadas a um problema de regressão. 
+
+```python
+# Calculando as métricas, onde y_pred contém as previsões e y_test os valores reais
+mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+# Imprimindo as métricas
+print("MSE:", mse)
+print("RMSE:", rmse)
+print("MAE:", mae)
+print("R²:", r2)
+```
+
+## Tarefa 03
+
+- Observe a relação com a variável alvo: explore como as variáveis se relacionam. Quais variáveis podem ser removidas no modelo para previsão da qualidade? 
+
+- Após remover essas variáveis (utilize o Pandas para isso), como se ajusta o modelo e se comportam as métricas de avaliação? 
 
 - Otimize o desempenho utilizando como base as métricas obtidas na tarefa de regressão, onde há maior margem para otimização. 
 
