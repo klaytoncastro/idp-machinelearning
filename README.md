@@ -18,7 +18,7 @@ Cada desafio é uma oportunidade para aplicar o conhecimento adquirido em aula, 
 
 | #  | Descrição            | Prazo      |
 |----|----------------------|------------|
-| 01 | [Árvore de Decisão](./decision-tree/README.md) | 12/04/2024 |
+| 01 | [Árvore de Decisão](./decision-tree/) | 12/04/2024 |
 
 Fique atento(a) às atualizações, pois novos desafios serão adicionados ao longo do curso!
 
