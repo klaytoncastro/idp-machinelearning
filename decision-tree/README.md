@@ -2,7 +2,9 @@
 
 - Baixe os notebooks com o exemplo de [Classificação](./winequality_ml_classifier.ipynb) e [Regressão](./winequality_ml_regressor.ipynb) e execute-os passo a passo em seu ambiente Jupyter ou Google Colab para compreender como abordamos as tarefas de classificação de vinhos em brancos ou tintos e a previsão de sua qualidade (nota). 
 
-- Observe a importância de abordar a estatística descritiva para enfatizar as características de cada variável (impacto das features) em seu conjunto de dados (dataset). Isso inclui calcular medidas de tendência central (média, mediana), dispersão (desvio padrão, intervalo interquartil), além de explorar a distribuição de cada variável (contagem, valores únicos, possíveis outliers), bem como a relação entre as variáveis preditoras e a variável alvo. 
+- Antes de abordarmos o fluxo de trabalho e modelagem preditiva de aprendizado de máquina, vamos enfatizar a estatística descritiva para obter as características de cada variável e observar o impacto dessas *features* em seu conjunto de dados (*dataset*). 
+
+- Isso inclui calcular medidas de tendência central (média, mediana), dispersão (desvio padrão, intervalo interquartil), além de explorar a distribuição de cada variável (contagem, valores únicos, possíveis outliers), bem como a relação entre as variáveis preditoras e a variável alvo. 
 
 - Utilizamos as bibliotecas Pandas e Numpy para manipulação dos dados, Seaborn/Matplotlib para visualização e Scikit-Learn para criar os modelos de Machine Learning. 
 
@@ -12,23 +14,27 @@
 
 - Realizamos também a análise de Boxplots para identificar outliers. Qual variável aparece com mais outliers? Verifique como isso pode interferir no modelo de ML. 
 
-- Visualização Geral: Obtivemos uma visão geral do dataset através dos métodos `.describe()` e `.info()` para uma visão geral do tipo de dados e valores ausentes.
+- Visualização Geral: obtivemos uma visão geral do dataset através dos métodos `.describe()` e `.info()` para uma visão geral do tipo de dados e valores ausentes.
 
-- Análise Descritiva: Obtivemos as medidas de tendência central e dispersão para cada variável.
+- Análise Descritiva: obtivemos as medidas de tendência central e dispersão para cada variável.
 
 - Realizamos a contagem de valores para a variável categórica (color) e discreta (quality), alvos de nosso modelo de Machine Learning. 
 
 - Nosso primeiro objetivo era prever a cor do vinho (branco ou tinto), uma tarefa de classificação. Em seguida, prever a qualidade do vinho, uma tarefa de regressão. 
 
-- Para isso adotamos o algoritimo `ExtraTrees` para criar um modelo básico de Machine Learning, utilizando o conceito de árvore de decisão para as tarefas de classificar os vinhos em tintos ou brancos e, em seguida, para predizer a qualidade (nota) conforme análise de suas propriedades químicas.
-
-- Quais células precisam ser ajustadas no notebook da tarefa de classificação? Por que? 
-
-- Quais células precisam ser ajustadas no notebook da tarefa de regressão? Por que? 
-
-Após **executar os notebooks passo a passo**, **entender o que o código está realizando**, **ajustar as células que precisam ser adaptadas**, prossiga para as tarefas abaixo, onde o encorajamos a **explorar outros algoritmos** e **avaliar seu desempenho**. 
+- Para isso adotamos o robusto algoritimo `ExtraTrees` para criar um modelo básico de Machine Learning, utilizando o conceito de árvore de decisão para as tarefas de classificar os vinhos em tintos ou brancos e, em seguida, para predizer a qualidade (nota) conforme análise de suas propriedades químicas.
 
 ## Tarefa 01: 
+
+- Após **executar os notebooks passo a passo**, **entender o que o código está realizando**, responda: 
+
+a) Quais células precisam ser ajustadas no notebook da tarefa de classificação? Por que? 
+
+b) Quais células precisam ser ajustadas no notebook da tarefa de regressão? Por que? 
+
+- Agora prossiga para as tarefas abaixo, onde o encorajamos a **explorar outros algoritmos** e **avaliar o seu desempenho**. 
+
+## Tarefa 02: 
 
 - Teste outros algoritmos para tarefas de classificação (color) e regressão (quality), conforme a pesquisa em grupo apresentada em sala de aula. 
 
@@ -102,7 +108,7 @@ print("F1 Score:", f1_score(y_test, y_pred, average='macro'))
 
 - Qual algoritmo foi mais rápido? 
 
-## Tarefa 02
+## Tarefa 03
 
 Para a tarefa de regressão — prever um número inteiro, no caso a qualidade do vinho, existem vários algoritmos no Scikit-Learn além da implementação robusta de Árvore de Decisão com o `ExtraTreesRegressor` que utilizamos. Dentre as alternativas populares temos: 
 
@@ -168,19 +174,25 @@ print("MAE:", mae)
 print("R²:", r2)
 ```
 
-- Qual algoritmo performou melhor? 
+- Agora responda: 
 
-- Qual algoritmo foi mais rápido? 
+a) Qual algoritmo performou melhor? Por que? 
 
-## Tarefa 03
+b) Qual algoritmo foi executado mais rápido e qual foi executado com maior dificuldade? 
 
-- Observe a relação com a variável alvo: explore como as variáveis se relacionam. Quais o impacto dos outliers? 
+c) Como podemos conciliar o impacto entre o tempo de execução e a performance? 
 
-- Quais variáveis podem ser removidas no modelo para previsão da qualidade? 
+## Tarefa 04
 
-- Após remover essas variáveis (utilize o Pandas para isso), como se ajusta o modelo e se comportam as métricas de avaliação? 
+- Chegou a hora de refinar seu modelo ML de forma iterativa. Observe a relação com a variável alvo: explore como as variáveis se relacionam. 
 
-- Otimize o desempenho utilizando como base as métricas obtidas na tarefa de regressão, onde há maior margem para otimização. 
+a) Qual o impacto dos outliers? 
+
+b) Quais variáveis podem ser removidas no modelo para previsão da qualidade? 
+
+c) Após remover essas variáveis (utilize o Pandas para isso), como se ajusta o modelo e se comportam as métricas de avaliação? 
+
+d) Otimize o desempenho utilizando como base as métricas obtidas na tarefa de regressão, onde há maior margem para otimização. 
 
 - Os estudantes que conseguirem realizar uma otimização receberão pontuação extra! 
 
