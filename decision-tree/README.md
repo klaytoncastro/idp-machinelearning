@@ -22,7 +22,11 @@
 
 - Para isso adotamos o algoritimo `ExtraTrees` para criar um modelo básico de Machine Learning, utilizando o conceito de árvore de decisão para as tarefas de classificar os vinhos em tintos ou brancos e, em seguida, para predizer a qualidade (nota) conforme análise de suas propriedades químicas.
 
-Após executar os notebooks passo a passo e entender o que o código está realizando, prossiga para as tarefas abaixo, onde o encorajamos a explorar outros algoritmos e avaliar seu desempenho. 
+- Quais células precisam ser ajustadas no notebook da tarefa de classificação? Por que? 
+
+- Quais células precisam ser ajustadas no notebbok da tarefa de regressão? Por que? 
+
+Após **executar os notebooks passo a passo**, **entender o que o código está realizando**, **ajustar as células que precisam ser adaptadas**, prossiga para as tarefas abaixo, onde o encorajamos a **explorar outros algoritmos** e **avaliar seu desempenho**. 
 
 ## Tarefa 01: 
 
