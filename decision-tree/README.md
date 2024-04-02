@@ -1,6 +1,8 @@
 # Machine Learning - Desafio 01
 
-É importante abordar a estatística descritiva para enfatizar as características de cada variável (impacto das features) em seu conjunto de dados (dataset). Isso inclui calcular medidas de tendência central (média, mediana), dispersão (desvio padrão, intervalo interquartil), além de explorar a distribuição de cada variável (contagem, valores únicos, possíveis outliers), bem como a relação entre as variáveis preditoras e a variável alvo. 
+- Baixe os notebooks com o exemplo de [Classificação](./winequality_ml_classifier.ipynb) e [Regressão](./winequality_ml_regressor.ipynb) e execute passo a passo em seu ambiente Jupyter ou Google Colab para as tarefas de classificação de vinhos e previsão de qualidade (nota). 
+
+- Observe a importância de abordar a estatística descritiva para enfatizar as características de cada variável (impacto das features) em seu conjunto de dados (dataset). Isso inclui calcular medidas de tendência central (média, mediana), dispersão (desvio padrão, intervalo interquartil), além de explorar a distribuição de cada variável (contagem, valores únicos, possíveis outliers), bem como a relação entre as variáveis preditoras e a variável alvo. 
 
 - Utilize Pandas e Numpy para manipulação dos dados, Seaborn ou Matplotlib para visualização e Scikit-Learn para criar seu modelo de Machine Learning. 
 
