@@ -1,26 +1,28 @@
 # Machine Learning - Desafio 01
 
-- Baixe os notebooks com o exemplo de [Classificação](./winequality_ml_classifier.ipynb) e [Regressão](./winequality_ml_regressor.ipynb) e execute passo a passo em seu ambiente Jupyter ou Google Colab para as tarefas de classificação de vinhos e previsão de qualidade (nota). 
+- Baixe os notebooks com o exemplo de [Classificação](./winequality_ml_classifier.ipynb) e [Regressão](./winequality_ml_regressor.ipynb) e execute-os passo a passo em seu ambiente Jupyter ou Google Colab para compreender como abordamos as tarefas de classificação de vinhos em brancos ou tintos e a previsão de sua qualidade (nota). 
 
 - Observe a importância de abordar a estatística descritiva para enfatizar as características de cada variável (impacto das features) em seu conjunto de dados (dataset). Isso inclui calcular medidas de tendência central (média, mediana), dispersão (desvio padrão, intervalo interquartil), além de explorar a distribuição de cada variável (contagem, valores únicos, possíveis outliers), bem como a relação entre as variáveis preditoras e a variável alvo. 
 
-- Utilize Pandas e Numpy para manipulação dos dados, Seaborn ou Matplotlib para visualização e Scikit-Learn para criar seu modelo de Machine Learning. 
+- Utilizamos as bibliotecas Pandas e Numpy para manipulação dos dados, Seaborn/Matplotlib para visualização e Scikit-Learn para criar os modelos de Machine Learning. 
 
-- Realize a análise de distribuição de cada variável numérica usando histogramas.
+- Primeiramente carregamos o Dataset em formato CSV, realizamos as operaçoes e manipulação dos dados necessárias. 
 
-- Realize a análise de Boxplots para identificar outliers.
+- Depois disso, realizamos a análise de distribuição de cada variável numérica usando histogramas.
 
-- Carregue o Dataset em formato CSV, realize as operaçoes e manipulação dos dados conforme necessário em seus DataFrames. 
+- Realizamos também a análise de Boxplots para identificar outliers. Qual variável aparece com mais outliers? Verifique como isso pode interferir no modelo de ML. 
 
-- Visualização Geral: Obtenha uma visão geral do dataset através dos métodos `.describe()` e `.info()` para uma visão geral do tipo de dados e valores ausentes.
+- Visualização Geral: Obtivemos uma visão geral do dataset através dos métodos `.describe()` e `.info()` para uma visão geral do tipo de dados e valores ausentes.
 
-- Análise Descritiva: Obtenha as medidas de tendência central e dispersão para cada variável.
+- Análise Descritiva: Obtivemos as medidas de tendência central e dispersão para cada variável.
 
-- Realize a contagem de valores para a variável categórica (color) e discreta (quality), alvos de nosso modelo de Machine Learning. 
+- Realizamos a contagem de valores para a variável categórica (color) e discreta (quality), alvos de nosso modelo de Machine Learning. 
 
 - Nosso primeiro objetivo era prever a cor do vinho (branco ou tinto), uma tarefa de classificação. Em seguida, prever a qualidade do vinho, uma tarefa de regressão. 
 
-- Para isso adotamos o algoritimo `ExtraTrees` para criar um modelo básico de Machine Learning, utilizando o conceito de árvore de decisão para as tarefas de classificar os vinhos em tintos ou brancos e, em seguida, para predizer a qualidade (nota) conforme análise de suas propriedades químicas. 
+- Para isso adotamos o algoritimo `ExtraTrees` para criar um modelo básico de Machine Learning, utilizando o conceito de árvore de decisão para as tarefas de classificar os vinhos em tintos ou brancos e, em seguida, para predizer a qualidade (nota) conforme análise de suas propriedades químicas.
+
+Após executar os notebooks passo a passo e entender o que o código está realizando, prossiga para as tarefas abaixo, onde o encorajamos a explorar outros algoritmos e avaliar seu desempenho. 
 
 ## Tarefa 01: 
 
@@ -63,6 +65,20 @@ modelo_svm = SVC(kernel='linear')
 
 modelo_svm.fit(X_train, y_train)
 y_pred = modelo_svm.predict(X_test)
+```
+
+### Usando Regressão Logística
+
+Embora seja chamada de regressão, esta técnica é utilizada para classificação binária (prever entre duas classes). Estima probabilidades usando uma função logística que mapeia qualquer valor real para um valor entre 0 e 1. É ideal para problemas onde a variável dependente é categórica (por exemplo, sim/não, verdadeiro/falso).
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+# Criando uma instância do modelo
+model = LogisticRegression()
+
+# Treinando o modelo com os dados de treino
+model.fit(X_train, y_train)
 ```
 
 ### Avaliação dos Modelos
