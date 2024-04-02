@@ -194,7 +194,7 @@ c) Após remover essas variáveis (utilize o Pandas para isso), como se ajusta o
 
 d) Otimize o desempenho utilizando como base as métricas obtidas na tarefa de regressão, onde há maior margem para otimização. 
 
-- Os estudantes que conseguirem realizar uma otimização receberão pontuação extra! 
+- Os estudantes que conseguirem realizar uma otimização e explicar com sucesso o trabalho realizado receberão pontuação extra! 
 
 | **Métrica** | **Valor**          |
 |---------|------------------------|
