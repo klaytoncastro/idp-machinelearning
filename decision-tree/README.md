@@ -24,7 +24,7 @@
 
 - Quais células precisam ser ajustadas no notebook da tarefa de classificação? Por que? 
 
-- Quais células precisam ser ajustadas no notebbok da tarefa de regressão? Por que? 
+- Quais células precisam ser ajustadas no notebook da tarefa de regressão? Por que? 
 
 Após **executar os notebooks passo a passo**, **entender o que o código está realizando**, **ajustar as células que precisam ser adaptadas**, prossiga para as tarefas abaixo, onde o encorajamos a **explorar outros algoritmos** e **avaliar seu desempenho**. 
 
@@ -98,6 +98,10 @@ print("Recall:", recall_score(y_test, y_pred, average='macro'))
 print("F1 Score:", f1_score(y_test, y_pred, average='macro'))
 ```
 
+- Qual algoritmo performou melhor? 
+
+- Qual algoritmo foi mais rápido? 
+
 ## Tarefa 02
 
 Para a tarefa de regressão — prever um número inteiro, no caso a qualidade do vinho, existem vários algoritmos no Scikit-Learn além da implementação robusta de Árvore de Decisão com o `ExtraTreesRegressor` que utilizamos. Dentre as alternativas populares temos: 
@@ -164,9 +168,15 @@ print("MAE:", mae)
 print("R²:", r2)
 ```
 
+- Qual algoritmo performou melhor? 
+
+- Qual algoritmo foi mais rápido? 
+
 ## Tarefa 03
 
-- Observe a relação com a variável alvo: explore como as variáveis se relacionam. Quais variáveis podem ser removidas no modelo para previsão da qualidade? 
+- Observe a relação com a variável alvo: explore como as variáveis se relacionam. Quais o impacto dos outliers? 
+
+- Quais variáveis podem ser removidas no modelo para previsão da qualidade? 
 
 - Após remover essas variáveis (utilize o Pandas para isso), como se ajusta o modelo e se comportam as métricas de avaliação? 
 
