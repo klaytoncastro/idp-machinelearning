@@ -192,7 +192,7 @@ print("R²:", r2)
 | MAE     | 0.39295384615384615    |
 | R2      | 0.54281651011084       |
 | **Pós-Arrendondamento**          |
-| Acurácia ajustada | 0.9702564102564103
+| Acurácia ajustada | 0.9702564102564103 | 
 | MSE ajustado | 0.4266666666666667 | 
 | RMSE ajustado | 0.6531972647421809| 
 | MAE ajustado | 0.3517948717948718 | 
