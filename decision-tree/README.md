@@ -180,7 +180,7 @@ a) Qual algoritmo performou melhor? Por que?
 
 b) Qual algoritmo foi executado mais rápido e qual foi executado com maior dificuldade? 
 
-c) Como podemos conciliar o impacto entre o tempo de execução e a performance? 
+c) Como podemos conciliar o impacto entre o tempo de execução e o custo benefício para obter performance? 
 
 ## Tarefa 04
 
