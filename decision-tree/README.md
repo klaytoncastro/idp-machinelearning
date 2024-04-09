@@ -50,8 +50,6 @@ Existem diferentes implementações de Naive Bayes no Scikit-Learn, adequados pa
 - MultinomialNB: Bom para quando suas features são contagens ou frequências de termos (comumente usado em classificação de texto).
 - BernoulliNB: Adequado para features binárias.
 
-Teste as implementações e avalie os resultados: 
-
 ```python
 
 from sklearn.naive_bayes import GaussianNB
@@ -110,7 +108,7 @@ print("F1 Score:", f1_score(y_test, y_pred, average='macro'))
 
 ## Tarefa 03
 
-Para a tarefa de regressão — prever um número inteiro, no caso a qualidade do vinho, existem vários algoritmos no Scikit-Learn além da implementação robusta de Árvore de Decisão com o `ExtraTreesRegressor` que utilizamos. Dentre as alternativas populares temos: 
+
 
 ### Support Vector Machine (SVM) para Regressão (SVR)
 
