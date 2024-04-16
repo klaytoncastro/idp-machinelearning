@@ -1,348 +1,132 @@
-# Redis
+# Como colocar seu primeiro modelo de Machine Learning em produção usando Flask
 
-Redis é um armazenamento de estrutura de dados em memória, usado como banco de dados, cache e servidor de mensagens. É conhecido por sua rapidez e eficiência.
+## 1. Introdução
 
-## Características
+Como vimos em sala de aula, o Flask é um microframework Python para desenvolvimento ágil de aplicativos web, adequado tanto para iniciantes quanto para desenvolvedores mais experientes. Ele é bastante leve e extensível, permitindo expandir facilmente seu aplicativo para operar com bibliotecas mais avançadas, aproveitando todo o poder da linguagem Python e a flexibilidade da web. 
 
-- **Armazenamento em Memória**: O Redis armazena dados em memória para acesso rápido.
-- **Suporte a Diversas Estruturas de Dados**: O Redis suporta várias estruturas de dados, como strings, hashes, listas, conjuntos, conjuntos ordenados, bitmaps, hyperloglogs e índices geoespaciais.
-- **Persistência de Dados**: O Redis oferece opções para persistir dados em disco sem comprometer a velocidade.
-- **Replicação e Particionamento**: O Redis suporta replicação e particionamento para escalabilidade horizontal.
+Ou seja, Flask permite que você comece pequeno, escolhendo apenas as peças necessárias, e cresça à medida que seu projeto se desenvolve. Neste tutorial, você criará uma API simples para executar seu modelo de Machine Learning, aprenderá sobre roteamento de aplicativos web, interação através de rotas de conteúdo estático e dinâmico, além de utilizar o depurador para corrigir eventuais erros.
 
-## Instalação via Docker Compose
+## 2. Exportação do Modelo para Produção
 
-Para instalar o Redis usando Docker Compose, crie um arquivo `docker-compose.yml` com o seguinte conteúdo:
+Uma etapa crucial na implementação de um modelo de Machine Learning em produção é a exportação do modelo treinado para um formato que possa ser facilmente carregado e utilizado por aplicações. Geralmente optamos pelo uso do formato `pickle` para realizar essa tarefa. O formato `pickle` oferece uma maneira padrão para serializar objetos em Python. Isso significa que ele pode transformar qualquer objeto Python, incluindo modelos complexos de Machine Learning, em uma sequência de bytes que pode ser salva em um arquivo.
 
-```yaml
-version: '3'
+### Por Que Usar o Formato Pickle?
 
-services:
-  redis:
-    image: redis:latest
-    ports:
-      - "6379:6379"
-    volumes:
-      - $HOME/redis/data:/data
+O principal benefício de utilizar o formato `pickle` para exportar modelos de Machine Learning é a sua eficiência e simplicidade em armazenar e recuperar os modelos treinados. Em um cenário de produção, o tempo necessário para treinar um modelo pode ser proibitivo, especialmente com grandes volumes de dados ou algoritmos complexos que requerem alto poder computacional. Assim, treinar o modelo a cada nova requisição de previsão torna-se inviável.
+
+Exportar o modelo treinado como um arquivo `pickle` permite que o modelo seja carregado rapidamente por nossa aplicação Flask, sem a necessidade de reprocessar os dados ou retreinar o modelo. Isso é essencial para garantir a agilidade das respostas em um ambiente de produção, onde a performance e o tempo de resposta são críticos.
+
+### Como Exportar e Carregar um Modelo com Pickle
+Exportar um modelo para um arquivo pickle é um processo simples. Primeiro, o modelo é treinado. Após o treinamento, o modelo é serializado com o módulo `pickle` e salvo em um arquivo `.pkl`. O código a seguir exemplifica este processo:
+
+```python
+import pickle
+from sklearn.ensemble import RandomForestClassifier
+
+# Treinando o modelo
+model = RandomForestClassifier()
+model.fit(x_train, y_train)
+
+# Salvando o modelo em um arquivo pickle
+with open('model.pkl', 'wb') as file:
+    pickle.dump(model, file)
+
 ```
 
-Suba o contêiner: 
+Para utilizar o modelo em nossa aplicação Flask, simplesmente carregamos o arquivo pickle, deserializamos o objeto e utilizamos para fazer previsões:
 
-```shell
+```python
+# Carregando o modelo do arquivo pickle
+with open('model.pkl', 'rb') as file:
+    loaded_model = pickle.load(file)
+
+# Usando o modelo carregado para fazer previsões
+prediction = loaded_model.predict(X_new)
+```
+
+## 3. Implantação do Ambiente
+
+### Pré-Requisitos
+
+Siga as instruções iniciais contidas no repositório [idp-bigdata](https://github.com/klaytoncastro/idp-bigdata/) para implantação do ambiente de laboratório, certificando-se de ter compreendido a implantação da VM com Docker que atuará como servidor web, além das ferramentas de gerenciamento, incluindo acesso remoto via SSH e editor de textos Vim, cujos fundamentos e comandos essenciais foram introduzidos em sala de aula. 
+
+### Criando o aplicativo
+
+Acesse o ambiente via SSH e vá até o diretório `/opt/idp-machinelearning/production`. Crie o arquivo `app.py` com o Vim (use o comando `vim app.py`) ou editor de sua preferência para dar manutenção ao código. 
+
+### Executando o aplicativo 
+
+Vá até o diretório `/opt/idp-machinelearning/production` e suba o contêiner do Flask. 
+
+```bash
+docker-compose build
 docker-compose up -d
 ```
 
-## Aplicação de Cache em Tempo Real com Redis
+Verifique se o contêiner está ativo e sem erros de implantação. 
 
-Aqui está um exemplo simples de como usar o Redis para cache:
+```bash
+docker-compose ps
+docker-compose logs
+```
+Agora, acesse `http://127.0.0.1:8500/example` e verifique o retorno do `.json` de exemplo. 
+
+## 4. Roteamento e visualizações
+
+Roteamento refere-se ao mapeamento de URLs específicas para funções em um aplicativo web. Em outras palavras, quando você acessa um determinado endereço em um navegador web (ou através de uma chamada API), o aplicativo precisa saber qual função deve ser executada e o que deve ser retornado para o usuário. No Flask, isso é feito através do uso de decoradores, como `@app.route()`, para associar funções específicas a URLs. Por exemplo:
 
 ```python
-import redis
-import time
+@app.route('/inicio')
+def inicio():
+    return "Página Inicial"
 ```
 
-### Conexão com o servidor Redis (ajuste o host e a porta conforme necessário)
-r = redis.Redis(host='localhost', port=6379, db=0)
+Dessa forma, você poderá acessar os *end-points* `http://127.0.0.1:8500/<nome_end-point>` e verá as respectivas páginas em seu navegador. 
 
-### Definindo uma chave com um valor e um tempo de expiração (em segundos)
-r.setex("chave", 30, "valor")
+## 5. Rotas Dinâmicas
 
-### Recuperando o valor da chave
-valor = r.get("chave")
-print("Valor recuperado:", valor)
-
-### Simulando um atraso para demonstrar a expiração
-time.sleep(31)
-valor_apos_expiracao = r.get("chave")
-print("Valor após expiração:", valor_apos_expiracao)
-Este exemplo mostra como armazenar e recuperar dados no Redis, com um tempo de expiração definido.
-
-## Filas de Mensagens e Processamento de Streams com Redis
-Para o processamento de filas e streams, você pode usar as listas do Redis para simular uma fila de mensagens:
-
-```python
-import redis
-```
-
-### Conexão com o Redis
-r = redis.Redis(host='localhost', port=6379, db=0)
-
-### Enviando mensagens para a fila
-r.lpush("fila", "mensagem 1")
-r.lpush("fila", "mensagem 2")
-
-### Processando mensagens da fila
-while True:
-    mensagem = r.brpop("fila", 5)  # Aguarda 5 segundos por uma mensagem
-    if mensagem:
-        print("Mensagem recebida:", mensagem[1])
-    else:
-        print("Nenhuma mensagem nova.")
-        break
-
-
-Este código ilustra como enviar e receber mensagens de uma fila usando o Redis. O `brpop` é um comando bloqueante que aguarda até que uma mensagem esteja disponível na fila.
-
-
-## Exemplo: Flask + Redis
-
-Os exemplos acima são básicos, mas eficazes para demonstrar os conceitos de cache em tempo real e filas de mensagens usando o Redis. Para configurar um ambiente com Docker que inclua tanto o Redis quanto o Flask, você precisará de um `Dockerfile` para a aplicação Flask e um `docker-compose.yml` para orquestrar os contêineres. 
-
-
-### Dockerfile para a Aplicação Flask
-Primeiro, crie um Dockerfile para a aplicação Flask.
+Vamos permitir que os usuários interajam com o aplicativo por meio de rotas dinâmicas. Podemos submeter via método `HTTP POST` um `.json` com as variáveis preditoras e o nosos aplicativo retornará a previsão da variável alvo. Abaixo, exemplo de um vinho de qualidade "ruim": 
 
 ```shell
-# Usa a imagem base do Python
-FROM python:3.8-slim
-
-# Define o diretório de trabalho
-WORKDIR /app
-
-# Copia os arquivos de requisitos e instala as dependências
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
-# Copia o restante dos arquivos da aplicação
-COPY . .
-
-# Define a porta em que a aplicação será executada
-EXPOSE 5000
-
-# Define o comando para iniciar a aplicação
-CMD ["python", "app.py"]
+ curl -X POST   -H "Content-Type: application/json"   -d '{
+        "fixed acidity": 7.0,
+        "volatile acidity": 0.27,
+        "citric acid": 0.36,
+        "residual sugar": 20.7,
+        "chlorides": 0.045,
+        "free sulfur dioxide": 45.0,
+        "total sulfur dioxide": 170.0,
+        "density": 1.0010,
+        "pH": 3.00,
+        "sulphates": 0.45,
+        "alcohol": 8.8,
+        "color": 1
+      }'   http://localhost:8500/predict
 ```
 
-No arquivo `requirements.txt`, inclua:
+- Abaixo, exemplo de código para um vinho de qualidade "boa": 
 
 ```shell
-flask
-redis
+ curl -X POST   -H "Content-Type: application/json"   -d '{
+        "fixed acidity": 7.0,
+        "volatile acidity": 0.27,
+        "citric acid": 0.36,
+        "residual sugar": 20.7,
+        "chlorides": 0.045,
+        "free sulfur dioxide": 45.0,
+        "total sulfur dioxide": 170.0,
+        "density": 1.0010,
+        "pH": 3.00,
+        "sulphates": 0.45,
+        "alcohol": 8.8,
+        "color": 1
+      }'   http://localhost:8500/predict
 ```
 
-Agora crie um arquivo `app.py` com o código da sua aplicação Flask.
+## 6. Depurando seu aplicativo
 
-### Orquestração do Flask e Redis
-Agora, crie um arquivo docker-compose.yml que defina os serviços para o Flask e o Redis:
+O Flask possui um depurador embutido. No nosso ambiente, quando você executa o comando `docker-compose logs`, poderá verificar quais são os eventuais erros e assim corrigir o código de seu aplicativo. 
 
-```yaml
-version: '3'
-services:
-  web:
-    build: .
-    ports:
-      - "5000:5000"
-    depends_on:
-      - redis
-  redis:
-    image: "redis:alpine"
-    ports:
-      - "6379:6379"
-```
+### Pronto! 
 
-Este docker-compose.yml define dois serviços:
-
-- web: O serviço para a sua aplicação Flask. Ele constrói a imagem a partir do Dockerfile e mapeia a porta 5000 para a porta 5000 do host.
-- redis: O serviço para o Redis, usando a imagem redis:alpine. Ele mapeia a porta 6379 para a porta 6379 do host.
-
-Após configurar esses arquivos, você pode iniciar os serviços com o seguinte comando:
-
-```bash
-docker-compose up -d
-```
-
-Isso irá construir a imagem para a sua aplicação Flask e iniciar tanto o serviço Flask quanto o Redis. Assegure-se de que o seu código Flask esteja configurado para se conectar ao Redis usando o hostname `redis`, que é o nome do serviço definido no `docker-compose.yml`.
-
-Com essa configuração, você poderá demonstrar os exemplos de cache em tempo real e filas de mensagens usando Redis. 
-
-### Exemplos de Aplicações
-
-1. Sistema de Autenticação e Sessão de Usuários
-Chave: ID da sessão do usuário ou token de autenticação.
-Valor: Dados associados à sessão do usuário, como ID do usuário, preferências, roles/permissões, etc.
-Aplicação: Armazenar e gerenciar sessões de usuário em um ambiente web, onde a velocidade de acesso e a expiração automática das sessões são cruciais.
-2. Catálogo de Produtos para E-commerce
-Chave: SKU ou ID do produto.
-Valor: Detalhes do produto, como nome, descrição, preço, informações do fornecedor.
-Aplicação: Rápido acesso aos dados dos produtos para exibição em um site de e-commerce, onde a performance é um fator importante.
-3. Sistema de Gerenciamento de Configurações
-Chave: Nome da configuração (por exemplo, "limiteDeUpload", "horárioDeManutenção").
-Valor: Valor da configuração (por exemplo, "10MB", "01:00-03:00").
-Aplicação: Armazenar configurações de aplicativos ou sistemas que podem ser alteradas dinamicamente sem a necessidade de reiniciar o sistema.
-4. Sistema de Cache para Resultados de Pesquisa ou Análises
-Chave: Termo da pesquisa ou parâmetros da análise.
-Valor: Resultados da pesquisa ou análise.
-Aplicação: Melhorar a performance de aplicações que realizam pesquisas frequentes ou análises complexas, armazenando os resultados para recuperação rápida.
-5. Registro de Atividades ou Logs
-Chave: Identificador único do evento (como timestamp ou ID de evento).
-Valor: Detalhes do evento ou log.
-Aplicação: Rápido armazenamento e acesso a logs ou eventos para monitoramento e análise em sistemas de grande escala.
-Estas são apenas algumas ideias, e a beleza do uso de um banco de dados baseado em chave-valor como o Redis é que ele é extremamente versátil e pode ser adaptado para uma variedade de aplicações em diferentes domínios. Escolher um contexto que seja relevante e interessante para seus alunos pode tornar o aprendizado mais envolvente e prático.
-
-## Demonstração do Ambiente
-
-### Utilizar Logs da Aplicação Flask
-
-Você pode adicionar instruções de log no seu código Flask para demonstrar quando a aplicação está acessando o Redis. Por exemplo, ao buscar ou definir valores no Redis, você pode imprimir mensagens no console:
-
-```python
-from flask import Flask
-import redis
-
-app = Flask(__name__)
-r = redis.Redis(host='redis', port=6379, db=0)
-
-@app.route('/')
-def hello_world():
-    r.set("alguma_chave", "algum_valor")
-    valor = r.get("alguma_chave")
-    app.logger.info(f'Valor obtido do Redis: {valor}')
-    return 'Olá, mundo!'
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
-```
-
-Quando você acessar a aplicação Flask, essas mensagens de log aparecerão no terminal ou na interface do Docker onde você executou o `docker-compose up -d`.
-
-## Acompanhar Logs do Docker Compose
-Para ver as mensagens de log em tempo real, você pode abrir um terminal e executar:
-
-```bash
-docker-compose logs -f
-```
-
-Isso mostrará um fluxo contínuo de logs de todos os serviços definidos no seu `docker-compose.yml`, incluindo tanto o Flask quanto o Redis.
-
-### Demonstrações Interativas
-Outra forma eficaz de demonstrar é criar rotas Flask específicas para diferentes operações do Redis (como definir um valor, obter um valor, listar valores de uma fila, etc.) e acessar estas rotas através do navegador ou usando uma ferramenta como Postman. Isso permite uma interação direta e visual com a aplicação e o Redis.
-
-### Usar Redis CLI
-Você também pode abrir um terminal no container Redis para interagir diretamente com o banco de dados usando o Redis CLI. Isso pode ser feito usando o comando:
-
-```bash
-docker exec -it [NOME_DO_CONTAINER_REDIS] redis-cli
-```
-
-Aqui, você pode executar comandos do Redis para mostrar diretamente o estado do banco de dados. 
-
-## Interação via API e CLI
-
-Outra forma eficaz de demonstrar é criar rotas Flask específicas para diferentes operações do Redis (como definir um valor, obter um valor, listar valores de uma fila, etc.) e acessar estas rotas através do navegador (usando uma ferramenta como Postman) ou `curl`. Isso permite uma interação direta e visual com a aplicação e o Redis. Para criar uma aplicação Flask interativa que demonstre diferentes operações com o Redis, você pode definir várias rotas em sua aplicação. 
-
-```python
-from flask import Flask, request
-import redis
-
-app = Flask(__name__)
-r = redis.Redis(host='redis', port=6379, db=0)
-
-@app.route('/set/<chave>/<valor>')
-def set_valor(chave, valor):
-    r.set(chave, valor)
-    return f'Valor {valor} foi armazenado com a chave {chave}'
-
-@app.route('/get/<chave>')
-def get_valor(chave):
-    valor = r.get(chave)
-    if valor:
-        return f'Valor recuperado: {valor.decode("utf-8")}'
-    else:
-        return 'Chave não encontrada'
-
-@app.route('/push/<lista>/<valor>')
-def push_lista(lista, valor):
-    r.lpush(lista, valor)
-    return f'Valor {valor} adicionado à lista {lista}'
-
-@app.route('/pop/<lista>')
-def pop_lista(lista):
-    valor = r.lpop(lista)
-    if valor:
-        return f'Valor retirado da lista {lista}: {valor.decode("utf-8")}'
-    else:
-        return f'Lista {lista} está vazia ou não existe'
-
-@app.route('/listar/<lista>')
-def listar_valores(lista):
-    valores = r.lrange(lista, 0, -1)
-    return f'Valores na lista {lista}: {[valor.decode("utf-8") for valor in valores]}'
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
-```
-
-Este código Flask cria rotas para definir e obter valores, bem como para adicionar e remover valores de uma lista no Redis. Para interagir com o Redis usando o Redis CLI, você pode usar o seguinte comando para acessar o terminal do container Redis:
-
-```bash
-docker exec -it [NOME_DO_CONTAINER_REDIS] redis-cli
-```
-
-Dentro do CLI do Redis, você pode executar vários comandos para demonstrar diferentes funcionalidades. Alguns exemplos são:
-
-### Listar Todas as Chaves:
-
-```bash
-KEYS *
-```
-
-### Obter o Valor de Uma Chave Específica:
-
-```bash
-GET [chave]
-```
-
-### Exibir os valores de uma lista
-
-```bash
-LRANGE [lista] 0 -1
-```
-
-### Visualizar Informações de Status do Servidor Redis:
-
-```bash
-INFO
-```
-
-## Exemplos de Comandos Curl para inserir Dados no Redis:
-
-Para definir um valor no Redis usando a rota `/set/<chave>/<valor>`:
-
-
-```bash
-curl http://localhost:5000/set/minhaChave/meuValor
-```
-
-- Este comando irá definir o valor meuValor para a chave minhaChave no Redis.
-
-### Adicionar Valor a uma Lista no Redis:
-
-Para adicionar um valor a uma lista usando a rota `/push/<lista>/<valor>`:
-
-```bash
-curl http://localhost:5000/push/minhaLista/valor1
-```
-
-- Este comando adicionará o valor valor1 à lista minhaLista no Redis.
-
-### Carga de Dados via Loop e Arquivo
-
-Suponha que você tenha um arquivo chamado dados.txt, onde cada linha contém um par chave-valor separado por vírgula. Você pode usar um script para ler este arquivo e enviar cada par chave-valor para o Redis usando `curl`: 
-
-```csv
-chave1,valor1
-chave2,valor2
-chave3,valor3
-```
-
-```bash
-#!/bin/bash
-
-# Lê cada linha do arquivo CSV
-while IFS=, read -r chave valor; do
-    # Envia a chave e o valor para o Redis usando curl
-    curl "http://localhost:5000/set/$chave/$valor"
-    echo " Inserido $chave: $valor"
-done < dados.csv
-```
-
-Neste script, `IFS=,` define o separador de campo interno (Internal Field Separator) como vírgula, permitindo que o read divida cada linha nas variáveis chave e valor baseado na vírgula. O script lê cada linha do arquivo `dados.txt`, extrai a chave e o valor e os envia para o Redis através da API Flask usando curl. Certifique-se de ter o Flask rodando e acessível na porta especificada para que os comandos `curl` funcionem conforme esperado.
+Você criou um pequeno aplicativo web com o Flask, adicionou rotas estáticas e dinâmicas e aprendeu a usar o depurador. A partir daqui, você pode expandir seu aplicativo, integrando-o com bancos de dados, formulários e aprimorando seu visual com CSS e HTML. A exportação de modelos em formato pickle é uma prática eficiente para a implantação de modelos de Machine Learning em produção, oferecendo uma forma rápida de disponibilizar as capacidades preditivas do modelo com a eficiência necessária para aplicações em tempo real.

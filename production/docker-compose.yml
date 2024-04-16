@@ -8,6 +8,8 @@ services:
       - ./app.py:/app/app.py  # Mapeia o arquivo app.py externo
       - ./templates:/app/templates  # Mapeia o diretório de templates
       - ./static:/app/static  # Mapeia o diretório de arquivos estáticos
+      - ./models:/app/models  # Mapeia a pasta models
+
     depends_on:
       - redis
   redis:
