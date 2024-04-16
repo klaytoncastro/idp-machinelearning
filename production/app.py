@@ -10,18 +10,55 @@ modelo_path = os.path.join('models', 'modelo.pkl')
 # Carregar o modelo
 modelo = load(modelo_path)
 
+# Dados fictícios de exemplo
+exemplo = {
+    "fixed acidity": 7.0,
+    "volatile acidity": 0.27,
+    "citric acid": 0.36,
+    "residual sugar": 20.7,
+    "chlorides": 0.045,
+    "free sulfur dioxide": 45.0,
+    "total sulfur dioxide": 170.0,
+    "density": 1.0010,
+    "pH": 3.00,
+    "sulphates": 0.45,
+    "alcohol": 8.8,
+    "color": 1
+}
+
+@app.route('/example', methods=['GET'])
+def example():
+    # Fazer uma previsão de exemplo
+    previsao = modelo.predict([list(exemplo.values())])
+    return jsonify(previsao.tolist())
+
 # Definir rota para receber requisições POST
+
 @app.route('/predict', methods=['POST'])
 def predict():
     # Receber dados JSON da requisição
     data = request.get_json()
-    
+
+    # Extrair os valores do JSON
+    fixed_acidity = data['fixed acidity']
+    volatile_acidity = data['volatile acidity']
+    citric_acid = data['citric acid']
+    residual_sugar = data['residual sugar']
+    chlorides = data['chlorides']
+    free_sulfur_dioxide = data['free sulfur dioxide']
+    total_sulfur_dioxide = data['total sulfur dioxide']
+    density = data['density']
+    pH = data['pH']
+    sulphates = data['sulphates']
+    alcohol = data['alcohol']
+    color = data['color']
+
     # Fazer a previsão usando o modelo
-    predicao = modelo.predict(data)
-    
+    predicao = modelo.predict([[fixed_acidity, volatile_acidity, citric_acid, residual_sugar, chlorides,free_sulfur_dioxide, total_sulfur_dioxide, density, pH, sulphates, alcohol, color]])
+
     # Mapear o resultado da previsão para uma resposta legível
-    resultado = ['ruim' if pred == 0 else 'bom' for pred in predicao]
-    
+    resultado = ['ruim' if pred == 1 else 'bom' for pred in predicao]
+
     # Retornar o resultado como JSON
     return jsonify(resultado)
 
@@ -29,41 +66,3 @@ def predict():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
 
-
-'''from flask import Flask
-import redis
-
-app = Flask(__name__)
-db = redis.Redis(host='redis', port=6379)
-
-# make redis
-#redis_cache = redis.Redis(host='localhost', port=6379, db=0, password="redis_password")
-
-@app.route('/')
-def hello():
-    count = db.incr('hits')
-    return 'Hello World! I have been seen {} times.\n'.format(count)
-
-@app.route('/sem-redis')
-def hellow():
-    #count = db.incr('hits')
-    return 'Hello World! I have been seen times.'
-
-@app.route('/set/<string:key>/<string:value>')
-def set(key, value):
-    if db.exists(key):
-        pass
-    else:
-        db.set(key, value)
-    return "OK"
-
-@app.route('/get/<string:key>')
-def get(key):
-    if db.exists(key):
-        return db.get(key)
-    else:
-        return f"{key} is not exists"
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
-'''

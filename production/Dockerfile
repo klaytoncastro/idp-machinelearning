@@ -15,7 +15,9 @@ RUN apt-get update && apt-get install -y \
 ADD . /app
 
 # Create a models directory
-RUN mkdir /app/models
+#RUN mkdir /app/models
+RUN rm -rf /app/models && mkdir -p /app/models
+
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt

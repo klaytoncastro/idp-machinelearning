@@ -123,6 +123,16 @@ Vamos permitir que os usuários interajam com o aplicativo por meio de rotas din
       }'   http://localhost:8500/predict
 ```
 
+- Você também pode utilizar um arquivo para fazer `POST` do arquivo `.json`. Seguem exemplos: 
+
+```shell
+curl -X POST -H "Content-Type: application/json" -d @bom.json http://localhost:8500/predict
+```
+
+```shell
+curl -X POST -H "Content-Type: application/json" -d @ruim.json http://localhost:8500/predict
+```
+
 ## 6. Depurando seu aplicativo
 
 O Flask possui um depurador embutido. No nosso ambiente, quando você executa o comando `docker-compose logs`, poderá verificar quais são os eventuais erros e assim corrigir o código de seu aplicativo. 
