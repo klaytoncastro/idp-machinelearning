@@ -77,6 +77,3 @@ plt.title('Contribuição das Variáveis aos Componentes Principais')
 plt.legend()
 plt.tight_layout()
 plt.show()
-
-import warnings
-warnings.filterwarnings("ignore", category=DeprecationWarning)
