@@ -27,7 +27,9 @@ O dataset pode ser encontrado no seguinte link: [Air Quality Dataset](https://ra
 
 ## Definição do Problema 
 
-Como Cientista de Dados / Engenheiro de Machine Learning, você precisa prever a concentração de CO (CO(GT)) com base nas outras variáveis disponíveis no dataset. Desenvolva um modelo que ajude a entender como diferentes fatores ambientais influenciam os níveis de monóxido de carbono na atmosfera.
+Como Cientista de Dados / Engenheiro de Machine Learning, desenvolva um modelo que ajude a entender como diferentes fatores ambientais influenciam os níveis de monóxido de carbono na atmosfera. 
+
+**Dica:** Uma abordagem possível seria prever a concentração de CO (CO(GT)) com base nas outras variáveis disponíveis no dataset. 
 
 ## Análise Exploratória de Dados (EDA)
 
