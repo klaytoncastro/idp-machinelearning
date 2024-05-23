@@ -4,7 +4,9 @@ Nessa tarefa, apresente uma abordagem de análise exploratória, pré-processame
 
 ## Descrição do Dataset
 
-O dataset pode ser encontrado no seguinte link: [Air Quality Dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/00360/AirQualityUCI.zip). Ele contém informações sobre a qualidade do ar em uma região específica, medindo várias características como concentração de poluentes e outras variáveis ambientais. Os atributos (features) incluem:
+O dataset pode ser encontrado no seguinte link: [Air Quality Dataset](). Ele contém informações sobre a qualidade do ar em uma região específica, medindo várias características como concentração de poluentes e outras variáveis ambientais. Os atributos (features) incluem:
+
+<!--https://archive.ics.uci.edu/ml/machine-learning-databases/00360/AirQualityUCI.zip-->
 
 - **Date**: Data da coleta.
 - **Time**: Hora da coleta.
