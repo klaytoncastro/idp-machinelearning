@@ -1,4 +1,4 @@
-# Elaborando uma abordagem de Machine Learning
+# Elaborando uma abordagem de Machine Learning para uma Tarefa de Classificação
 
 ## Descrição do Dataset
 
