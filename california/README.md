@@ -23,7 +23,13 @@ O dataset **California Housing** é um conjunto de dados clássico para tarefas 
 
 ## Tarefa:  
 
-Utilize o notebook apresentado em sala de aula [Air Quality](https://github.com/klaytoncastro/idp-machinelearning/blob/main/airquality/regressao_airquality_v2.ipynb) como referência para o fluxo de trabalho, considerando as etapas a seguir: 
+Utilize o notebook apresentado em sala de aula [Air Quality](https://github.com/klaytoncastro/idp-machinelearning/blob/main/airquality/regressao_airquality_v2.ipynb) como referência para o fluxo de trabalho. 
+
+Clique no link para salvar como e baixar diretamente o notebook de exemplo de regressão para análise da qualidade do ar:
+
+[Baixar Notebook: regressao_airquality_v2.ipynb](https://raw.githubusercontent.com/klaytoncastro/idp-machinelearning/main/airquality/regressao_airquality_v2.ipynb)
+
+Considere as etapas a seguir: 
 
 ### Análise Exploratória de Dados (EDA)
 
