@@ -1,4 +1,4 @@
-# Elaborando uma Abordagem de Machine Learning para Tarefas de Classificação e Clusterização
+# Elaborando uma Abordagem de Machine Learning para uma Tarefa de Classificação e Clusterização
 
 ## Descrição do Dataset
 
@@ -16,18 +16,18 @@ O dataset contém 150 amostras de flores, com 4 características numéricas (fea
 - **SepalWidth**: Largura da sépala (em centímetros).
 - **PetalLength**: Comprimento da pétala (em centímetros).
 - **PetalWidth**: Largura da pétala (em centímetros).
-
-### Variável Alvo (para Classificação):
-
 - **Species**: Classe de cada flor (*Iris-setosa*, *Iris-versicolor* ou *Iris-virginica*).
 
 ## Tarefa
 
-Utilize o notebook apresentado em sala de aula [Clusterização com Mall Customers](https://github.com/klaytoncastro/idp-machinelearning/blob/main/cluster_mall.ipynb) como referência para o fluxo de trabalho. O objetivo é que vocês implementem tanto **classificação** quanto **clusterização** no dataset **Iris**.
+O objetivo é que vocês implementem tanto **classificação** quanto **clusterização** no dataset **Iris**. 
 
-Clique no link abaixo para salvar o notebook de referência sobre clusterização:
+### Variável Alvo: Species
 
-[Baixar Notebook: cluster_mall.ipynb](https://raw.githubusercontent.com/klaytoncastro/idp-machinelearning/main/cluster_mall.ipynb)
+Utilize os notebooks apresentados em sala de aula como referência para o fluxo de trabalho da abordagem de clusterização e classificação. Clique no link abaixo para baixar os notebooks Mall Customers e Wine Quality:
+
+- [Mall Customers](https://raw.githubusercontent.com/klaytoncastro/idp-machinelearning/main/mall/cluster_mall.ipynb)
+- [Wine Quality](https://raw.githubusercontent.com/klaytoncastro/idp-machinelearning/main/decision-tree/winequality_ml_classifier.ipynb)
 
 ### Etapas a Seguir:
 
@@ -63,14 +63,14 @@ Aplique diferentes algoritmos de **clusterização** para agrupar as flores em t
 
 ### 5. Avaliação dos Modelos
 
+- **Clusterização**: Avalie os clusters formados utilizando métricas como:
+  - **Índice de Silhueta**: Para medir o quão bem os pontos estão agrupados em cada cluster.
+  - **Visualização de Clusters**: Use gráficos 2D para visualizar os clusters formados e comparar com as classes reais.
+
 - **Classificação**: Avalie os modelos de classificação usando métricas como:
   - **Acurácia**: Para medir a precisão do modelo em prever as espécies corretas.
   - **Relatório de Classificação**: Use métricas como precisão, recall e F1-score.
   - **Matriz de Confusão**: Visualize os erros de classificação.
-
-- **Clusterização**: Avalie os clusters formados utilizando métricas como:
-  - **Índice de Silhueta**: Para medir o quão bem os pontos estão agrupados em cada cluster.
-  - **Visualização de Clusters**: Use gráficos 2D para visualizar os clusters formados e comparar com as classes reais.
 
 ### 6. Interpretação e Visualização
 
