@@ -4,7 +4,7 @@
 Nesta atividade, cada estudante ou dupla deverá otimizar um modelo de machine learning fazendo uso dos três métodos clássicos de otimização de hiperparâmetros: Grid Search, Randomized Search e Otimização Bayesiana. O objetivo é comparar o desempenho dos modelos com diferentes configurações de hiperparâmetros e utilizar métricas apropriadas para avaliar a performance.
 
 ## Algoritmos Atribuídos
-Os seguintes algoritmos serão utilizados para otimização:
+Os seguintes algoritmos serão utilizados para solucionar a tarefa de classificação:
 
 - **Decision Tree**: Felipe e Kelvin
 - **Random Forest**: Sara e Fábio
@@ -18,6 +18,8 @@ Os seguintes algoritmos serão utilizados para otimização:
 - **k-NN** (k-NearestNeighbours): ??? 
 
 ## Técnicas de Otimização
+
+Cada estudante ou dupla deverá implementar os 03 métodos a seguir, buscando extrair o melhor desempenho na resolução da tarefa de classificação por meio da otimização dos hiperparâmetros do algoritmo sorteado acima. 
 
 1. **Grid Search**: Busca exaustiva que testa todas as combinações possíveis de hiperparâmetros.
 2. **Randomized Search**: Testa combinações aleatórias de hiperparâmetros em vez de todas as combinações possíveis.
