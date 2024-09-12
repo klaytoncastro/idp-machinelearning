@@ -24,7 +24,7 @@ Os seguintes algoritmos serão utilizados para otimização:
 3. **Otimização Bayesiana**: Utiliza modelos probabilísticos para guiar a busca pelos melhores hiperparâmetros.
 
 ## Recursos Necessários
-- **Slides**: [Notas de Aula](https://github.com/klaytoncastro/idp-machinelearning/blob/main/optimization/ML_Optimization.pdf)
+- **Slides e Notebooks exemplo**: [Notas de Aula](https://github.com/klaytoncastro/idp-machinelearning/blob/main/optimization/ML_Optimization.pdf) e arquivos .ipynb com a implementação dos métodos de otimização e dos algoritmos (nesta mesma pasta do repositório). 
 - **Documentação do scikit-learn**: [scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
 - **Documentação do XGBoost**: [XGBoost Documentation](https://xgboost.readthedocs.io/en/latest/)
 
