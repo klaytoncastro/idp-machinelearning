@@ -16,87 +16,45 @@ Cada estudante ou dupla será responsável por um dos seguintes algoritmos, que 
 
 # Alocações dos Trabalhos em Dupla
 
-# Alocações dos Trabalhos em Dupla
-
-### 1. Decision Tree
-Árvore de Decisão é um algoritmo de aprendizado supervisionado usado tanto para classificação quanto para regressão. Ele constrói um modelo de árvore a partir de dados de entrada, realizando decisões baseadas em características e seus valores.
-
+### Decision Tree
 - Felipe Pereira Dutra
 - Kelwin dos Santos Menezes
 
----
-
-### 2. Random Forest
-Random Forest (Floresta Aleatória) é um conjunto de árvores de decisão construídas com diferentes subconjuntos de dados e características, melhorando a precisão e reduzindo o risco de overfitting.
-
+### Random Forest
 - Sara Pacheco de Azevedo
 - Fábio Luís de Carvalho Terra
 
----
-
-### 3. Extra Tree
-Extra Tree (Extremely Randomized Tree) é uma variante do algoritmo de Árvore de Decisão, onde as divisões em cada nó da árvore são escolhidas de forma completamente aleatória, resultando em maior variabilidade entre as árvores.
-
+### Extra Tree
 - Pedro Calil Raposo Mingossi Cordeiro
 - João Gabriel Gonçalves Oliveira
 
----
-
-### 4. Extra Trees
-Extra Trees (Extremely Randomized Trees) é uma variante do Random Forest, que cria várias árvores de decisão altamente randomizadas, aumentando a robustez e precisão da floresta.
-
+### Extra Trees
 - Arthur Torquato Novaes
 - Felipe Barroso de Castro
 
----
-
-### 5. XGBoost
-XGBoost (Extreme Gradient Boosting) é um algoritmo de boost de gradiente eficiente e otimizado que usa uma sequência de árvores de decisão para melhorar o desempenho preditivo.
-
+### XGBoost
 - Eduardo Milagres Lima
 - Igor Caldeira Andrade
 
----
-
-### 6. LightGBM
-LightGBM (Light Gradient Boosting Machine) é um algoritmo de boost de gradiente focado em eficiência e velocidade, particularmente eficaz para grandes volumes de dados.
-
+### LightGBM
 - Luca Verdade Lenzoni
 - Lucas Fiche Ungarelli Borges
 
----
-
-### 7. Naive Bayes
-Naive Bayes é um algoritmo baseado na Teoria de Probabilidade de Bayes, assumindo que todas as características são independentes entre si, usado principalmente para problemas de classificação.
-
+### Naive Bayes
 - Claudio da Aparecida Meireles Filho
-- Pedro Henrique Pontes Fontana
+- Pedro Rodrigues de Araújo
 
----
-
-### 8. Logistic Regression
-Logistic Regression (Regressão Logística) é um algoritmo de classificação que modela a probabilidade de uma variável binária, muito usado para classificação binária.
-
+### Logistic Regression
 - Mariana Magalhaes Silva
 - Leonardo Freitas Barboza
 
----
-
-### 9. SVM (Support Vector Classifier - SVC)
-SVM (Support Vector Machine) é um algoritmo de aprendizado supervisionado que tenta encontrar um hiperplano que separa os dados em diferentes classes com a máxima margem possível.
-
+### SVM (Support Vector Classifier - SVC)
 - Lucas Fidalgo Bitencourt
 - Mateus Batista Peixoto da Silva
 
----
-
-### 10. k-NN (k-Nearest Neighbors)
-k-NN (k-Nearest Neighbors - k-Vizinhos Mais Próximos) é um algoritmo simples de classificação que classifica os dados com base nas classes dos vizinhos mais próximos no espaço de características.
-
+### k-NN (k-Nearest Neighbors)
 - João Henrique de Oliveira Salles
 - Lucas Narita Nunes de Melo Freita
-
----
 
 
 ## Técnicas de Otimização
