@@ -14,16 +14,90 @@ Cada estudante ou dupla deverá otimizar um modelo de machine learning utilizand
 
 Cada estudante ou dupla será responsável por um dos seguintes algoritmos, que foram previamente sorteados em sala de aula, e deverá(ão) realizar a otimização de seus respectivos hiperparâmetros na tarefa de classificação de vinhos do dataset [Wine Quality](https://github.com/klaytoncastro/idp-machinelearning/blob/main/optimization/winequality_ml_classifier_optimized.ipynb):
 
-- **Decision Tree**: Felipe e Kelvin
-- **Random Forest**: Sara e Fábio
-- **Extra Tree**: Pedro Calil e João Gabriel
-- **Extra Trees**: Arthur e Felipe Castro
-- **XGBoost**: Eduardo e Igor
-- **LightGBM**: Luca Verdade e Lucas Fiche
-- **Naive Bayes**: Cláudio e Pedro
-- **Logistic Regression**: Mariana
-- **SVM (Support Vector Classifier - SVC)**: Lucas Fidalgo e Mateus Batista
-- **k-NN (k-Nearest Neighbors)**: ???
+# Alocações dos Trabalhos em Dupla
+
+# Alocações dos Trabalhos em Dupla
+
+### 1. Decision Tree
+Árvore de Decisão é um algoritmo de aprendizado supervisionado usado tanto para classificação quanto para regressão. Ele constrói um modelo de árvore a partir de dados de entrada, realizando decisões baseadas em características e seus valores.
+
+- Felipe Pereira Dutra
+- Kelwin dos Santos Menezes
+
+---
+
+### 2. Random Forest
+Random Forest (Floresta Aleatória) é um conjunto de árvores de decisão construídas com diferentes subconjuntos de dados e características, melhorando a precisão e reduzindo o risco de overfitting.
+
+- Sara Pacheco de Azevedo
+- Fábio Luís de Carvalho Terra
+
+---
+
+### 3. Extra Tree
+Extra Tree (Extremely Randomized Tree) é uma variante do algoritmo de Árvore de Decisão, onde as divisões em cada nó da árvore são escolhidas de forma completamente aleatória, resultando em maior variabilidade entre as árvores.
+
+- Pedro Calil Raposo Mingossi Cordeiro
+- João Gabriel Gonçalves Oliveira
+
+---
+
+### 4. Extra Trees
+Extra Trees (Extremely Randomized Trees) é uma variante do Random Forest, que cria várias árvores de decisão altamente randomizadas, aumentando a robustez e precisão da floresta.
+
+- Arthur Torquato Novaes
+- Felipe Barroso de Castro
+
+---
+
+### 5. XGBoost
+XGBoost (Extreme Gradient Boosting) é um algoritmo de boost de gradiente eficiente e otimizado que usa uma sequência de árvores de decisão para melhorar o desempenho preditivo.
+
+- Eduardo Milagres Lima
+- Igor Caldeira Andrade
+
+---
+
+### 6. LightGBM
+LightGBM (Light Gradient Boosting Machine) é um algoritmo de boost de gradiente focado em eficiência e velocidade, particularmente eficaz para grandes volumes de dados.
+
+- Luca Verdade Lenzoni
+- Lucas Fiche Ungarelli Borges
+
+---
+
+### 7. Naive Bayes
+Naive Bayes é um algoritmo baseado na Teoria de Probabilidade de Bayes, assumindo que todas as características são independentes entre si, usado principalmente para problemas de classificação.
+
+- Claudio da Aparecida Meireles Filho
+- Pedro Henrique Pontes Fontana
+
+---
+
+### 8. Logistic Regression
+Logistic Regression (Regressão Logística) é um algoritmo de classificação que modela a probabilidade de uma variável binária, muito usado para classificação binária.
+
+- Mariana Magalhaes Silva
+- Leonardo Freitas Barboza
+
+---
+
+### 9. SVM (Support Vector Classifier - SVC)
+SVM (Support Vector Machine) é um algoritmo de aprendizado supervisionado que tenta encontrar um hiperplano que separa os dados em diferentes classes com a máxima margem possível.
+
+- Lucas Fidalgo Bitencourt
+- Mateus Batista Peixoto da Silva
+
+---
+
+### 10. k-NN (k-Nearest Neighbors)
+k-NN (k-Nearest Neighbors - k-Vizinhos Mais Próximos) é um algoritmo simples de classificação que classifica os dados com base nas classes dos vizinhos mais próximos no espaço de características.
+
+- João Henrique de Oliveira Salles
+- Lucas Narita Nunes de Melo Freita
+
+---
+
 
 ## Técnicas de Otimização
 
