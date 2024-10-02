@@ -16,10 +16,10 @@ O uso do Docker, em conjunto com o WSL, é essencial para nossos laboratórios, 
 
 **Nota**: Usuários de sistemas baseados em Linux ou macOS não precisam utilizar o WSL, pois esses sistemas já possuem suporte nativo ao Docker. Para executar containers, basta instalar o Docker diretamente, sem a necessidade de qualquer subsistema ou ferramenta adicional.
 
-## Passo 1: Verificação dos Requisitos
+### Passo 1: Verificação dos Requisitos
 Certifique-se de ter uma versão compatível do Windows 10 ou superior e o recurso de virtualização habilitado (VT-x para os processadores da família Intel e AMD-V para os processadores da família AMD). 
 
-## Passo 2: Ativação do WSL
+### Passo 2: Ativação do WSL
 No PowerShell ISE como administrador, execute:
 
 ```bash
@@ -35,22 +35,22 @@ wsl --install
 # Define a versão 2 do WSL como padrão
 wsl --set-default-version 2
 ```
-## Passo 3: Escolha de uma Distribuição
+### Passo 3: Escolha de uma Distribuição
 
 - Caso ainda não utilize uma distribuição Linux embarcada no Windows, instale uma distribuição pela Microsoft Store. Recomenda-se o Ubuntu 24.04 LTS.
 - Após a instalação, reinicie o seu computador. 
 
-## Passo 4: Configuração Inicial
+### Passo 4: Configuração Inicial
 
 - Inicie o aplicativo WSL, configure o usuário e senha da distribuição. Pronto, você já tem acesso a um kernel e terminal Linux. 
 
-## Passo 5: Instalação do Docker
+### Passo 5: Instalação do Docker
 
 - O Docker Desktop for Windows fornece uma interface gráfica e integra o Docker ao sistema, facilitando a execução e o gerenciamento de containers diretamente no Windows.
 - Baixe e instale o [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/#:~:text=Docker%20Desktop%20for%20Windows%20%2D%20x86_64). Após a instalação, o Windows pode solicitar que você faça o logout e o login novamente para aplicar as alterações. 
 
 
-## Passo 6: Utilização do Ambiente
+### Passo 6: Utilização do Ambiente
 
 - Ao longo do curso, você será guiado pelo Professor nas atividades práticas que envolverá o conteúdo das subpastas deste repositório.
 - Para começar, inicie o Docker Desktop e o aplicativo WSL. Se preferir, você pode utilizar o terminal Linux diretamente no Visual Studio Code (VS Code) para gerenciar seus containers e desenvolver seus projetos.
