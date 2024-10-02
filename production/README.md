@@ -54,10 +54,7 @@ wsl --set-default-version 2
 
 - Ao longo do curso, você será guiado pelo Professor nas atividades práticas que envolverá o conteúdo das subpastas deste repositório.
 - Para começar, inicie o Docker Desktop e o aplicativo WSL. Se preferir, você pode utilizar o terminal Linux diretamente no Visual Studio Code (VS Code) para gerenciar seus containers e desenvolver seus projetos.
- 
-## Conclusão
-
-Pronto! Agora seu ambiente está preparado para nossos laboratórios. A partir daqui, você poderá seguir as instruções do professor para completar os exercícios práticos. Se surgir qualquer dúvida, consulte os materiais de apoio indicados no Moodle e neste repositório. 
+- Pronto! Agora seu ambiente está preparado para nossos laboratórios. A partir daqui, você poderá seguir as instruções do professor para completar os exercícios práticos. Se surgir qualquer dúvida, consulte os materiais de apoio indicados no Moodle e neste repositório. 
 
 
 ## 3. Exportação do Modelo para Produção
