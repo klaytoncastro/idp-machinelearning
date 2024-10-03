@@ -204,7 +204,7 @@ Escolha um problema de classificação ou regressão de sua preferência. Por ex
 
 ### Treinamento do modelo:
 
-Utilize o conjunto de dados escolhido para desenvolver e treinar um modelo de ML, optando por um algortimo como RandomForest, Decision Tree, Linear Regression, ExtraTrees, LightGBM, XGBoost, etc. Após o treinamento, exporte o modelo para um arquivo `.pkl` e adapte a aplicação Flask que apresentamos acima para corresponder à sua escolha. Use o arquivo `.ipynb` desta pasta como referência para a exportação do modelo e faça os ajustes necessários. 
+Utilize o conjunto de dados escolhido para desenvolver e treinar um modelo de ML, optando por um algortimo como RandomForest, Decision Tree, Linear Regression, ExtraTrees, LightGBM, XGBoost, etc. Após o treinamento, exporte o modelo para um arquivo `.pkl` e adapte a aplicação Flask que apresentamos acima para corresponder à sua escolha. Use os arquivos `.ipynb` e `.json` [desta pasta](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production/models) como referência para a exportação do modelo e faça os ajustes necessários. 
 
 ## Pronto! 
 
