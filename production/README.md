@@ -133,7 +133,7 @@ def inicio():
     return "Página Inicial"
 ```
 
-Dessa forma, você poderá acessar os *end-points* `http://127.0.0.1:8500/<nome_end-point>` e verá as respectivas páginas em seu navegador. 
+Dessa forma, você poderá acessar os *end-points* `http://127.0.0.1:5000/<nome_end-point>` e verá as respectivas páginas em seu navegador. 
 
 ### Rotas Dinâmicas
 
@@ -153,7 +153,7 @@ Vamos permitir que os usuários interajam com o aplicativo por meio de rotas din
         "sulphates": 0.45,
         "alcohol": 8.8,
         "color": 1
-      }'   http://localhost:8500/predict
+      }'   http://localhost:5000/predict
 ```
 
 - Abaixo, exemplo de código para um vinho de qualidade "boa": 
@@ -172,17 +172,17 @@ Vamos permitir que os usuários interajam com o aplicativo por meio de rotas din
         "sulphates": 0.45,
         "alcohol": 8.8,
         "color": 1
-      }'   http://localhost:8500/predict
+      }'   http://localhost:5000/predict
 ```
 
 - Você também pode utilizar um arquivo para fazer `POST` do arquivo `.json`. Seguem exemplos: 
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d @bom.json http://localhost:8500/predict
+curl -X POST -H "Content-Type: application/json" -d @bom.json http://localhost:5000/predict
 ```
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d @ruim.json http://localhost:8500/predict
+curl -X POST -H "Content-Type: application/json" -d @ruim.json http://localhost:5000/predict
 ```
 
 - Outra forma de testar a API é com uma extensão como o Postman, diretamente em seu navegador, para fazer as vezes do `curl` mas com uma interface gráfica. 
