@@ -1,18 +1,18 @@
-# Como colocar seu primeiro modelo de Machine Learning em produção usando Flask
+# Como colocar seu primeiro modelo de Machine Learning em produção
 
 ## 1. Introdução
 
-Como vimos em sala de aula, o Flask é um microframework Python para desenvolvimento ágil de aplicativos web, adequado tanto para iniciantes quanto para desenvolvedores mais experientes. Ele é bastante leve e extensível, permitindo expandir facilmente seu aplicativo para operar com bibliotecas mais avançadas, aproveitando todo o poder da linguagem Python e a flexibilidade da web. 
+Nos dias de hoje, o uso de Machine Learning (ML) tem se tornado relevante em aplicações web modernas, impulsionando serviços em tempo real, personalização de conteúdo, previsões automatizadas, e muito mais. Assim, seu uso vai além da ciência de dados, tornando-se cada vez mais comum em áreas como e-commerce, saúde e redes sociais, dentre outras. Dessa forma, para colocar um modelo de ML em produção, integrando-o com uma aplicação web, podemos tirar proveito dessas capacidades em um ambiente prático, que envolve não apenas a criação do modelo, mas também sua implementação eficiente em plataformas de fácil acesso. 
 
-Ou seja, Flask permite que você comece pequeno, escolhendo apenas as peças necessárias, e cresça à medida que seu projeto se desenvolve. Neste tutorial, você criará uma API simples para executar seu modelo de Machine Learning, aprenderá sobre roteamento de aplicativos web, interação através de rotas de conteúdo estático e dinâmico, além de utilizar o depurador para corrigir eventuais erros.
+Nesse cenário, o Flask é um microframework Python para desenvolvimento ágil de aplicativos web, adequado tanto para iniciantes quanto para desenvolvedores mais experientes. Ele é bastante leve e extensível, permitindo expandir facilmente seu aplicativo para operar com bibliotecas mais avançadas, aproveitando todo o poder da linguagem Python e a flexibilidade da web, permitindo que você comece pequeno, escolhendo apenas as peças necessárias, e cresça à medida que seu projeto se desenvolve. 
 
-## 2. Docker
+Também utilizaremos o Docker, uma solução de virtualização leve que permite empacotar aplicações e todas as suas dependências (bibliotecas, configurações e código) em ambientes isolados, chamados containers. Esses containers são altamente portáveis e podem ser executados em qualquer sistema operacional compatível. Essa solução é amplamente adotada no mercado para criar ambientes replicáveis e consistentes, eliminando a necessidade de configurar e instalar manualmente cada aplicação em diferentes máquinas.
 
-O Docker é uma plataforma de virtualização leve que permite empacotar aplicações e todas as suas dependências (bibliotecas, configurações e código) em ambientes isolados, chamados containers. Esses containers são altamente portáveis e podem ser executados em qualquer sistema operacional compatível. Essa solução é amplamente adotada no mercado para criar ambientes replicáveis e consistentes, eliminando a necessidade de configurar e instalar manualmente cada aplicação em diferentes máquinas.
+Nest projeto, você criará uma API simples para executar seu modelo de ML, aprenderá sobre roteamento de aplicativos web, conteúdo estático e dinâmico, além de utilizar o depurador para corrigir eventuais erros.
 
-Nos sistemas Microsoft Windows, recomenda-se a utilização do WSL (Windows Subsystem for Linux) para a instalação do Docker. O WSL é um recurso nativo do Windows que permite a execução de distribuições Linux sem a necessidade de emulação ou virtualização completa, como o Microsoft Hyper-V ou Oracle VirtualBox. Projetado para facilitar o desenvolvimento de software no Windows, o WSL oferece uma integração simplificada entre os dois sistemas operacionais, tornando o uso do Docker mais eficiente e acessível.
+## 2. Preparação do Ambiente
 
-O uso do Docker, em conjunto com o WSL, é essencial para nossos laboratórios, pois garante a replicabilidade do ambiente de desenvolvimento, independentemente do sistema operacional usado por cada estudante.
+Nos sistemas Microsoft Windows, recomenda-se a utilização do WSL (Windows Subsystem for Linux) para a instalação do Docker. O WSL é um recurso nativo do Windows que permite a execução de distribuições Linux sem a necessidade de emulação ou virtualização completa, como o Microsoft Hyper-V ou Oracle VirtualBox. Projetado para facilitar o desenvolvimento de software no Windows, o WSL oferece uma integração simplificada entre os dois sistemas operacionais, tornando o uso do Docker mais eficiente e acessível. O uso do Docker, em conjunto com o WSL, é essencial para garantir a replicabilidade do ambiente de desenvolvimento, independentemente do sistema operacional usado por cada estudante.
 
 **Nota**: Usuários de sistemas baseados em Linux ou macOS não precisam utilizar o WSL, pois esses sistemas já possuem suporte nativo ao Docker. Para executar containers, basta instalar o Docker diretamente, sem a necessidade de qualquer subsistema ou ferramenta adicional.
 
@@ -49,17 +49,15 @@ wsl --set-default-version 2
 - O Docker Desktop for Windows fornece uma interface gráfica e integra o Docker ao sistema, facilitando a execução e o gerenciamento de containers diretamente no Windows.
 - Baixe e instale o [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/#:~:text=Docker%20Desktop%20for%20Windows%20%2D%20x86_64). Após a instalação, o Windows pode solicitar que você faça o logout e o login novamente para aplicar as alterações. 
 
-
 ### Passo 6: Utilização do Ambiente
 
 - Ao longo do curso, você será guiado pelo Professor nas atividades práticas que envolverá o conteúdo das subpastas deste repositório.
-- Para começar, inicie o Docker Desktop e o aplicativo WSL. Se preferir, você pode utilizar o terminal Linux diretamente no Visual Studio Code (VS Code) para gerenciar seus containers e desenvolver seus projetos.
-- Pronto! Agora seu ambiente está preparado para nossos laboratórios. A partir daqui, você poderá seguir as instruções do professor para completar os exercícios práticos. Se surgir qualquer dúvida, consulte os materiais de apoio indicados no Moodle e neste repositório. 
+- Para começar, inicie o Docker Desktop e, depois, o aplicativo WSL. Se preferir, você pode utilizar o terminal com Powershell e invocar o wsl.exe diretamente no Visual Studio Code (VS Code) para gerenciar seus containers e desenvolver seus projetos.
+- A partir daqui, você poderá seguir as instruções do professor para completar os exercícios práticos. Se surgir qualquer dúvida, consulte os materiais de apoio indicados no Canvas e neste repositório. 
 
+## 3. Exportação do Modelo Treinado
 
-## 3. Exportação do Modelo para Produção
-
-Uma etapa crucial na implementação de um modelo de Machine Learning em produção é a exportação do modelo treinado para um formato que possa ser facilmente carregado e utilizado por aplicações. Geralmente optamos pelo uso do formato `pickle` para realizar essa tarefa. O formato `pickle` oferece uma maneira padrão para serializar objetos em Python. Isso significa que ele pode transformar qualquer objeto Python, incluindo modelos complexos de Machine Learning, em uma sequência de bytes que pode ser salva em um arquivo.
+Uma etapa crucial na implementação de um modelo de ML em produção é a exportação do modelo treinado para um formato que possa ser facilmente carregado e utilizado por aplicações. Geralmente optamos pelo uso do formato `pickle` para realizar essa tarefa. O formato `pickle` oferece uma maneira padrão para serializar objetos em Python. Isso significa que ele pode transformar qualquer objeto Python, incluindo modelos complexos de Machine Learning, em uma sequência de bytes que pode ser salva em um arquivo.
 
 ### Por Que Usar o Formato Pickle?
 
@@ -95,19 +93,22 @@ with open('model.pkl', 'rb') as file:
 prediction = loaded_model.predict(X_new)
 ```
 
-## 4. Implantação do Ambiente
-
-### Pré-Requisitos
-
-Siga as instruções iniciais contidas no repositório [idp-bigdata](https://github.com/klaytoncastro/idp-bigdata/) para implantação do ambiente de laboratório, certificando-se de ter compreendido a implantação da VM com Docker que atuará como servidor web, além das ferramentas de gerenciamento, incluindo acesso remoto via SSH e editor de textos Vim, cujos fundamentos e comandos essenciais foram introduzidos em sala de aula. 
+## 4. Implantação do Aplicativo Web
 
 ### Criando o aplicativo
 
-Acesse o ambiente via SSH e vá até o diretório `/opt/idp-machinelearning/production`. Crie o arquivo `app.py` com o Vim (use o comando `vim app.py`) ou editor de sua preferência para dar manutenção ao código. 
+Clone o repositório `ìdp-machinelearning` e acesse a pasta `production` e o arquivo arquivo `app.py` com o `vim` (use o comando `vim app.py`) ou o editor de sua preferência para dar manutenção ao código, como VS Code.
+
+```bash
+cd /opt
+git clone https://github.com/klaytoncastro/idp-machinelearning
+cd idp-machinelearning/production
+
+```
 
 ### Executando o aplicativo 
 
-Vá até o diretório `/opt/idp-machinelearning/production` e suba o contêiner do Flask. 
+Vá até o diretório `/opt/idp-machinelearning/production` e suba o container do aplicativo web. 
 
 ```bash
 docker-compose build
@@ -120,9 +121,9 @@ Verifique se o contêiner está ativo e sem erros de implantação.
 docker-compose ps
 docker-compose logs
 ```
-Agora, acesse `http://127.0.0.1:8500/example` e verifique o retorno do `.json` de exemplo. 
+Agora, acesse `http://127.0.0.1:5000/example` e verifique o retorno do `.json` de exemplo. 
 
-## 5. Roteamento e visualizações
+### Roteamento e visualizações
 
 Roteamento refere-se ao mapeamento de URLs específicas para funções em um aplicativo web. Em outras palavras, quando você acessa um determinado endereço em um navegador web (ou através de uma chamada API), o aplicativo precisa saber qual função deve ser executada e o que deve ser retornado para o usuário. No Flask, isso é feito através do uso de decoradores, como `@app.route()`, para associar funções específicas a URLs. Por exemplo:
 
@@ -134,7 +135,7 @@ def inicio():
 
 Dessa forma, você poderá acessar os *end-points* `http://127.0.0.1:8500/<nome_end-point>` e verá as respectivas páginas em seu navegador. 
 
-## 6. Rotas Dinâmicas
+### Rotas Dinâmicas
 
 Vamos permitir que os usuários interajam com o aplicativo por meio de rotas dinâmicas. Podemos submeter via método `HTTP POST` um `.json` com as variáveis preditoras e o nosos aplicativo retornará a previsão da variável alvo. Abaixo, exemplo de um vinho de qualidade "ruim": 
 
@@ -184,10 +185,27 @@ curl -X POST -H "Content-Type: application/json" -d @bom.json http://localhost:8
 curl -X POST -H "Content-Type: application/json" -d @ruim.json http://localhost:8500/predict
 ```
 
-## 7. Depurando seu aplicativo
+- Outra forma de testar a API é com uma extensão como o Postman, diretamente em seu navegador, para fazer as vezes do `curl` mas com uma interface gráfica. 
+
+### Depurando seu aplicativo
 
 O Flask possui um depurador embutido. No nosso ambiente, quando você executa o comando `docker-compose logs`, poderá verificar quais são os eventuais erros e assim corrigir o código de seu aplicativo. 
 
-### Pronto! 
 
-Você criou um pequeno aplicativo web com o Flask, adicionou rotas estáticas e dinâmicas e aprendeu a usar o depurador. A partir daqui, você pode expandir seu aplicativo, integrando-o com bancos de dados, formulários e aprimorando seu visual com CSS e HTML. A exportação de modelos em formato pickle é uma prática eficiente para a implantação de modelos de Machine Learning em produção, oferecendo uma forma rápida de disponibilizar as capacidades preditivas do modelo com a eficiência necessária para aplicações em tempo real.
+## 5. Tarefa: Coloque outro modelo de ML em Produção
+
+### Objetivo
+
+Nesta atividade, você vai selecionar um problema de classificação ou regressão, treinar um modelo de ML e implementá-lo em produção utilizando Flask como servidor web. O modelo será exportado utilizando a biblioteca `joblib` e o formato `pickle`, permitindo que a API Flask o utilize para fazer previsões a partir de dados recebidos em formato JSON.
+
+### Instruções
+
+Escolha um problema de classificação ou regressão de sua preferência. Por exemplo, você pode optar por utilizar alguns dos datasets que já trabalhamos, como o Air Quality para prever a qualidade do ar, California Housing, para prever o preço de casas, que são tarefas de regressão, ou Bank Marketing para prever se um cliente irá adquirir ou não um produto (classificação) ou, ainda, o pacote `sklearn.datasets`, que disponibiliza alguns conjuntos de dados como o Iris para prever o tipo de uma flor, e outros mais. Caso deseje, você também pode optar por algum dataset diferente! Pesquise no [Kaggle](https://kaggle.com) um conjunto de dados popular para desenvolver sua aplicação. 
+
+### Treinamento do modelo:
+
+Utilize o conjunto de dados escolhido para desenvolver e treinar um modelo de ML, optando por um algortimo como RandomForest, Decision Tree, Linear Regression, ExtraTrees, LightGBM, XGBoost, etc. Após o treinamento, exporte o modelo para um arquivo `.pkl` e adapte a aplicação Flask que apresentamos acima para corresponder à sua escolha. Use o arquivo `.ipynb` desta pasta como referência para a exportação do modelo e faça os ajustes necessários. 
+
+## Pronto! 
+
+Você criou um pequeno aplicativo web com o Flask, adicionou rotas estáticas e dinâmicas e aprendeu a usar o depurador. A partir daqui, você pode expandir seu aplicativo, integrando-o com bancos de dados, formulários e aprimorando seu visual com CSS e HTML. A exportação de modelos em formato pickle é uma prática eficiente para a implantação de modelos de ML em produção, oferecendo uma forma rápida de disponibilizar as capacidades preditivas do modelo com a eficiência necessária para aplicações em tempo real.
