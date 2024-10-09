@@ -374,32 +374,6 @@ Vocês estão divididos em dois grupos, cada um responsável por um dos algoritm
 
    - **Grupo 2**: Implementar o algoritmo Minimax e, se necessário, aplicar **poda alfa-beta** para otimizar a eficiência do algoritmo. Certifiquem-se de que o Minimax jogue de maneira perfeita, explorando todas as possíveis jogadas do jogo. Otimize o algoritmo Minimax para que ele jogue de forma eficiente e perfeita, aplicando poda alfa-beta se necessário para economizar tempo de processamento. Certifiquem-se de que o Minimax esteja pronto para jogar contra o Q-learning.
 
-2. **Simulações e Métricas**:
-   - Realizem uma série de partidas (no mínimo **1.000 jogos simulados** entre os dois algoritmos) para coletar as seguintes métricas:
-     - Quantidade total de partidas jogadas.
-     - Número de vitórias de cada algoritmo.
-     - Número de empates.
-     - Observem a taxa de vitória após o algoritmo estabilizar e a partir de quantas partidas ele começou a melhorar seu desempenho.
-
-3. **Análise Crítica**:
-   - Cada grupo deve apresentar uma análise crítica do desempenho de seu algoritmo:
-     - **Qual algoritmo performou melhor e em quais condições?**
-     - **Quais ajustes precisaram ser feitos** para melhorar a performance do algoritmo do grupo?
-     - Como o desempenho evoluiu ao longo do tempo? A partir de quantas partidas o algoritmo começou a reagir?
-
-   
-4. Ao final das simulações, cada grupo deve apresentar:
-   - O número total de vitórias e empates.
-   - A taxa de sucesso do Q-learning após estabilização (Grupo 1).
-   - A eficácia do Minimax ao jogar partidas perfeitas (Grupo 2).
-
----
-
-**Boa sorte!**
-
-
-
-
 ### Grupo 1: Q-Learning
 - Luca
 - Pedro
@@ -436,3 +410,5 @@ Vocês estão divididos em dois grupos, cada um responsável por um dos algoritm
 - Quais ajustes precisaram ser feitos para o algoritmo do grupo vencer?
 - Como o Q-learning reagiu ao longo do tempo?
 - Quais ajustes fizeram a diferença no desempenho?
+
+**Boa sorte!**
