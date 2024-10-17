@@ -376,7 +376,7 @@ Vocês estão divididos em dois grupos, cada um responsável por um dos algoritm
 
 ### Grupo 1: Q-Learning
 - Luca
-- Pedro
+- Pedro Araújo
 - Cláudio
 - Lucas Narita
 - Felipe Dutra
@@ -392,7 +392,8 @@ Vocês estão divididos em dois grupos, cada um responsável por um dos algoritm
 - Felipe Barroso
 - Igor
 - Eduardo
-
+- Pedro Calil
+  
 ---
 
 ### Formato de Apresentação e Análise
