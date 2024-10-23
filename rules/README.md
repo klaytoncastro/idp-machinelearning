@@ -54,11 +54,13 @@ print(frequent_itemsets_fp)
 print(rules_fp)
 ```
 
+## Tarefa
+
+Este é um dataset que contém todas as transações ocorridas entre 01/12/2010 e 09/12/2011 para um varejista online britânico. A empresa vende presentes para várias ocasiões e muitos de seus clientes são atacadistas.
+
 <!--
 https://archive.ics.uci.edu/dataset/352/online+retail
 -->
-
-## Importação do Dataset
 
 | Variável       | Descrição                                                                 |
 |----------------|---------------------------------------------------------------------------|
@@ -71,26 +73,25 @@ https://archive.ics.uci.edu/dataset/352/online+retail
 | **CustomerID** | Código do cliente (único por cliente).                                    |
 | **Country**    | País de onde o cliente fez a compra.                                      |
 
+Cada um dos grupos deverá usar o `Apriori` ou  `FP-Growth` para identificar padrões de compra frequentes entre os produtos e apresentar em sala sua implementação. 
+
+### Importação do Dataset
 
 ```python
-pip install ucimlrepo
+import pandas as pd
+import requests
+import zipfile
+import io
 
-from ucimlrepo import fetch_ucirepo 
-  
-# fetch dataset 
-online_retail = fetch_ucirepo(id=352) 
-  
-# data (as pandas dataframes) 
-X = online_retail.data.features 
-y = online_retail.data.targets 
-  
-# metadata 
-print(online_retail.metadata) 
-  
-# variable information 
-print(online_retail.variables) 
+# URL do arquivo
+url = "https://raw.githubusercontent.com/klaytoncastro/idp-machinelearning/main/resources/online_retail.zip"
+
+# Fazendo o download e descompactando o arquivo zip em memória
+response = requests.get(url)
+with zipfile.ZipFile(io.BytesIO(response.content)) as z:
+    with z.open('online_retail_dataset.csv') as f:
+        df = pd.read_csv(f)
+
+# Exibindo as primeiras linhas do DataFrame
+print(df.head())
 ```
-
-<!--
-
--->

@@ -78,11 +78,28 @@ predictions = model.predict(X)
 print(predictions)
 ```
 
+## Atividade Prática
+
+Cada grupo deverá implementar Redes Neurais Artificiais (RNA) com Autoencoders e MLP (Perceptron Multicamadas) para explorar padrões de compra e/ou realizar previsões com base nas transações registradas.
+
+### Autoencoder:
+
+**Objetivo**: Utilizar um Autoencoder para compressão dos dados e detecção de anomalias.
+**Tarefa**: Comprimir as características transacionais e identificar padrões fora do comum (possíveis anomalias) nos dados.
+
+### MLP (Perceptron Multicamadas):
+
+**Objetivo**: Treinar uma rede neural MLP para prever ou classificar com base nas características dos clientes ou transações.
+**Tarefa**: Implementar uma MLP para prever compras futuras ou categorizar transações com base em variáveis como preço, quantidade e país.
+
+### Importação do Dataset
+
 <!--
 https://archive.ics.uci.edu/dataset/352/online+retail
 -->
 
-## Importação do Dataset
+Este é um dataset que contém todas as transações ocorridas entre 01/12/2010 e 09/12/2011 para um varejista online britânico. A empresa vende presentes para várias ocasiões e muitos de seus clientes são atacadistas.
+
 
 | Variável       | Descrição                                                                 |
 |----------------|---------------------------------------------------------------------------|
@@ -97,25 +114,22 @@ https://archive.ics.uci.edu/dataset/352/online+retail
 
 
 ```python
-pip install ucimlrepo
+import pandas as pd
+import requests
+import zipfile
+import io
 
-from ucimlrepo import fetch_ucirepo 
-  
-# fetch dataset 
-online_retail = fetch_ucirepo(id=352) 
-  
-# data (as pandas dataframes) 
-X = online_retail.data.features 
-y = online_retail.data.targets 
-  
-# metadata 
-print(online_retail.metadata) 
-  
-# variable information 
-print(online_retail.variables) 
+# URL do arquivo
+url = "https://raw.githubusercontent.com/klaytoncastro/idp-machinelearning/main/resources/online_retail.zip"
+
+# Fazendo o download e descompactando o arquivo zip em memória
+response = requests.get(url)
+with zipfile.ZipFile(io.BytesIO(response.content)) as z:
+    with z.open('online_retail_dataset.csv') as f:
+        df = pd.read_csv(f)
+
+# Exibindo as primeiras linhas do DataFrame
+print(df.head())
 ```
 
-<!--
-
--->
 
