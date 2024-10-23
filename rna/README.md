@@ -3,6 +3,9 @@
 Utilizar o Google Colab é uma boa alternativa aqui. Ele disponibiliza GPUs e já tem o Keras instalado. 
 
 ## Autoencoder 
+
+**Grupo 1:** Fábio, Sara, Arthur, Felipe Barroso, Lucas Narita
+
 Um Autoencoder pode ser usado para recomendação,  reconstruir entradas e prever o próximo item a ser comprado com base em padrões ocultos.
 
 ```python
@@ -34,6 +37,8 @@ print(reconstructed)
 
 
 ## MLP (Multilayer Perceptron) 
+
+**Grupo 2:** Felipe Dutra, Luca, Kelwin, Pedro 
 
 Usando o algoritmo Multilayer Perceptron (MLP) para Recomendação Simples, podemos  prever itens que um usuário poderia comprar, com base em uma simples rede neural. 
 
@@ -73,5 +78,44 @@ predictions = model.predict(X)
 print(predictions)
 ```
 
+<!--
+https://archive.ics.uci.edu/dataset/352/online+retail
+-->
 
+## Importação do Dataset
+
+| Variável       | Descrição                                                                 |
+|----------------|---------------------------------------------------------------------------|
+| **InvoiceNo**  | Número da fatura. Se este código começar com a letra 'c', indica um cancelamento. |
+| **StockCode**  | Código do produto (único por produto).                                    |
+| **Description**| Nome do produto.                                                         |
+| **Quantity**   | Quantidade de cada produto por transação.                                 |
+| **InvoiceDate**| Data e hora da fatura.                                                    |
+| **UnitPrice**  | Preço unitário do produto.                                                |
+| **CustomerID** | Código do cliente (único por cliente).                                    |
+| **Country**    | País de onde o cliente fez a compra.                                      |
+
+
+```python
+pip install ucimlrepo
+
+from ucimlrepo import fetch_ucirepo 
+  
+# fetch dataset 
+online_retail = fetch_ucirepo(id=352) 
+  
+# data (as pandas dataframes) 
+X = online_retail.data.features 
+y = online_retail.data.targets 
+  
+# metadata 
+print(online_retail.metadata) 
+  
+# variable information 
+print(online_retail.variables) 
+```
+
+<!--
+
+-->
 
