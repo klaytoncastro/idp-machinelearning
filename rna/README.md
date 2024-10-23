@@ -8,7 +8,7 @@ O termo "Deep" (profundo) refere-se ao uso de várias camadas escondidas entre a
 
 As RNAs são modeladas de maneira semelhante ao funcionamento dos neurônios biológicos, mas com cálculos matemáticos que simulam a transmissão de informações. Elas são treinadas ajustando pesos nas conexões entre neurônios para minimizar o erro na previsão ou classificação de dados. Esse ajuste é feito iterativamente usando métodos como a retropropagação (backpropagation), que calcula os erros e ajusta os pesos para melhorar o desempenho do modelo, por meio da minimização da função de custo (loss function), que mede a discrepância entre a saída da rede e os valores reais esperados. Assim, os pesos das conexões entre neurônios podem ser ajustados iterativamente. 
 
-## 2. Modelagem de Neurônios: Fundamentos e Técnicas de Aprendizado
+## 2. Modelagem de Redes e Neurônios: Fundamentos e Técnicas de Aprendizado
 
 - Neurônio MCP (McCulloch-Pitts): Um dos primeiros modelos de um neurônio artificial, que introduz o conceito de soma ponderada de entradas seguido por uma função matemática para ativação.
 
@@ -16,7 +16,7 @@ As RNAs são modeladas de maneira semelhante ao funcionamento dos neurônios bio
 
 - Neurônio Perceptron: O primeiro modelo de neurônio artificial capaz de aprender padrões linearmente separáveis como, por exemplo, a modelagem das portas lógicas `AND`e `OR`. Utiliza uma função de ativação simples para decidir a saída com base na soma ponderada das entradas e, em um espaço bidimensional, é possível traçar uma linha reta (hiperplano) que separa os exemplos positivos dos negativos. 
 
-- Redes MLP: Perceptron Multicamadas resolve a limitação do perceptron simples, permitindo aprender padrões não lineares, com uso de funções de ativação como `sigmoid`, `tanh`, `softmax` e `relu`, tornando-o bastante relevante para tarefas de classificação e regressão. O MLP resolve a modelagem da porta lógica `XOR`, ao introduzir camadas ocultas com funções de ativação não lineares. A não linearidade das funções de ativação, como `relu` ou `sigmoid`, permite que o modelo aprenda padrões complexos, superando a limitação do perceptron simples. 
+- Redes MLP: A arquitetura mais simples de redes neurais, utilizada para uma ampla gama de problemas, desde classificações até regressões. As Redes Perceptron Multicamadas resolvem a limitação do Perceptron Simples, permitindo a captura de padrões não lineares, com uso de funções de ativação como `sigmoid`, `tanh`, `softmax` e `relu`, tornando-as bastante relevantes. Por exemplo, o MLP é capaz de resolver a modelagem da porta lógica `XOR`, ao introduzir camadas ocultas com funções de ativação não lineares. A não linearidade das funções de ativação, como `relu` ou `sigmoid`, permite que o modelo aprenda padrões complexos.  
 
 <!--
 
