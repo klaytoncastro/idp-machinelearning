@@ -25,7 +25,7 @@ O reconhecimento de entidades nomeadas (NER) identifica e classifica entidades e
 
 ## Tarefa
 
-Usem como base a infraestrutura que implementamos com Flask em [Production](). Implementem uma nova rota em nossa aplicação Flask para avaliar textos utilizando um modelo de classificação de sentimentos pré-treinado da [Hugging Face](https://huggingface.co/blog/sentiment-analysis-python). 
+Usem como base a infraestrutura que implementamos com Flask em [Production](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production). Implementem uma nova rota na aplicação Flask para avaliar textos utilizando um modelo de classificação de sentimentos pré-treinado da [Hugging Face](https://huggingface.co/blog/sentiment-analysis-python). 
 
 Vocês deverão modificar o código existente para carregar o modelo de sentimentos e criar uma rota `/analyze_sentiment` que aceite requisições `POST` com um `JSON` contendo um texto e retorne o sentimento classificado como 'positivo', 'negativo' ou 'neutro'. Utilizem o seguinte formato `JSON` para a requisição: 
 
@@ -40,5 +40,4 @@ from transformers import pipeline
 
 # Carregar o modelo de classificação de sentimentos
 sentiment_model = pipeline("sentiment-analysis")
-
 ```
