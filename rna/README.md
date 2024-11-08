@@ -291,3 +291,26 @@ with zipfile.ZipFile(io.BytesIO(response.content)) as z:
 # Exibindo as primeiras linhas do DataFrame
 print(df.head())
 ```
+
+<!--
+
+
+
+O que são Parâmetros em Redes Neurais?
+
+
+Esses parâmetros são responsáveis por definir como o modelo processa e transforma os dados de entrada para gerar uma saída coerente.
+ Os parâmetros em redes neurais consistem principalmente de pesos e biases (ou viéses, em português):
+
+Pesos (Weights): Cada conexão entre neurônios em uma camada da rede é associada a um peso. O peso determina a influência que um neurônio tem sobre o outro. Durante o treinamento, esses pesos são ajustados para minimizar o erro entre a saída do modelo e o valor esperado (resultado correto). O ajuste correto dos pesos permite que o modelo capture padrões complexos nos dados.
+Biases (Viéses): Os biases são valores adicionais que ajudam o modelo a ajustar a ativação dos neurônios, permitindo que as redes neurais ajustem melhor suas previsões. Eles funcionam como termos constantes, que permitem que o modelo faça previsões mesmo quando os inputs são zero.
+Por que os Modelos de NLP Precisam de Bilhões de Parâmetros?
+Modelos de linguagem natural, como o GPT-4, possuem bilhões de parâmetros porque a tarefa de interpretar e gerar linguagem humana é extremamente complexa. Cada parâmetro contribui para ajustar a forma como o modelo compreende o contexto e a sequência das palavras. Com mais parâmetros, o modelo consegue:
+
+Capturar Relações Complexas e Contextuais: A linguagem é rica e possui nuances contextuais. Modelos com bilhões de parâmetros conseguem capturar relações mais complexas, como dependências de longo alcance entre palavras e significados sutis que dependem do contexto.
+Aprender Representações Ricas: Em modelos grandes, os parâmetros são distribuídos em várias camadas e cabeças de atenção (no caso dos transformers), permitindo que o modelo aprenda representações ricas e detalhadas para diferentes aspectos da linguagem.
+Generalizar para Diversas Tarefas: Modelos com muitos parâmetros conseguem ser aplicados a uma ampla gama de tarefas de NLP (como tradução, resumo e resposta a perguntas) sem precisar de um ajuste fino para cada aplicação. Eles têm uma "memória" maior de padrões e contextos, o que os torna altamente versáteis.
+O Processo de Aprendizagem dos Parâmetros
+Durante o treinamento, o modelo ajusta os parâmetros usando algoritmos de otimização, como o gradiente descendente, para minimizar a função de perda (loss function), que mede o erro entre as previsões do modelo e os resultados reais. Esse ajuste permite que o modelo gradualmente melhore sua precisão, refinando como cada parâmetro contribui para a saída final.
+
+-->
