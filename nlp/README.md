@@ -252,25 +252,27 @@ Neste desafio, vocês terão a oportunidade de escolher uma das bases de dados s
 
 Abaixo, encontram-se descrições das bases de dados e links para download: 
 
-a. **[IMDB Reviews Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)**  
+- **[IMDB Reviews Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)**  
    Este dataset de avaliações de filmes da IMDB é amplamente utilizado para **análise de sentimentos**. Com ele, é possível treinar modelos que classificam comentários como positivos ou negativos. A aplicação deste dataset é direta para análise de sentimentos usando a pipeline da Hugging Face ou modelos tradicionais de classificação de texto com TF-IDF.
 
+<!--
 b. **[Sentiment140](http://help.sentiment140.com/for-students)**  
    O Sentiment140 é uma coleção de tweets rotulados, contendo análises positivas, neutras e negativas. É ideal para projetos de **análise de sentimentos** e **processamento de texto em redes sociais**. O uso desta base desafia vocês a lidar com ruídos e abreviações comuns em tweets, sendo um excelente exercício para pré-processamento de texto com NLTK.
+-->
 
-c. **[Amazon Reviews](https://www.kaggle.com/datasets/bittlingmayer/amazonreviews)**  
+- **[Amazon Reviews](https://www.kaggle.com/datasets/bittlingmayer/amazonreviews)**  
    Com milhões de avaliações de produtos, este dataset é ideal para **classificação de sentimentos** e **identificação de temas**. É possível classificar textos por polaridade ou explorar aspectos de produtos com embeddings de palavras para entender o contexto semântico das opiniões.
 
-d. **[Yelp Reviews](https://www.yelp.com/dataset)**  
+- **[Yelp Reviews](https://www.yelp.com/dataset)**  
    O Yelp Open Dataset oferece avaliações de estabelecimentos e pode ser utilizado para análise de sentimentos e classificação por categorias de negócios, como "Restaurantes" ou "Serviços". Esta base é interessante para tarefas de classificação de texto com TF-IDF ou vetorização com embeddings contextuais.
 
-e. **[Common Crawl](https://commoncrawl.org/the-data/)**  
+- **[Common Crawl](https://commoncrawl.org/the-data/)**  
    Esta é uma base de dados de texto muito ampla, extraída da web, com diversas possibilidades de análise, desde **classificação de temas** até **modelagem de linguagem**. Ela é ideal para projetos que exigem grandes volumes de dados e permitem aplicar técnicas de embeddings de palavras, como Word2Vec e TF-IDF, para classificação de tópicos ou sumarização.
 
-f. **[20 Newsgroups](http://qwone.com/~jason/20Newsgroups/)**  
+- **[20 Newsgroups](http://qwone.com/~jason/20Newsgroups/)**  
    Esta coleção de posts de newsgroups está organizada em 20 categorias e é excelente para tarefas de **classificação de temas**. Vocês podem treinar modelos para categorizar os textos em tópicos específicos, aplicando vetorização com TF-IDF e classificadores como Naive Bayes ou SVM.
 
-g. **[TREC Question Classification](http://cogcomp.org/Data/QA/QC/)**  
+- **[TREC Question Classification](http://cogcomp.org/Data/QA/QC/)**  
    Este dataset de perguntas rotuladas por categoria é excelente para tarefas de **classificação de perguntas** e **resposta a perguntas**. É um ótimo exercício para a criação de pipelines de classificação e para experimentar o uso de embeddings com técnicas de NLTK.
 
 **Boa sorte!**
