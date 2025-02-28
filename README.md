@@ -2,7 +2,45 @@
 
 Bem-vindo ao repositório do curso de **Aprendizado de Máquina**! Este espaço foi criado para proporcionar uma experiência prática e imersiva no aprendizado de Machine Learning, por meio de desafios que desenvolvem habilidades em análise de dados, modelagem preditiva, visualização e storytelling.
 
-## Como Usar Este Repositório
+## 1. Visão Geral
+
+O Aprendizado de Máquina (Machine Learning - ML) é um ramo da Inteligência Artificial que permite que computadores aprendam padrões e comportamentos a partir de dados, sem a necessidade de programação explícita para cada tarefa.
+
+O **Aprendizado de Máquina (Machine Learning - ML)** é um ramo da **Inteligência Artificial** que permite que computadores aprendam **padrões e comportamentos** a partir de dados, sem a necessidade de programação explícita para cada tarefa.  
+
+### Definição Clássica  
+
+> *"Diz-se que um programa de computador aprende com a experiência **E**, com relação a alguma tarefa **T** e alguma medida de desempenho **P**, se seu desempenho em **T**, medido por **P**, melhora com a experiência **E**."* (Mitchell, 1997)  
+
+Em outras palavras, um sistema aprende quando, ao ser exposto a mais dados (**experiência E**), ele melhora seu desempenho (**P**) em determinada tarefa (**T**).  
+
+---
+
+### Principais Tipos de Aprendizado em Machine Learning  
+
+O aprendizado de máquina pode ser dividido em **quatro categorias principais**, dependendo da forma como os dados são apresentados ao modelo e do objetivo do aprendizado.  
+
+| **Tipo de Aprendizado**        | **Descrição** | **Exemplo de Aplicação** |
+|--------------------------------|--------------|--------------------------|
+| **Aprendizado Supervisionado**  | O modelo aprende a partir de um conjunto de dados **rotulado** (com respostas conhecidas). | Classificação de e-mails como spam ou não-spam. |
+| **Aprendizado Não Supervisionado** | O modelo encontra **padrões ocultos** nos dados sem que haja respostas pré-definidas. | Agrupamento de clientes por comportamento de compra (*clustering*). |
+| **Aprendizado Semi-Supervisionado** | Combina aprendizado supervisionado e não supervisionado, utilizando um **pequeno conjunto de dados rotulado** e um grande conjunto de dados sem rótulo. | Diagnóstico médico onde apenas alguns exames têm diagnóstico confirmado. |
+| **Aprendizado por Reforço** | O modelo interage com um **ambiente dinâmico**, recebendo **recompensas ou penalidades** por suas ações. | Treinamento de robôs e agentes para jogar xadrez ou dirigir veículos autônomos. |
+
+---
+
+### Por que Machine Learning é importante?  
+
+O aprendizado de máquina está presente em diversas **aplicações do nosso dia a dia**, como:  
+
+- **Recomendações personalizadas** – Filmes e músicas (*Netflix, Spotify*).  
+- **Assistentes Virtuais** – Alexa, Google Assistant, Siri.  
+- **Diagnósticos médicos automatizados** – Modelos que auxiliam médicos na detecção de doenças.  
+- **Carros autônomos** – Sistemas que aprendem a dirigir de forma segura e eficiente.  
+
+Neste curso, você terá a oportunidade de **explorar diferentes abordagens de Machine Learning**, aplicando-as a desafios reais e desenvolvendo modelos capazes de tomar decisões **baseadas em dados**. 
+
+## 2. Como Usar Este Repositório
 
 O repositório é organizado em subpastas, cada uma correspondente a um desafio específico. Dentro de cada pasta, você encontrará um `README.md` com detalhes do desafio, incluindo objetivos de aprendizado, tarefas a serem realizadas e critérios de avaliação.
 
@@ -12,7 +50,7 @@ O repositório é organizado em subpastas, cada uma correspondente a um desafio 
 
 - **Feedback e Avaliação:** Ao longo do curso, você terá a oportunidade de receber feedback sobre seu trabalho e ver como seus colegas abordaram os mesmos problemas.
 
-## Desafios de Machine Learning
+## 3. Desafios de Machine Learning
 
 Cada desafio é uma experiência prática, onde você aplicará o conhecimento adquirido para explorar novas ferramentas, técnicas e resolver problemas reais. Desde a análise exploratória de dados até a construção e otimização de modelos de Machine Learning, você terá a oportunidade de aprofundar seu aprendizado de forma progressiva.
 
