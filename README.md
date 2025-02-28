@@ -10,15 +10,13 @@ O **Aprendizado de Máquina (Machine Learning - ML)** é um ramo da **Inteligên
 
 > *"Diz-se que um programa de computador aprende com a experiência **E**, com relação a alguma tarefa **T** e alguma medida de desempenho **P**, se seu desempenho em **T**, medido por **P**, melhora com a experiência **E**."* (Mitchell, 1997)  
 
-Em outras palavras, um sistema aprende quando, ao ser exposto a mais dados (**experiência E**), ele melhora seu desempenho (**P**) em determinada tarefa (**T**).  
-
-Ou seja, enquanto na **programação tradicional** utilizamos linguagens como **C, Java ou Python** para escrever um conjunto de **regras de negócio** que processam **dados de entrada** e produzem uma **saída**:
+Em outras palavras, um sistema aprende quando, ao ser exposto a mais dados (**experiência E**), ele melhora seu desempenho (**P**) em determinada tarefa (**T**). Ou seja, na **programação tradicional** utilizamos linguagens como **C, Java ou Python** para escrever um conjunto de **regras de negócio** que processam **dados de entrada** e produzem uma **saída**:
 
 ```text
 Entrada (Dados) + Regras (Código) → Saída
 ```
 
-No Machine Learning, em vez de definir regras manualmente, o programa aprende essas regras automaticamente a partir dos dados de treinamento:
+Já com Machine Learning, em vez de definir regras manualmente, o programa aprende essas regras automaticamente a partir dos dados de treinamento:
 
 ```text
 Entrada (Dados) + Saída (Rótulos) → Algoritmo aprende as Regras
