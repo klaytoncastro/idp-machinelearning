@@ -1,10 +1,10 @@
 # Curso de Aprendizado de Máquina
 
-Bem-vindo ao repositório do curso de **Aprendizado de Máquina**! Este espaço é dedicado a proporcionar uma experiência prática, oferecendo uma série de desafios projetados para aprimorar suas habilidades em machine learning, análise, visualização, storytelling e ciência de dados. 
+Bem-vindo ao repositório do curso de **Aprendizado de Máquina**! Este espaço foi criado para proporcionar uma experiência prática e imersiva no aprendizado de Machine Learning, por meio de desafios que desenvolvem habilidades em análise de dados, modelagem preditiva, visualização e storytelling.
 
 ## Como Usar Este Repositório
 
-Este repositório está organizado em subpastas, cada uma dedicada a um desafio específico. Dentro de cada subpasta, você encontrará um `README.md` que detalha o desafio, os objetivos de aprendizado, as tarefas a serem realizadas, e as métricas para avaliação. 
+O repositório é organizado em subpastas, cada uma correspondente a um desafio específico. Dentro de cada pasta, você encontrará um `README.md` com detalhes do desafio, incluindo objetivos de aprendizado, tarefas a serem realizadas e critérios de avaliação.
 
 - **Instruções:** Cada desafio vem com um conjunto de orientações e requisitos necessários para completá-lo com sucesso.
 
@@ -14,15 +14,11 @@ Este repositório está organizado em subpastas, cada uma dedicada a um desafio 
 
 ## Desafios de Machine Learning
 
-Cada desafio é uma oportunidade para aplicar o conhecimento adquirido, explorar novas ferramentas, técnicas, e resolver problemas com datasets reais, desde a análise exploratória de dados até a construção e otimização de modelos de machine learning. 
+Cada desafio é uma experiência prática, onde você aplicará o conhecimento adquirido para explorar novas ferramentas, técnicas e resolver problemas reais. Desde a análise exploratória de dados até a construção e otimização de modelos de Machine Learning, você terá a oportunidade de aprofundar seu aprendizado de forma progressiva.
 
-<!--
-visualização e storytelling de dados.
--->
-
-| #  |Tarefa                          | Descrição                           | Prazo      |
-|----|--------------------------------|-------------------------------------|------------|
-| 01 | [Wine Quality](./winequality/) |Realizar uma Tarefa de Classificação | 07/03/2025 |
+| #  |Tarefa                          | Tipo de Problema | Prazo      |
+|----|--------------------------------|------------------|------------|
+| 01 | [Wine Quality](./winequality/) | Classificação    | 07/03/2025 |
 
 <!--
 
@@ -58,8 +54,8 @@ Instruções: Nomeie o arquivo como grupoX_tarefa.ipynb, onde X é o número do 
 
 Fique atento(a) às atualizações, pois novos desafios serão adicionados ao longo do curso!
 
-## Contribuição e Feedback
+### Colabore e Aprenda Junto!
 
-Encorajamos você a colaborar com seus colegas, discutir sobre diferentes abordagens e compartilhar o seu aprendizado. Sua participação é essencial! 
+Participe das discussões, compartilhe insights e aprenda com diferentes abordagens. Seu engajamento e troca de conhecimento são fundamentais para o sucesso do curso!! 
 
 - **Boa Sorte!**
