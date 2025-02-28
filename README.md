@@ -1,10 +1,8 @@
-# Curso de Aprendizado de Máquina
+# Introdução ao Aprendizado de Máquina
 
-Bem-vindo ao repositório do curso de **Aprendizado de Máquina**! Este espaço foi criado para proporcionar uma experiência prática e imersiva no aprendizado de Machine Learning, por meio de desafios que desenvolvem habilidades em análise de dados, modelagem preditiva, visualização e storytelling.
+Bem-vindo ao repositório do curso de **Aprendizado de Máquina**! Este espaço foi criado para proporcionar uma experiência prática e imersiva em Machine Learning, por meio de desafios que desenvolvem habilidades em análise de dados, modelagem preditiva, visualização e storytelling.
 
 ## 1. Visão Geral
-
-O Aprendizado de Máquina (Machine Learning - ML) é um ramo da Inteligência Artificial que permite que computadores aprendam padrões e comportamentos a partir de dados, sem a necessidade de programação explícita para cada tarefa.
 
 O **Aprendizado de Máquina (Machine Learning - ML)** é um ramo da **Inteligência Artificial** que permite que computadores aprendam **padrões e comportamentos** a partir de dados, sem a necessidade de programação explícita para cada tarefa.  
 
@@ -14,9 +12,32 @@ O **Aprendizado de Máquina (Machine Learning - ML)** é um ramo da **Inteligên
 
 Em outras palavras, um sistema aprende quando, ao ser exposto a mais dados (**experiência E**), ele melhora seu desempenho (**P**) em determinada tarefa (**T**).  
 
+Ou seja, enquanto na **programação tradicional** utilizamos linguagens como **C, Java ou Python** para escrever um conjunto de **regras de negócio** que processam **dados de entrada** e produzem uma **saída**:
+
+```text
+Entrada (Dados) + Regras (Código) → Saída
+```
+
+No Machine Learning, em vez de definir regras manualmente, o programa aprende essas regras automaticamente a partir dos dados de treinamento:
+
+```text
+Entrada (Dados) + Saída (Rótulos) → Algoritmo aprende as Regras
+```
+
+Por exemplo, se quisermos escrever um programa em abordagem tradicional para classificar e-mails como spam ou não spam, precisaríamos definir regras fixas, como:
+
+- Se o e-mail contém palavras como "dinheiro fácil", "ganhe agora", então ele é SPAM.
+- Se o remetente está na lista de contatos, então NÃO é SPAM.
+
+Esse tipo de abordagem depende totalmente das regras que foram programadas, o que pode ser limitado e difícil de manter conforme novas variações aparecem. Já em Machine Learning, temos o contrário, o modelo se adapta a novos padrões e variações sem precisar reescrever as regras manualmente: 
+
+- O algoritmo analisa milhares de e-mails rotulados como spam ou não spam.
+- O modelo descobre padrões nesses e-mails, identificando quais palavras, remetentes e estruturas são mais comuns em cada categoria.
+- Depois, o modelo pode classificar novos e-mails automaticamente, mesmo sem ter regras programadas manualmente.
+
 ---
 
-### Principais Tipos de Aprendizado em Machine Learning  
+### Principais Tipos de Aprendizado  
 
 O aprendizado de máquina pode ser dividido em **quatro categorias principais**, dependendo da forma como os dados são apresentados ao modelo e do objetivo do aprendizado.  
 
@@ -33,7 +54,7 @@ O aprendizado de máquina pode ser dividido em **quatro categorias principais**,
 
 O aprendizado de máquina está presente em diversas **aplicações do nosso dia a dia**, como:  
 
-- **Recomendações personalizadas** – Filmes e músicas (*Netflix, Spotify*).  
+- **Recomendações personalizadas** – Filmes e músicas (*YouTube*, *Netflix, Spotify*).  
 - **Assistentes Virtuais** – Alexa, Google Assistant, Siri.  
 - **Diagnósticos médicos automatizados** – Modelos que auxiliam médicos na detecção de doenças.  
 - **Carros autônomos** – Sistemas que aprendem a dirigir de forma segura e eficiente.  
