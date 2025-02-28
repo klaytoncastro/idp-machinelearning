@@ -62,7 +62,7 @@ O conjunto de dados **Wine Quality** contém características físico-químicas 
 
 ---
 
-### Etapas da Análise de Dados e Modelagem Preditiva
+## Etapas da Análise de Dados e Modelagem Preditiva
 
 - 1. Exploração do dataset – Compreensão dos dados, estatísticas descritivas e visualização.
 - 2. Pré-processamento – Limpeza, normalização e engenharia de features.
