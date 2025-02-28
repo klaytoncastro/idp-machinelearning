@@ -256,7 +256,7 @@ Abaixo, encontram-se descrições das bases de dados e links para download:
    Este dataset de avaliações de filmes da IMDB é amplamente utilizado para **análise de sentimentos**. Com ele, é possível treinar modelos que classificam comentários como positivos ou negativos. A aplicação deste dataset é direta para análise de sentimentos usando a pipeline da Hugging Face ou modelos tradicionais de classificação de texto com TF-IDF.
 
 <!--
-b. **[Sentiment140](http://help.sentiment140.com/for-students)**  
+- **[Sentiment140](http://help.sentiment140.com/for-students)**  
    O Sentiment140 é uma coleção de tweets rotulados, contendo análises positivas, neutras e negativas. É ideal para projetos de **análise de sentimentos** e **processamento de texto em redes sociais**. O uso desta base desafia vocês a lidar com ruídos e abreviações comuns em tweets, sendo um excelente exercício para pré-processamento de texto com NLTK.
 -->
 
