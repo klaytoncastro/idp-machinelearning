@@ -1,211 +1,105 @@
-# Machine Learning - Desafio 01
+# Desafio 01 - Wine Quality
+<!-- e [Regressão](./winequality_ml_regressor.ipynb) -->
 
-- Baixe os notebooks com o exemplo de [Classificação](./winequality_ml_classifier.ipynb) e [Regressão](./winequality_ml_regressor.ipynb) e execute-os passo a passo em seu ambiente Jupyter ou Google Colab para compreender como abordamos as tarefas de classificação de vinhos em brancos ou tintos e a previsão de sua qualidade (nota). 
+## Tarefa de Classificação
 
-- Antes de abordarmos o fluxo de trabalho e modelagem preditiva de aprendizado de máquina, vamos enfatizar a estatística descritiva para obter as características de cada variável e observar o impacto dessas *features* em seu conjunto de dados (*dataset*). 
+Para começar nossa jornada, vamos explorar uma das tarefas fundamentais da área: a **classificação**. Essa tarefa consiste em ensinar um modelo a identificar e categorizar dados com base em padrões aprendidos a partir de exemplos (Aprendizado Supervisionado).
 
-- Isso inclui calcular medidas de tendência central (média, mediana), dispersão (desvio padrão, intervalo interquartil), além de explorar a distribuição de cada variável (contagem, valores únicos, possíveis outliers), bem como a relação entre as variáveis preditoras e a variável alvo. 
+Para isso, utilizaremos o Wine Quality Dataset, que contém informações físico-químicas de amostras de vinho, além de uma avaliação de qualidade por especialistas. Nosso objetivo é construir um modelo de classificação supervisionada capaz de prever a qualidade do vinho a partir de suas propriedades físico-químicas.
 
-- Utilizamos as bibliotecas Pandas e Numpy para manipulação dos dados, Seaborn/Matplotlib para visualização e Scikit-Learn para criar os modelos de Machine Learning. 
+## Como executar? 
 
-- Primeiramente carregamos o Dataset em formato CSV, realizamos as operaçoes e manipulação dos dados necessárias. 
+Baixe o notebook com o exemplo de [Classificação](./winequality_ml_classifier.ipynb) e execute-o passo a passo em seu ambiente Jupyter ou Google Colab para compreender como abordamos as tarefas de classificação de vinhos em brancos ou tintos e a previsão de sua qualidade (nota). 
 
-- Depois disso, realizamos a análise de distribuição de cada variável numérica usando histogramas.
+## Descrição das Variáveis
 
-- Realizamos também a análise de Boxplots para identificar outliers. Qual variável aparece com mais outliers? Verifique como isso pode interferir no modelo de ML. 
+O conjunto de dados **Wine Quality** contém características físico-químicas de diferentes amostras de vinho e sua respectiva avaliação de qualidade. Abaixo está a descrição de cada variável presente no dataset:
 
-- Visualização Geral: obtivemos uma visão geral do dataset através dos métodos `.describe()` e `.info()` para uma visão geral do tipo de dados e valores ausentes.
+### Variáveis Independentes (Características Físico-Químicas)
 
-- Análise Descritiva: obtivemos as medidas de tendência central e dispersão para cada variável.
+1. **fixed acidity** (*acidez fixa*) - [float]  
+   - Representa os ácidos não voláteis, como ácido tartárico. Está relacionada ao frescor e sabor do vinho.
 
-- Realizamos a contagem de valores para a variável categórica (color) e discreta (quality), alvos de nosso modelo de Machine Learning. 
+2. **volatile acidity** (*acidez volátil*) - [float]  
+   - Medida da quantidade de ácido acético no vinho, que pode impactar negativamente o sabor (excesso leva a gosto avinagrado).
 
-- Nosso primeiro objetivo era prever a cor do vinho (branco ou tinto), uma tarefa de classificação. Em seguida, prever a qualidade do vinho, uma tarefa de regressão. 
+3. **citric acid** (*ácido cítrico*) - [float]  
+   - Presente em pequenas quantidades, adiciona frescor e melhora a preservação do vinho.
 
-- Para isso adotamos o robusto algoritimo `ExtraTrees` para criar um modelo básico de Machine Learning, utilizando o conceito de árvore de decisão para as tarefas de classificar os vinhos em tintos ou brancos e, em seguida, para predizer a qualidade (nota) conforme análise de suas propriedades químicas.
+4. **residual sugar** (*açúcar residual*) - [float]  
+   - Quantidade de açúcar remanescente após a fermentação. Pode afetar o dulçor e o corpo do vinho.
 
-## Tarefa 01: 
+5. **chlorides** (*cloretos*) - [float]  
+   - Representa o teor de sal no vinho, que pode influenciar no sabor.
 
-- Após **executar os notebooks passo a passo**, **entender o que o código está realizando**, responda: 
+6. **free sulfur dioxide** (*dióxido de enxofre livre*) - [float]  
+   - Atua como conservante, protegendo contra oxidação e bactérias.
 
-a) Quais células precisam ser ajustadas no notebook da tarefa de classificação? Por que? 
+7. **total sulfur dioxide** (*dióxido de enxofre total*) - [float]  
+   - Soma do SO₂ livre e ligado. Em excesso, pode causar aromas desagradáveis.
 
-b) Quais células precisam ser ajustadas no notebook da tarefa de regressão? Por que? 
+8. **density** (*densidade*) - [float]  
+   - Relacionada à concentração de açúcar, álcool e outros compostos. Impacta na percepção do corpo do vinho.
 
-- Agora prossiga para as tarefas abaixo, onde o encorajamos a **explorar outros algoritmos** e **avaliar o seu desempenho**. 
+9. **pH** (*pH*) - [float]  
+   - Mede a acidez geral do vinho. Valores comuns variam entre **2,7 e 4,0**.
 
-## Tarefa 02: 
+10. **sulphates** (*sulfatos*) - [float]  
+    - Contribui para a estabilidade microbiológica e realce do sabor.
 
-- Teste outros algoritmos para tarefas de classificação (color) e regressão (quality), conforme a pesquisa em grupo apresentada em sala de aula. 
+11. **alcohol** (*teor alcoólico*) - [float]  
+    - Influencia diretamente o corpo e a sensação do vinho.
 
-- Para problemas de classificação, além do algoritmo `ExtraTreesClassifier`, que faz uma robusta implementação baseada em Árvore de Decisão, `Naive Bayes` e `Support Vector Machine (SVM)` são alternativas populares, dependendo da natureza dos dados e do problema específico que você está tentando resolver. 
+### Variável Alvo 1 (Cor do Vinho)
 
-### Usando Naive Bayes para Classificação
+12. **color** (*cor do vinho*) - [string]  
+    - Identifica se o vinho é **tinto** ou **branco** (em algumas versões do dataset, essa informação está separada).
 
-O Naive Bayes é uma técnica de classificação baseada em aplicar o teorema de Bayes com a "ingenuidade" de supor independência entre os preditores. É fácil de construir e particularmente útil para grandes volumes de dados. Além disso, é eficaz em problemas de classificação multinomial e binomial. 
+### Variável Alvo 2 (Qualidade do Vinho)
 
-Existem diferentes implementações de Naive Bayes no Scikit-Learn, adequados para diferentes tipos de dados:
+13. **quality** (*qualidade do vinho*) - [int]  
+    - Avaliação sensorial dada por especialistas, variando de **0 a 10** (geralmente entre **3 e 9** no dataset).
 
-- GaussianNB: Usado em classificação onde as features são contínuas e seguem uma distribuição normal.
-- MultinomialNB: Bom para quando suas features são contagens ou frequências de termos (comumente usado em classificação de texto).
-- BernoulliNB: Adequado para features binárias.
+---
 
-```python
+### Etapas da Análise de Dados e Modelagem Preditiva
 
-from sklearn.naive_bayes import GaussianNB
+- 1. Exploração do dataset – Compreensão dos dados, estatísticas descritivas e visualização.
+- 2. Pré-processamento – Limpeza, normalização e engenharia de features.
+- 3. Treinamento de um modelo de classificação – Utilizando algoritmos como árvores de decisão, random forest e outros.
+- 4. Avaliação do modelo – Introdução a métricas como acurácia, precisão, recall e matriz de confusão.
+- 5. Interpretação dos resultados – Análise do impacto das variáveis na classificação.
 
-# Para dados com features contínuas que seguem uma distribuição aproximadamente normal
-modelo_nb = GaussianNB()
+## Conclusão
 
-modelo_nb.fit(X_train, y_train)
-y_pred = modelo_nb.predict(X_test)
+Ao longo desta primeira tarefa, estabelecemos uma base sólida para compreendermos os desafios e aplicações da classificação em Machine Learning, preparando o terreno para problemas mais complexos ao longo do curso.
 
-```
+Antes de abordarmos a modelagem preditiva, enfatizamos a importância da estatística descritiva, analisando as características de cada variável e seu impacto no Wine Quality Dataset. Exploramos:
 
-### Usando SVM para Classificação
+- Medidas de tendência central (média, mediana) e dispersão (desvio padrão, intervalo interquartil).
+- Distribuição das variáveis (contagem, valores únicos, detecção de outliers via histogramas e boxplots).
+- Relação entre as variáveis preditoras e a variável alvo (quality).
+- Utilizamos as bibliotecas Pandas e Numpy para manipulação de dados, Seaborn/Matplotlib para visualização e Scikit-Learn para construção dos modelos.
 
-O Support Vector Machine (SVM) é um método poderoso e versátil para tarefas de classificação e detecção de outliers. Para classificação, especialmente em casos de categorias claramente distintas, o SVM pode ser eficaz. O `Scikit-Learn` oferece várias implementações do SVM, incluindo SVC (Support Vector Classification), que é mais comumente usado para problemas de classificação. Teste e avalie os resultados: 
+Após carregar e explorar o dataset, realizamos as seguintes etapas:
 
-```python
-from sklearn.svm import SVC
-# Inicializando o classificador SVM com um kernel. O padrão é 'rbf', mas pode ser alterado para 'linear', 'poly', etc.
-modelo_svm = SVC(kernel='linear')
+### Análise Exploratória:
 
-modelo_svm.fit(X_train, y_train)
-y_pred = modelo_svm.predict(X_test)
-```
+- Obtivemos uma visão geral do dataset (.describe() e .info()).
+- Identificamos padrões e valores ausentes.
 
-### Usando Regressão Logística
 
-Embora seja chamada de regressão, esta técnica é utilizada para classificação binária (prever entre duas classes). Estima probabilidades usando uma função logística que mapeia qualquer valor real para um valor entre 0 e 1. É ideal para problemas onde a variável dependente é categórica (por exemplo, sim/não, verdadeiro/falso).
+### Análise Estatística e Visualização:
 
-```python
-from sklearn.linear_model import LogisticRegression
+- Exploramos a distribuição das variáveis numéricas via histogramas.
+- Utilizamos boxplots para detectar outliers e avaliar seu impacto no modelo.
+- Contamos valores das variáveis categóricas (color) e discretas (quality).
 
-# Criando uma instância do modelo
-model = LogisticRegression()
 
-# Treinando o modelo com os dados de treino
-model.fit(X_train, y_train)
-```
+### Modelagem Preditiva:
 
-### Avaliação dos Modelos
-
-Após treinar o seu modelo, você precisa avaliar o quão bem ele performa. Para classificação, vimos que métricas comuns incluem acurácia, precisão, recall, e a F1-score. O Scikit-Learn fornece funções prontas para calcular essas métricas:
-
-```python
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-
-print("Acurácia:", accuracy_score(y_test, y_pred))
-print("Precisão:", precision_score(y_test, y_pred, average='macro'))
-print("Recall:", recall_score(y_test, y_pred, average='macro'))
-print("F1 Score:", f1_score(y_test, y_pred, average='macro'))
-```
-
-- Qual algoritmo performou melhor? 
-
-- Qual algoritmo foi mais rápido? 
-
-## Tarefa 03
-
-
-
-### Support Vector Machine (SVM) para Regressão (SVR)
-
-O SVM não serve apenas para classificação. O Support Vector Regression (SVR) é a versão do SVM usada para problemas de regressão. O SVR pode ser eficaz em espaços de alta dimensão e em casos onde o número de dimensões excede o número de amostras.
-
-```python
-from sklearn.svm import SVR
-
-modelo_svr = SVR(kernel='linear') # Você pode experimentar com diferentes kernels como 'linear', 'poly', 'rbf'.
-```
-
-### Regressão Linear
-
-Um dos métodos mais simples e amplamente usados. Bom ponto de partida para problemas de regressão devido à sua simplicidade e interpretabilidade.
-
-```python
-from sklearn.linear_model import LinearRegression
-
-modelo_lr = LinearRegression()
-```
-
-### Regressão Ridge
-
-```python
-from sklearn.linear_model import Ridge
-
-modelo_ridge = Ridge(alpha=1.0) # O parâmetro alpha controla a força da regularização.
-```
-
-### Regressão Lasso
-
-```python
-from sklearn.linear_model import Lasso
-
-modelo_lasso = Lasso(alpha=0.1)
-```
-
-### Random Forest Regressor
-
-```python
-from sklearn.ensemble import RandomForestRegressor
-
-modelo_rfr = RandomForestRegressor()
-```
-
-### Avaliação dos Modelos
-
-Ao invés de Precision, Recall, F1-Score, que são métricas adequadas para tarefas de classificação, utilize MSE, RMSE, MAE e coeficiente R2, que são adequadas a um problema de regressão e verifique o desempenho de seu modelo. 
-
-```python
-# Calculando as métricas, onde y_pred contém as previsões e y_test os valores reais
-mse = mean_squared_error(y_test, y_pred)
-rmse = np.sqrt(mse)
-mae = mean_absolute_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-
-# Imprimindo as métricas
-print("MSE:", mse)
-print("RMSE:", rmse)
-print("MAE:", mae)
-print("R²:", r2)
-```
-
-- Agora responda: 
-
-a) Qual algoritmo performou melhor? Por que? 
-
-b) Qual algoritmo foi executado mais rápido e qual foi executado com maior dificuldade? 
-
-c) Como podemos conciliar o impacto entre o tempo de execução e o custo benefício para obter performance? 
-
-## Tarefa 04
-
-- Chegou a hora de refinar seu modelo ML de forma iterativa. Observe a relação com a variável alvo: explore como as variáveis se relacionam. 
-
-a) Qual o impacto dos outliers? 
-
-b) Quais variáveis podem ser removidas no modelo para previsão da qualidade? 
-
-c) Após remover essas variáveis (utilize o Pandas para isso), como se ajusta o modelo e se comportam as métricas de avaliação? 
-
-d) Otimize o desempenho utilizando como base as métricas obtidas na tarefa de regressão, onde há maior margem para otimização. 
-
-- Os estudantes que conseguirem realizar uma otimização e explicar com sucesso o trabalho realizado receberão pontuação extra! 
-
-| **Métrica** | **Valor**          |
-|---------|------------------------|
-| Acurácia| 0.54281651011084       |
-| MSE     | 0.3498934358974359     |
-| RMSE    | 0.5915179083488816     |
-| MAE     | 0.39295384615384615    |
-| R²      | 0.54281651011084       |
-| **Pós-Arrendondamento**          |
-| Acurácia ajustada | 0.9702564102564103 | 
-| MSE ajustado | 0.4266666666666667 | 
-| RMSE ajustado | 0.6531972647421809| 
-| MAE ajustado | 0.3517948717948718 | 
-| R² ajustado | 0.449534747610121   | 
-
-- **Boa Sorte!** 
+- Primeiramente, previmos a cor do vinho (tinto ou branco), um problema de classificação.
+- Em seguida, previmos sua qualidade (nota) com base em suas características químicas.
+- Utilizamos o algoritmo `ExtraTrees`, um modelo baseado em árvores de decisão, devido à sua capacidade de lidar com conjuntos de dados complexos e identificar automaticamente a importância das variáveis na predição.
+
+Com essa abordagem, conseguimos explorar tanto os conceitos fundamentais de estatística descritiva quanto os princípios básicos da classificação em Machine Learning. À medida que avançarmos no curso, aprofundaremos nossas análises, explorando técnicas mais sofisticadas para otimização dos modelos.

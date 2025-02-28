@@ -1,6 +1,6 @@
 import pandas as pd
 
-url = 'https://raw.githubusercontent.com/klaytoncastro/idp-machinelearning/main/decision-tree/winequality-merged.csv'
+url = 'https://raw.githubusercontent.com/klaytoncastro/idp-machinelearning/main/winequality/winequality-merged.csv'
 arquivo = pd.read_csv(url)
 arquivo.head()
 
