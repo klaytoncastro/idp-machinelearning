@@ -87,12 +87,13 @@ Após carregar e explorar o dataset, realizamos as seguintes etapas:
 Concluímos essa primeira tarefa explorando os fundamentos de estatística descritiva e classificação em Machine Learning.
 Nos próximos passos, vamos aprofundar a análise e otimizar os modelos, utilizando técnicas mais avançadas para aumentar a precisão das previsões!
 
-### Referências adicionais
-- [Acesso ao Artigo no ResearchGate](https://www.researchgate.net/publication/228342091_Modeling_wine_preferences_by_data_mining_from_physicochemical_properties)  
-- [Dataset Original no Repositório do UCI Machine Learning](https://archive.ics.uci.edu/dataset/186/wine%2Bquality)
-- [Página do Autor Paulo Cortez](https://www3.dsi.uminho.pt/pcortez/wine/)
-
 <!-- e [Regressão](./winequality_ml_regressor.ipynb)  
+
+### Referências adicionais
+
+- [Acesso ao Artigo no CMU StatLib](http://lib.stat.cmu.edu/datasets/)
+- [Dataset Original no Repositório do UCI Machine Learning](https://archive.ics.uci.edu/dataset/186/wine%2Bquality)
+
 Os resultados indicaram que a **máquina de vetor de suporte (SVM)** obteve desempenho superior em comparação com os métodos de **regressão múltipla e redes neurais**. 
 
 ### 📌 **Referência completa do artigo**
@@ -101,4 +102,8 @@ Cortez, P., Cerdeira, A., Almeida, F., Matos, T., & Reis, J. (2009).
 *Decision Support Systems*, **47(4), 547-553**.  
 🔗 
 - [Artigo no CMU StatLib](http://lib.stat.cmu.edu/datasets/)
+
+- [Acesso ao Artigo no ResearchGate](https://www.researchgate.net/publication/228342091_Modeling_wine_preferences_by_data_mining_from_physicochemical_properties) 
+- [Página do Autor Paulo Cortez](https://www3.dsi.uminho.pt/pcortez/wine/)
+
 -->
