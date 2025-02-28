@@ -22,7 +22,7 @@ visualização e storytelling de dados.
 
 | #  |Tarefa                          | Descrição                           | Prazo      |
 |----|--------------------------------|-------------------------------------|------------|
-| 01 | [Wine Quality](./winequality/) |Realizar uma Tarefa de Classificação | 28/02/2025 |
+| 01 | [Wine Quality](./winequality/) |Realizar uma Tarefa de Classificação | 07/03/2025 |
 
 <!--
 
