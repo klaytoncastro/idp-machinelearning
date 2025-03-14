@@ -1,0 +1,40 @@
+@startuml
+
+skinparam dpi 150
+skinparam linetype ortho
+skinparam shadowing false
+skinparam defaultFontSize 14
+
+rectangle "Machine Learning" as ML {
+  rectangle "Supervised Learning" as SL {
+    rectangle "Classification" as CL
+    rectangle "Regression" as RG
+  }
+
+  rectangle "Unsupervised Learning" as UL {
+    rectangle "Clustering" as CLU
+    rectangle "Dimensionality Reduction" as DR
+  }
+  
+  rectangle "Semi-Supervised Learning" as SSL {
+    rectangle "Mix of Labeled & Unlabeled Data" as MIX
+  }
+  
+  rectangle "Reinforcement Learning" as RL {
+    rectangle "Agent-based Learning" as AG
+  }
+}
+
+ML -[hidden]-> SL
+ML -[hidden]-> UL
+ML -[hidden]-> SSL
+ML -[hidden]-> RL
+
+SL -down-> CL
+SL -down-> RG
+UL -down-> CLU
+UL -down-> DR
+SSL -down-> MIX
+RL -down-> AG
+
+@enduml

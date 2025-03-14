@@ -75,7 +75,7 @@ Cada desafio é uma experiência prática, onde você aplicará o conhecimento a
 
 | #  |Tarefa                          | Tipo de Problema | Prazo      |
 |----|--------------------------------|------------------|------------|
-| 01 | [Wine Quality](./winequality/) | Classificação    | 07/03/2025 |
+| 01 | [Wine Quality](./winequality/) | Classificação    | 14/03/2025 |
 
 <!--
 
