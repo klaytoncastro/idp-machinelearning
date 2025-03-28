@@ -77,9 +77,6 @@ Utilize validação cruzada para avaliar a robustez do modelo.
 
 <!--
 ```python
-# -*- coding: utf-8 -*-
-Solução
-"""
 # Importando as bibliotecas
 import pandas as pd
 import matplotlib.pyplot as plt
