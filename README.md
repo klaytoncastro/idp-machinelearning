@@ -107,14 +107,12 @@ Atividades:
 •	RNA (Redes Neurais Artificiais)Links to an external site.
 •	Rules (Regras de Associação)Links to an external site.
 Instruções: Nomeie o arquivo como grupoX_tarefa.ipynb, onde X é o número do grupo (exemplo: grupo1_reinforcement.ipynb).
-
-
 -->
 
 Fique atento(a) às atualizações, pois novos desafios serão adicionados ao longo do curso!
 
 ### Colabore e Aprenda Junto!
 
-Participe das discussões, compartilhe insights e aprenda com diferentes abordagens. Seu engajamento e troca de conhecimento são fundamentais para o sucesso do curso!! 
+Seu engajamento e troca de conhecimento são fundamentais para o sucesso do curso. Participe das discussões, compartilhe insights e aprenda com diferentes abordagens!
 
 - **Boa Sorte!**
