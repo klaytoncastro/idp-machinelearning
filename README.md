@@ -76,6 +76,8 @@ Cada desafio é uma experiência prática, onde você aplicará o conhecimento a
 | #  |Tarefa                          | Tipo de Problema | Prazo      |
 |----|--------------------------------|------------------|------------|
 | 01 | [Wine Quality](./winequality/) | Classificação    | 14/03/2025 |
+| 02 | [Air Quality](./airquality/)   | Regressão        | 28/03/2025 |
+| 03 | [Bank](./bank/)                | Agrupamento      | 18/04/2025 |
 
 <!--
 
