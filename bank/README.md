@@ -31,9 +31,23 @@ O dataset pode ser encontrado no seguinte link: [Dataset do Banco](https://githu
 
 - Aplique diferentes algoritmos de machine learning como Regressão Logística, Árvores de Decisão, K-NN, SVM, e compare os resultados usando validação cruzada para robustez.
 
+### Explorando padrões com abordagens não supervisionadas
+
+> Será que clientes com perfis semelhantes se comportam de forma parecida na aquisição do PEP?  
+> E se vocês tentassem **agrupar os clientes primeiro**, e usar esse grupo como **uma nova informação no modelo**?
+
+- **Dica**: além dos métodos supervisionados tradicionais, você também pode utilizar **técnicas não supervisionadas**, como algoritmos de **clusterização (ex: K-Means)**, para identificar **grupos de clientes com perfis similares**.
+- Esses agrupamentos podem revelar **padrões ocultos** nos dados e até serem utilizados como **novas variáveis ("labels artificiais")** para enriquecer os modelos de classificação.
+- Essa estratégia é conhecida como **semi-supervised learning** ou **feature augmentation via clustering**, e pode melhorar o desempenho preditivo do modelo final.
+
+
+<!--
+
 ## Otimização de Hiperparâmetros
 
 - Utilize métodos como Grid Search, Random Search e/ou otimização Bayesiana para encontrar os melhores hiperparâmetros para os modelos escolhidos.
+
+-->
 
 ## Interpretação do Modelo
 
