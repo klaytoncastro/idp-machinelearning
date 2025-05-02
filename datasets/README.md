@@ -1,3 +1,4 @@
+
 ## 1. Introdução ao Uso de Datasets para Aprendizado de Máquina
 
 Antes de aplicar algoritmos de aprendizado de máquina, é essencial entender o que são **dados**, como eles são organizados em **datasets**, e por que precisam ser cuidadosamente **preparados** para modelagem.
@@ -29,207 +30,109 @@ Essas etapas são abordadas nos conceitos de **Data Wrangling**, amplamente util
 
 ## 2. Do Weka ao Python: por que atualizar a abordagem?
 
-O **Weka** (Waikato Environment for Knowledge Analysis) é um software desenvolvido na Universidade de Waikato, Nova Zelândia, com o objetivo de tornar o aprendizado de máquina acessível por meio de uma interface gráfica. Entre os anos 2000 e 2010, foi amplamente utilizado no ensino por sua simplicidade e repositório de datasets clássicos.
+O **Weka** é uma ferramenta didática clássica, mas hoje o ecossistema Python com bibliotecas como `pandas`, `scikit-learn`, `matplotlib`, `seaborn` e `numpy` é o padrão de mercado por:
 
-No entanto, o ecossistema de **Python** com bibliotecas como `pandas`, `scikit-learn`, `matplotlib`, `seaborn` e `numpy` tornou-se o novo padrão de mercado por diversas razões:
-- **Flexibilidade e automação** 
+- **Flexibilidade e automação**
 - **Reprodutibilidade científica**
 - **Integração com projetos reais e pipelines robustos**
 - **Amplo suporte da comunidade e evolução constante**
 
-Neste repositório, alguns dos datasets clássicos originalmente utilizados no Weka foram convertidos para o formato `.csv` e reorganizados para uso com ferramentas mais modernas, como `pandas` e `scikit-learn`. Apesar da aparente simplicidade e do porte reduzido, esses conjuntos de dados ainda são extremamente úteis em contextos educacionais, pois permitem ilustrar com clareza os fundamentos do aprendizado de máquina:
-
-- Introdução às tarefas supervisionadas de classificação e regressão;
-- Exploração visual de padrões, outliers e distribuições de atributos;
-- Prática de etapas de pré-processamento e construção de pipelines completos;
-- Avaliação de modelos com diferentes métricas e estratégias de validação cruzada.
-
 ---
 
-## 3. Datasets Clássicos
+## 3. Datasets Clássicos Utilizados
 
 ### 3.1. Iris Dataset — Classificação de Espécies de Flores
 
-Número de instâncias: 150  
-Número de atributos: 4 + classe  
-Tipo de tarefa: Classificação multiclasse  
-Fonte: https://archive.ics.uci.edu/ml/datasets/iris
+- Tipo: Classificação multiclasse  
+- Instâncias: 150  
+- Atributos: 4 + classe  
+- Fonte: https://archive.ics.uci.edu/ml/datasets/iris
 
-Desafio:  
-Prever a espécie da flor com base nas medidas da sépala e da pétala.
-
-Atributos:
-- sepal_length – Comprimento da sépala
-- sepal_width – Largura da sépala
-- petal_length – Comprimento da pétala
-- petal_width – Largura da pétala
-- class – Espécie da flor (setosa, versicolor, virginica)
-
-Algoritmos sugeridos:
-- k-NN, SVM, Decision Tree
-
-Pipeline recomendado:
-- Separar X e y
-- Padronizar com StandardScaler
-- Avaliar com accuracy_score, confusion_matrix
-- Visualizar com PCA ou seaborn.pairplot
-
-Objetivo:  
-Explorar classificação supervisionada, visualização com PCA e overfitting em conjuntos bem separados.
+Desafio: prever a espécie da flor a partir das medidas de sépala e pétala.
 
 ---
 
-### 3.2. Vote Dataset — Previsão de Partido Político com Base em Votação
+### 3.2. Vote Dataset — Previsão de Partido Político
 
-Número de instâncias: 435  
-Número de atributos: 16 + classe  
-Tipo de tarefa: Classificação binária  
-Fonte: https://archive.ics.uci.edu/ml/datasets/Congressional+Voting+Records
+- Tipo: Classificação binária  
+- Instâncias: 435  
+- Atributos: 16 + classe  
+- Fonte: https://archive.ics.uci.edu/ml/datasets/Congressional+Voting+Records
 
-Desafio:  
-Prever o partido (democrata ou republicano) com base nos votos em 16 temas.
-
-Atributos:
-- 16 votos (atributos categóricos: y, n, ?)
-- class – Partido do deputado (democrat, republican)
-
-Algoritmos sugeridos:
-- Naive Bayes, Logistic Regression, Random Forest
-
-Pipeline recomendado:
-- Tratar ? como np.nan, aplicar imputação
-- Codificar variáveis categóricas
-- Avaliar accuracy, precision, recall, f1
-
-Objetivo:  
-Trabalhar com dados categóricos, valores faltantes e análise de importância de variáveis políticas.
+Desafio: prever o partido (democrata ou republicano) com base em votos parlamentares.
 
 ---
 
-### 3.3. Diabetes Dataset — Detecção de Diabetes com Dados Clínicos
+### 3.3. Diabetes Dataset — Risco de Diabetes
 
-Número de instâncias: 768  
-Número de atributos: 8 + classe  
-Tipo de tarefa: Classificação binária  
-Fonte: https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
+- Tipo: Classificação binária  
+- Instâncias: 768  
+- Atributos: 8 + classe  
+- Fonte: https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
 
-Desafio:  
-Prever se a paciente terá diabetes com base em exames clínicos.
-
-Atributos:
-- pregnancies, glucose, blood_pressure, skin_thickness, insulin, BMI, diabetes_pedigree_function, age
-- class – 0 (não diabética) ou 1 (diabética)
-
-Algoritmos sugeridos:
-- Logistic Regression, Random Forest, XGBoost
-
-Pipeline recomendado:
-- Normalização
-- Avaliar com confusion_matrix, classification_report, ROC-AUC
-
-Objetivo:  
-Analisar dados médicos com desbalanceamento, métricas médicas e importância de variáveis.
+Desafio: prever risco de diabetes com base em dados clínicos.
 
 ---
 
-### 3.4. Ionosphere Dataset — Análise de Ecos de Radar
+### 3.4. Ionosphere Dataset — Sinais de Radar
 
-Número de instâncias: 351  
-Número de atributos: 34 + classe  
-Tipo de tarefa: Classificação binária  
-Fonte: https://archive.ics.uci.edu/ml/datasets/ionosphere
+- Tipo: Classificação binária  
+- Instâncias: 351  
+- Atributos: 34 + classe  
+- Fonte: https://archive.ics.uci.edu/ml/datasets/ionosphere
 
-Desafio:  
-Classificar ecos de radar como bons ou ruins.
-
-Atributos:
-- 34 variáveis numéricas extraídas de sinais de radar
-- class – g (bom) ou b (ruim)
-
-Algoritmos sugeridos:
-- SVM, k-NN, ExtraTreesClassifier
-
-Pipeline recomendado:
-- Padronização com MinMaxScaler ou RobustScaler
-- Avaliação com cross_val_score
-
-Objetivo:  
-Praticar com dados inteiramente numéricos e alta dimensionalidade.
+Desafio: classificar ecos de radar como bons ou ruins.
 
 ---
 
-### 3.5. Segment Dataset — Classificação de Segmentos de Imagem
+### 3.5. Segment Dataset — Segmentos de Imagem
 
-Número de instâncias: 2100  
-Número de atributos: 19 + classe  
-Tipo de tarefa: Classificação multiclasse  
-Fonte: https://archive.ics.uci.edu/ml/datasets/image+segmentation
+- Tipo: Classificação ou Clusterização  
+- Instâncias: 2100  
+- Atributos: 19 + classe  
+- Fonte: https://archive.ics.uci.edu/ml/datasets/image+segmentation
 
-Desafio:  
-Classificar segmentos de imagem com base em estatísticas de cor e textura.
-
-Atributos:
-- 19 atributos numéricos (valores médios, desvios, etc.)
-- class – rótulo do segmento (brickface, sky, foliage...)
-
-Algoritmos sugeridos:
-- Random Forest, MLPClassifier, Gradient Boosting
-
-Pipeline recomendado:
-- Normalização
-- Avaliação com classification_report
-- Visualização com PCA
-
-Objetivo:  
-Aplicar modelos a um problema visual com dados tabulares derivados.
+Desafio: classificar ou agrupar segmentos visuais com base em atributos tabulares.
 
 ---
 
-### 3.6. CPU with Vendor Dataset — Previsão de Performance de CPUs
+### 3.6. CPU with Vendor Dataset — Performance de CPUs
 
-Número de instâncias: 209  
-Número de atributos: 8 + performance  
-Tipo de tarefa: Regressão  
-Fonte: https://archive.ics.uci.edu/ml/datasets/CPU+performance
+- Tipo: Regressão  
+- Instâncias: 209  
+- Atributos: 8 + performance  
+- Fonte: https://archive.ics.uci.edu/ml/datasets/CPU+performance
 
-Desafio:  
-Prever tempo de execução do CPU com base nas suas características.
-
-Atributos:
-- vendor – Fabricante
-- model – Modelo da CPU
-- myct, mmin, mmax, cach, chmin, chmax – atributos de desempenho
-- performance – variável alvo
-
-Algoritmos sugeridos:
-- Linear Regression, RandomForestRegressor, SVR
-
-Pipeline recomendado:
-- Encoding do vendor
-- Avaliar com MAE, RMSE, R²
-- Visualização: y_true vs y_pred
-
-Objetivo:  
-Introduzir regressão com variáveis mistas (categóricas e numéricas).
+Desafio: prever tempo de execução de CPU com base em atributos técnicos e fabricante.
 
 ---
 
-<!-- PROVA PRÁTICA - AV1
+### 3.7. Telecom Dataset — Segmentação de Clientes
+
+- Tipo: Clusterização  
+- Instâncias: (a ser conferido no arquivo)  
+- Atributos: (a confirmar no cabeçalho)  
+- Fonte: convertido de `.arff` para `.csv`
+
+Desafio: agrupar clientes por padrões de consumo e perfil (plano internacional, minutos, chamadas ao suporte etc.)
+
+---
+
+<!-- PROVA PRÁTICA -->
 
 ## 4. Prova Prática — 1ª Avaliação (AV1)
 
 Nesta avaliação, você deverá demonstrar domínio sobre os principais tipos de tarefas em Aprendizado de Máquina: **classificação, regressão e clusterização**.
 
-### 4.1. Instruções Gerais
+### 4.1. Instruções
 
-Você deverá escolher e resolver **1 desafio de cada categoria**:
+Escolha e resolva **1 desafio de cada tipo**:
 
-- **1 de classificação**
-- **1 de regressão**
-- **1 de clusterização**
+- 1 de Classificação
+- 1 de Regressão
+- 1 de Clusterização
 
-Cada notebook (ou seção bem identificada) deve conter:
-
+Cada notebook deve conter:
 1. Descrição do problema  
 2. Análise exploratória dos dados  
 3. Estratégia de pré-processamento  
@@ -239,57 +142,54 @@ Cada notebook (ou seção bem identificada) deve conter:
 
 > A entrega deve conter código funcional, bem comentado e com organização clara.
 
+---
+
 ### 4.2. Datasets disponíveis
 
 #### Classificação
-
-| Dataset             | Descrição resumida                                     |
-|----------------------|--------------------------------------------------------|
-| `iris.csv`           | Previsão da espécie da flor pelas medidas              |
-| `vote.csv`           | Previsão do partido com base nos votos em 16 temas     |
-| `diabetes.csv`       | Previsão de diabetes com base em exames clínicos       |
-| `ionosphere.csv`     | Classificação de ecos de radar                         |
-| `segment-test.csv`   | Classificação de segmentos de imagem                   |
-| `breast-cancer.csv`  | Diagnóstico de câncer (recorrente ou não)              |
+- `iris.csv` – Espécie da flor  
+- `vote.csv` – Partido político  
+- `diabetes.csv` – Risco de diabetes  
+- `ionosphere.csv` – Sinais de radar  
+- `segment-test.csv` – Segmento de imagem
 
 #### Regressão
-
-| Dataset                 | Descrição resumida                                       |
-|--------------------------|----------------------------------------------------------|
-| `cpu.with.vendor.csv`    | Previsão da performance de CPUs com variável categórica  |
-| `machine.cpu.csv`        | Previsão da performance com atributos puramente numéricos|
-| `auto-price.csv`         | Previsão do preço de veículos com base em atributos técnicos |
+- `cpu.with.vendor.csv` – Performance de CPU
 
 #### Clusterização
-
-| Dataset             | Descrição resumida                                          |
-|----------------------|-------------------------------------------------------------|
-| `glass.csv`          | Agrupamento de tipos de vidro por composição química        |
-| `segment-test.csv`   | Clusterização de segmentos com base em atributos visuais    |
-| `soybean.csv`        | Agrupamento de características de doenças em plantas de soja|
+- `segment-test.csv` – Atributos visuais  
+- `telecom.csv` – Segmentação de clientes
 
 ---
 
-### 4.3. Critérios de Avaliação
-
-Cada desafio será avaliado de forma independente, considerando:
+### 4.3. Avaliação
 
 | Critério                                | Pontos por desafio |
 |-----------------------------------------|--------------------|
-| Organização e estrutura do notebook     | 1,0                |
-| Qualidade da análise e pré-processamento| 1,0                |
-| Aplicação e justificativa do modelo     | 1,0                |
-| Avaliação dos resultados                | 1,0                |
-| Clareza das conclusões                  | 1,0                |
+| Organização e estrutura do notebook     | 1.0                |
+| Qualidade da análise e pré-processamento| 1.0                |
+| Aplicação e justificativa do modelo     | 1.0                |
+| Avaliação dos resultados                | 1.0                |
+| Clareza das conclusões                  | 1.0                |
 
-**Total por desafio: 5,0 pontos × 3 = 15,0 pontos**  
-A nota será proporcionalizada para o valor final da AV1.
+Total por desafio: **5.0 pontos × 3 = 15.0 pontos**  
+Nota será proporcionalizada.
 
 ---
 
-### 4.4. Entrega
+### 4.4. Bônus (até +1.0 ponto)
 
-- **Prazo de entrega**: até **[DATA A DEFINIR PELO PROFESSOR]**
-- Enviar os notebooks via e-mail ou repositório GitHub compartilhado
+Implemente **otimização de hiperparâmetros** com:
 
-FIM DA PROVA -->
+- `GridSearchCV`  
+- `RandomizedSearchCV`  
+- `Bayesian Optimization` (Optuna, bayes_opt, etc.)
+
+> Explique os parâmetros, mostre os melhores resultados e, se possível, visualize os scores.
+
+---
+
+### 4.5. Entrega
+
+- **Prazo:** até **09/05/2025**
+- **Envio via Canvas**
