@@ -1,281 +1,199 @@
-# Otimização de Hiperparâmetros em Machine Learning
+# 1. Introdução ao Uso de Datasets para Aprendizado de Máquina
 
-## Objetivo
+Antes de aplicar algoritmos de aprendizado de máquina, é essencial entender o que são **dados**, como eles são organizados em **datasets**, e por que precisam ser cuidadosamente **preparados** para modelagem.
 
-Nesta tarefa, cada estudante ou dupla deverá implementar os três métodos de otimização a seguir, buscando o melhor desempenho possível do algoritmo atribuído:
+## 1.1. O que é um dataset?
 
-1. **Grid Search**: Realiza uma busca exaustiva testando todas as combinações possíveis de hiperparâmetros dentro de uma grade predefinida.
-2. **Randomized Search**: Realiza uma busca aleatória, explorando combinações de hiperparâmetros de forma mais eficiente que o Grid Search para espaços de busca maiores.
-3. **Otimização Bayesiana**: Utiliza modelos probabilísticos para guiar a busca pelos melhores hiperparâmetros, aproveitando informações de iterações anteriores para realizar uma busca mais inteligente.
+Um dataset é uma coleção estruturada de dados, normalmente organizada em forma de tabela, onde:
+- Cada linha representa um exemplo, instância ou registro;
+- Cada coluna representa uma variável, característica ou atributo;
+- Em tarefas supervisionadas, há uma coluna especial chamada **rótulo** ou **variável-alvo**, usada para treinamento do modelo.
 
-Cada estudante ou dupla deverá otimizar um modelo de machine learning utilizando os três métodos clássicos de otimização de hiperparâmetros apresentados em sala de aula: **Grid Search**, **Randomized Search** e **Otimização Bayesiana**. O objetivo é comparar o desempenho dos modelos com diferentes configurações de hiperparâmetros e avaliar o impacto desta parametrização nas métricas de performance.  
+## 1.2. A importância da preparação dos dados
 
-## Algoritmos
+Na prática, os dados raramente estão prontos para uso direto. Eles podem conter:
+- **Valores ausentes**, **ruídos** ou **erros**
+- **Tipos mistos de atributos** (numéricos, categóricos, binários)
+- **Escalas incompatíveis** ou **valores discrepantes**
+- **Redundâncias** ou **informações não relevantes**
 
-Cada estudante ou dupla será responsável por um dos seguintes algoritmos, que foram previamente sorteados em sala de aula, e deverá(ão) realizar a otimização de seus respectivos hiperparâmetros na tarefa de classificação de vinhos do dataset [Wine Quality](https://github.com/klaytoncastro/idp-machinelearning/blob/main/optimization/winequality_ml_classifier_optimized.ipynb):
+Por isso, o **pré-processamento** é uma etapa crítica no pipeline de aprendizado de máquina. Esse processo envolve:
 
-# Alocações dos Trabalhos em Dupla
+- **Limpeza de dados**: tratar valores ausentes, inconsistências e outliers
+- **Transformação de dados**: normalizar escalas, converter variáveis categóricas, discretizar, codificar
+- **Integração e enriquecimento**: combinar dados de fontes distintas e adicionar atributos úteis
+- **Armazenamento e documentação**: salvar versões limpas e reprodutíveis para uso futuro
 
-### Decision Tree
-- Felipe Pereira Dutra
-- Kelwin dos Santos Menezes
+Essas etapas são abordadas nos conceitos de **Data Wrangling**, amplamente utilizados tanto em ciência de dados quanto em engenharia de machine learning.
 
-### Random Forest
-- Sara Pacheco de Azevedo
-- Fábio Luís de Carvalho Terra
+---
 
-### Extra Tree
-- Pedro Calil Raposo Mingossi Cordeiro
-- João Gabriel Gonçalves Oliveira
+# 2. Do Weka ao Python: por que atualizar a abordagem?
 
-### Extra Trees
-- Arthur Torquato Novaes
-- Felipe Barroso de Castro
+O **Weka** é uma ferramenta didática clássica, mas hoje o ecossistema Python com bibliotecas como `pandas`, `scikit-learn`, `matplotlib`, `seaborn` e `numpy` é o padrão de mercado por:
 
-### XGBoost
-- Eduardo Milagres Lima
-- Igor Caldeira Andrade
+- **Flexibilidade e automação**
+- **Reprodutibilidade científica**
+- **Integração com projetos reais e pipelines robustos**
+- **Amplo suporte da comunidade e evolução constante**
 
-### LightGBM
-- Luca Verdade Lenzoni
-- Lucas Fiche Ungarelli Borges
+---
 
-### Naive Bayes
-- Claudio da Aparecida Meireles Filho
-- Pedro Rodrigues de Araújo
+# 3. Datasets Clássicos Utilizados
 
-### Logistic Regression
-- Mariana Magalhaes Silva
-- Leonardo Freitas Barboza
+## 3.1. Iris Dataset
+- Tipo: Classificação multiclasse  
+- Instâncias: 150  
+- Atributos: 4 + classe  
+- Fonte: UCI
 
-### SVM (Support Vector Classifier - SVC)
-- Lucas Fidalgo Bitencourt
-- Mateus Batista Peixoto da Silva
+## 3.2. Vote Dataset
+- Tipo: Classificação binária  
+- Instâncias: 435  
+- Atributos: 16 + classe  
+- Fonte: UCI
 
-### k-NN (k-Nearest Neighbors)
-- João Henrique de Oliveira Salles
-- Lucas Narita Nunes de Melo Freita
+## 3.3. Diabetes Dataset
+- Tipo: Classificação binária  
+- Instâncias: 768  
+- Atributos: 8 + classe  
+- Fonte: Kaggle
 
+## 3.4. Ionosphere Dataset
+- Tipo: Classificação binária  
+- Instâncias: 351  
+- Atributos: 34 + classe  
+- Fonte: UCI
 
-## Técnicas de Otimização
+## 3.5. Segment Dataset
+- Tipo: Classificação ou Clusterização  
+- Instâncias: 2100  
+- Atributos: 19 + classe  
+- Fonte: UCI
 
+## 3.6. CPU with Vendor Dataset
+- Tipo: Regressão  
+- Instâncias: 209  
+- Atributos: 8 + performance  
+- Fonte: UCI
 
+## 3.7. Telecom Dataset
+- Tipo: Clusterização  
+- Fonte: Convertido de ARFF
 
-## Recursos Necessários
+## 3.8. AirQuality Dataset
+- Tipo: Regressão  
+- Fonte: UCI
 
-- **Slides e Notebooks de Exemplo**: Disponíveis no repositório [Notas de Aula](https://github.com/klaytoncastro/idp-machinelearning/blob/main/optimization/ML_Optimization.pdf) e nos arquivos `.ipynb` de otimização.
-- **Documentação do scikit-learn**: [scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
-- **Documentação do XGBoost**: [XGBoost Documentation](https://xgboost.readthedocs.io/en/latest/)
-- **Documentação do LightGBM**: [LightGBM Documentation](https://lightgbm.readthedocs.io/en/latest/)
+## 3.9. Bank Dataset
+- Tipo: Classificação e Clusterização  
+- Fonte: WekaLearningDataset
 
-## Métricas de Avaliação
+---
 
-Os modelos devem ser avaliados utilizando as seguintes métricas:
+# 4. Prova Prática — 1ª Avaliação (AV1)
 
-- **Acurácia**: Percentual de previsões corretas sobre o total de previsões.
-- **Precisão**: Proporção de verdadeiros positivos sobre o total de positivos previstos.
-- **Recall**: Proporção de verdadeiros positivos sobre o total de positivos reais.
-- **F1-Score**: Média harmônica entre precisão e recall, equilibrando ambos.
+## 4.1. Instruções
 
-## Formato do Relatório
-Cada estudante ou dupla deverá documentar o processo de otimização, com as seguintes seções:
+Escolha e resolva **1 desafio de cada tipo**:
 
-1. **Introdução ao Algoritmo**: Descrição do algoritmo utilizado e de seus principais hiperparâmetros.
-2. **Metodologia**: Explicação das técnicas de otimização e hiperparâmetros testados. Justifique a escolha das métricas usadas para otimização.
-3. **Resultados**: Apresente uma comparação dos resultados das três técnicas de otimização e seus respectivos desempenhos. Inclua gráficos, tabelas e discussões sobre os tempos de execução e a efetividade de cada método.
-4. **Discussão**: Reflexões sobre os resultados, com possíveis melhorias para otimização e sobre o impacto da escolha dos hiperparâmetros.
+- 1 de Classificação
+- 1 de Regressão
+- 1 de Clusterização
 
-## Apresentação
+Cada notebook deve conter:
+1. Descrição do problema  
+2. Análise exploratória dos dados  
+3. Estratégia de pré-processamento  
+4. Escolha de modelo(s) e justificativa  
+5. Avaliação dos resultados com métricas ou visualizações  
+6. Conclusões interpretadas
 
-Os resultados deverão ser apresentados em sala de aula, com o uso de gráficos e tabelas que ilustrem o impacto das diferentes técnicas de otimização sobre o desempenho do modelo. 
+## 4.2. Datasets disponíveis
 
+### Classificação 
+- `iris.csv`  
+- `vote.csv`  
+- `diabetes.csv`  
+- `ionosphere.csv`  
+- `segment-test.csv`  
+- `bank.csv`  
 
-<!--
+### Regressão
+- `cpu.with.vendor.csv`  
+- `airquality.csv`  
 
-## Tarefa 01: 
+### Clusterização
+- `segment-test.csv`  
+- `telecom.csv`  
+- `bank.csv`  
 
-- Após **executar os notebooks passo a passo**, **entender o que o código está realizando**, responda: 
+## 4.3. Avaliação
 
-a) Quais células precisam ser ajustadas no notebook da tarefa de classificação? Por que? 
+| Critério                                | Pontos por desafio |
+|-----------------------------------------|--------------------|
+| Organização e estrutura do notebook     | 1.0                |
+| Qualidade da análise e pré-processamento| 1.0                |
+| Aplicação e justificativa do modelo     | 1.0                |
+| Avaliação dos resultados                | 1.0                |
+| Clareza das conclusões                  | 1.0                |
 
-b) Quais células precisam ser ajustadas no notebook da tarefa de regressão? Por que? 
+Total por desafio: **5.0 pontos × 3 = 15.0 pontos**  
+Nota será proporcionalizada.
 
-- Agora prossiga para as tarefas abaixo, onde o encorajamos a **explorar outros algoritmos** e **avaliar o seu desempenho**. 
+## 4.4. Bônus (até +1.0 ponto)
 
-## Tarefa 02: 
+Implemente **otimização de hiperparâmetros** com:
 
-- Teste outros algoritmos para tarefas de classificação (color) e regressão (quality), conforme a pesquisa em grupo apresentada em sala de aula. 
+- `GridSearchCV`  
+- `RandomizedSearchCV`  
+- `Otimização Bayesiana` 
 
-- Para problemas de classificação, além do algoritmo `ExtraTreesClassifier`, que faz uma robusta implementação baseada em Árvore de Decisão, `Naive Bayes` e `Support Vector Machine (SVM)` são alternativas populares, dependendo da natureza dos dados e do problema específico que você está tentando resolver. 
+> Apresente e compare os resultados. Mostre os melhores parâmetros e o impacto nas métricas.
 
-### Usando Naive Bayes para Classificação
+---
 
-O Naive Bayes é uma técnica de classificação baseada em aplicar o teorema de Bayes com a "ingenuidade" de supor independência entre os preditores. É fácil de construir e particularmente útil para grandes volumes de dados. Além disso, é eficaz em problemas de classificação multinomial e binomial. 
+# 5. Otimização de Hiperparâmetros em Machine Learning
 
-Existem diferentes implementações de Naive Bayes no Scikit-Learn, adequados para diferentes tipos de dados:
+## 5.1. Métodos
 
-- GaussianNB: Usado em classificação onde as features são contínuas e seguem uma distribuição normal.
-- MultinomialNB: Bom para quando suas features são contagens ou frequências de termos (comumente usado em classificação de texto).
-- BernoulliNB: Adequado para features binárias.
+- **Grid Search**  
+- **Randomized Search**  
+- **Otimização Bayesiana (com skopt)**
 
-```python
+## 5.2. Algoritmos Sugeridos
 
-from sklearn.naive_bayes import GaussianNB
+- Decision Tree  
+- Random Forest  
+- Extra Tree  
+- Extra Trees  
+- XGBoost  
+- LightGBM  
+- Naive Bayes  
+- Logistic Regression  
+- SVM  
+- k-NN  
 
-# Para dados com features contínuas que seguem uma distribuição aproximadamente normal
-modelo_nb = GaussianNB()
+## 5.3. Métricas
 
-modelo_nb.fit(X_train, y_train)
-y_pred = modelo_nb.predict(X_test)
+- **Acurácia**  
+- **Precisão**  
+- **Recall**  
+- **F1-Score**
 
-```
+Para regressão:
+- **MAE**
+- **MSE**
+- **RMSE**
+- **R²**
 
-### Usando SVM para Classificação
+## 5.4. Relatório Sucinto no Notebook (Markdown)
 
-O Support Vector Machine (SVM) é um método poderoso e versátil para tarefas de classificação e detecção de outliers. Para classificação, especialmente em casos de categorias claramente distintas, o SVM pode ser eficaz. O `Scikit-Learn` oferece várias implementações do SVM, incluindo SVC (Support Vector Classification), que é mais comumente usado para problemas de classificação. Teste e avalie os resultados: 
+1. Introdução ao Algoritmo  
+2. Metodologia  
+3. Resultados com gráficos e comparação  
+4. Discussão sobre impacto e custo computacional
 
-```python
-from sklearn.svm import SVC
-# Inicializando o classificador SVM com um kernel. O padrão é 'rbf', mas pode ser alterado para 'linear', 'poly', etc.
-modelo_svm = SVC(kernel='linear')
+---
 
-modelo_svm.fit(X_train, y_train)
-y_pred = modelo_svm.predict(X_test)
-```
-
-### Usando Regressão Logística
-
-Embora seja chamada de regressão, esta técnica é utilizada para classificação binária (prever entre duas classes). Estima probabilidades usando uma função logística que mapeia qualquer valor real para um valor entre 0 e 1. É ideal para problemas onde a variável dependente é categórica (por exemplo, sim/não, verdadeiro/falso).
-
-```python
-from sklearn.linear_model import LogisticRegression
-
-# Criando uma instância do modelo
-model = LogisticRegression()
-
-# Treinando o modelo com os dados de treino
-model.fit(X_train, y_train)
-```
-
-### Avaliação dos Modelos
-
-Após treinar o seu modelo, você precisa avaliar o quão bem ele performa. Para classificação, vimos que métricas comuns incluem acurácia, precisão, recall, e a F1-score. O Scikit-Learn fornece funções prontas para calcular essas métricas:
-
-```python
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-
-print("Acurácia:", accuracy_score(y_test, y_pred))
-print("Precisão:", precision_score(y_test, y_pred, average='macro'))
-print("Recall:", recall_score(y_test, y_pred, average='macro'))
-print("F1 Score:", f1_score(y_test, y_pred, average='macro'))
-```
-
-- Qual algoritmo performou melhor? 
-
-- Qual algoritmo foi mais rápido? 
-
-## Tarefa 03
-
-
-
-### Support Vector Machine (SVM) para Regressão (SVR)
-
-O SVM não serve apenas para classificação. O Support Vector Regression (SVR) é a versão do SVM usada para problemas de regressão. O SVR pode ser eficaz em espaços de alta dimensão e em casos onde o número de dimensões excede o número de amostras.
-
-```python
-from sklearn.svm import SVR
-
-modelo_svr = SVR(kernel='linear') # Você pode experimentar com diferentes kernels como 'linear', 'poly', 'rbf'.
-```
-
-### Regressão Linear
-
-Um dos métodos mais simples e amplamente usados. Bom ponto de partida para problemas de regressão devido à sua simplicidade e interpretabilidade.
-
-```python
-from sklearn.linear_model import LinearRegression
-
-modelo_lr = LinearRegression()
-```
-
-### Regressão Ridge
-
-```python
-from sklearn.linear_model import Ridge
-
-modelo_ridge = Ridge(alpha=1.0) # O parâmetro alpha controla a força da regularização.
-```
-
-### Regressão Lasso
-
-```python
-from sklearn.linear_model import Lasso
-
-modelo_lasso = Lasso(alpha=0.1)
-```
-
-### Random Forest Regressor
-
-```python
-from sklearn.ensemble import RandomForestRegressor
-
-modelo_rfr = RandomForestRegressor()
-```
-
-### Avaliação dos Modelos
-
-Ao invés de Precision, Recall, F1-Score, que são métricas adequadas para tarefas de classificação, utilize MSE, RMSE, MAE e coeficiente R2, que são adequadas a um problema de regressão e verifique o desempenho de seu modelo. 
-
-```python
-# Calculando as métricas, onde y_pred contém as previsões e y_test os valores reais
-mse = mean_squared_error(y_test, y_pred)
-rmse = np.sqrt(mse)
-mae = mean_absolute_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-
-# Imprimindo as métricas
-print("MSE:", mse)
-print("RMSE:", rmse)
-print("MAE:", mae)
-print("R²:", r2)
-```
-
-- Agora responda: 
-
-a) Qual algoritmo performou melhor? Por que? 
-
-b) Qual algoritmo foi executado mais rápido e qual foi executado com maior dificuldade? 
-
-c) Como podemos conciliar o impacto entre o tempo de execução e o custo benefício para obter performance? 
-
-## Tarefa 04
-
-- Chegou a hora de refinar seu modelo ML de forma iterativa. Observe a relação com a variável alvo: explore como as variáveis se relacionam. 
-
-a) Qual o impacto dos outliers? 
-
-b) Quais variáveis podem ser removidas no modelo para previsão da qualidade? 
-
-c) Após remover essas variáveis (utilize o Pandas para isso), como se ajusta o modelo e se comportam as métricas de avaliação? 
-
-d) Otimize o desempenho utilizando como base as métricas obtidas na tarefa de regressão, onde há maior margem para otimização. 
-
-- Os estudantes que conseguirem realizar uma otimização e explicar com sucesso o trabalho realizado receberão pontuação extra! 
-
-| **Métrica** | **Valor**          |
-|---------|------------------------|
-| Acurácia| 0.54281651011084       |
-| MSE     | 0.3498934358974359     |
-| RMSE    | 0.5915179083488816     |
-| MAE     | 0.39295384615384615    |
-| R²      | 0.54281651011084       |
-| **Pós-Arrendondamento**          |
-| Acurácia ajustada | 0.9702564102564103 | 
-| MSE ajustado | 0.4266666666666667 | 
-| RMSE ajustado | 0.6531972647421809| 
-| MAE ajustado | 0.3517948717948718 | 
-| R² ajustado | 0.449534747610121   | 
-
-- **Boa Sorte!** 
-
--->
+**Boa sorte!**
