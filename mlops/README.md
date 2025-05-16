@@ -1,20 +1,21 @@
-# Como colocar seu primeiro modelo de Machine Learning em produção
+# Visão Geral de MLOps: como colocar seu modelo de Machine Learning em produção? 
 
 ## 1. Introdução
 
-Nos dias de hoje, o uso de Machine Learning (ML) tem se tornado relevante em aplicações web modernas, impulsionando serviços em tempo real, personalização de conteúdo, previsões automatizadas, e muito mais. Assim, seu uso vai além da ciência de dados, tornando-se cada vez mais comum em áreas como e-commerce, saúde e redes sociais, dentre outras. Dessa forma, para colocar um modelo de ML em produção, integrando-o com uma aplicação web, podemos tirar proveito dessas capacidades em um ambiente prático, que envolve não apenas a criação do modelo, mas também sua implementação eficiente em plataformas de fácil acesso. 
+O Machine Learning (ML) é uma tecnologia cada vez mais presente em aplicações modernas, oferecendo soluções para personalização de conteúdo, automação de decisões e previsões em tempo real. Seu uso vai além da ciência de dados, alcançando áreas como e-commerce, saúde, redes sociais, entre outras. Neste projeto, você criará uma API simples para executar seu modelo de ML, aprenderá sobre roteamento de aplicativos web, conteúdo estático e dinâmico, além de utilizar o depurador para corrigir eventuais erros.
 
+<!--
 Nesse cenário, o Flask é um microframework Python para desenvolvimento ágil de aplicativos web, adequado tanto para iniciantes quanto para desenvolvedores mais experientes. Ele é bastante leve e extensível, permitindo expandir facilmente seu aplicativo para operar com bibliotecas mais avançadas, aproveitando todo o poder da linguagem Python e a flexibilidade da web, permitindo que você comece pequeno, escolhendo apenas as peças necessárias, e cresça à medida que seu projeto se desenvolve. 
 
 Também utilizaremos o Docker, uma solução de virtualização leve que permite empacotar aplicações e todas as suas dependências (bibliotecas, configurações e código) em ambientes isolados, chamados containers. Esses containers são altamente portáveis e podem ser executados em qualquer sistema operacional compatível. Essa solução é amplamente adotada no mercado para criar ambientes replicáveis e consistentes, eliminando a necessidade de configurar e instalar manualmente cada aplicação em diferentes máquinas.
 
-Nest projeto, você criará uma API simples para executar seu modelo de ML, aprenderá sobre roteamento de aplicativos web, conteúdo estático e dinâmico, além de utilizar o depurador para corrigir eventuais erros.
+---
 
-## 2. Preparação do Ambiente
+## 3. Preparação do Ambiente
 
 Nos sistemas Microsoft Windows, recomenda-se a utilização do WSL (Windows Subsystem for Linux) para a instalação do Docker. O WSL é um recurso nativo do Windows que permite a execução de distribuições Linux sem a necessidade de emulação ou virtualização completa, como o Microsoft Hyper-V ou Oracle VirtualBox. Projetado para facilitar o desenvolvimento de software no Windows, o WSL oferece uma integração simplificada entre os dois sistemas operacionais, tornando o uso do Docker mais eficiente e acessível. O uso do Docker, em conjunto com o WSL, é essencial para garantir a replicabilidade do ambiente de desenvolvimento, independentemente do sistema operacional usado por cada estudante.
 
-**Nota**: Usuários de sistemas baseados em Linux ou macOS não precisam utilizar o WSL, pois esses sistemas já possuem suporte nativo ao Docker. Para executar containers, basta instalar o Docker diretamente, sem a necessidade de qualquer subsistema ou ferramenta adicional.
+**Nota**: Usuários de sistemas baseados em Linux ou MacOS não precisam utilizar o WSL, pois esses sistemas já possuem suporte nativo ao Docker. Para executar containers, basta instalar o Docker diretamente, sem a necessidade de qualquer subsistema ou ferramenta adicional.
 
 ### Passo 1: Verificação dos Requisitos
 Certifique-se de ter uma versão compatível do Windows 10 ou superior e o recurso de virtualização habilitado (VT-x para os processadores da família Intel e AMD-V para os processadores da família AMD). 
@@ -55,7 +56,23 @@ wsl --set-default-version 2
 - Para começar, inicie o Docker Desktop e, depois, o aplicativo WSL. Se preferir, você pode utilizar o terminal com Powershell e invocar o wsl.exe diretamente no Visual Studio Code (VS Code) para gerenciar seus containers e desenvolver seus projetos.
 - A partir daqui, você poderá seguir as instruções do professor para completar os exercícios práticos. Se surgir qualquer dúvida, consulte os materiais de apoio indicados no Canvas e neste repositório. 
 
-## 3. Exportação do Modelo Treinado
+-->
+
+## 2. Conceitos de MLOps
+
+Em muitos cenários, construir um modelo de Machine Learning (ML) é apenas o começo. Com o tempo, esses modelos podem se degradar à medida que os dados utilizados para treinamento se tornam obsoletos ou mudam significativamente. Manter o modelo operacional e preciso em produção torna-se um grande desafio.
+
+MLOps (Machine Learning Operations) é uma prática que une o desenvolvimento de modelos de ML com operações de TI (DevOps), garantindo que esses modelos sejam implantados, monitorados, mantidos e escaláveis em ambientes de produção. Seu principal objetivo é garantir que os modelos de ML sejam continuamente integrados, implantados e monitorados com eficiência e confiabilidade.
+
+Para isso, o MLOps abrange todo o ciclo de vida do modelo, desde o treinamento inicial até a implantação e manutenção. Isso inclui práticas como automação e versionamento, que garantem que novos modelos sejam atualizados e testados sem interrupções, evitando falhas e inconsistências. Um aspecto fundamental do MLOps é a Integração Contínua e Implantação Contínua (CI/CD), que permite que novos modelos sejam rapidamente integrados ao ambiente de produção por meio de pipelines automatizados.
+
+O monitoramento contínuo é outra prática essencial do MLOps. Ele inclui o registro de todas as previsões feitas pela API, juntamente com os dados de entrada e o armazenamento dos resultados reais. Com esses dados, é possível comparar as previsões com os resultados reais e calcular métricas de desempenho, avaliando se o modelo está se degradando ao longo do tempo.
+
+Um conceito importante relacionado ao monitoramento é o drift, que ocorre quando os padrões dos dados de entrada ou a relação entre as variáveis e o alvo mudam. O drift de dados reflete mudanças nos padrões dos dados, enquanto o drift de conceito afeta diretamente a capacidade do modelo de realizar previsões corretas. Monitorar a distribuição das variáveis de entrada e o desempenho do modelo ao longo do tempo permite detectar esses problemas.
+
+Finalmente, um pipeline de avaliação contínua é recomendável para garantir que o modelo permaneça confiável. Esse pipeline deve registrar automaticamente as previsões do modelo, armazenar os resultados reais, calcular métricas periodicamente e gerar alertas caso o desempenho caia abaixo de um limite aceitável. Dessa forma, o modelo mantém sua precisão e utilidade em um ambiente de produção.
+
+## 3. Primeiro Passo: Exportação do Modelo Treinado
 
 Uma etapa crucial na implementação de um modelo de ML em produção é a exportação do modelo treinado para um formato que possa ser facilmente carregado e utilizado por aplicações. Geralmente optamos pelo uso do formato `pickle` para realizar essa tarefa. O formato `pickle` oferece uma maneira padrão para serializar objetos em Python. Isso significa que ele pode transformar qualquer objeto Python, incluindo modelos complexos de Machine Learning, em uma sequência de bytes que pode ser salva em um arquivo.
 
@@ -206,6 +223,18 @@ Escolha um problema de classificação ou regressão de sua preferência. Por ex
 
 Utilize o conjunto de dados escolhido para desenvolver e treinar um modelo de ML, optando por um algortimo como RandomForest, Decision Tree, Linear Regression, ExtraTrees, LightGBM, XGBoost, etc. Após o treinamento, exporte o modelo para um arquivo `.pkl` e adapte a aplicação Flask que apresentamos acima para corresponder à sua escolha. Use os arquivos `.ipynb` e `.json` [desta pasta](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production/models) como referência para a exportação do modelo e faça os ajustes necessários. 
 
-## Pronto! 
+## Conclusão 
 
-Você criou um pequeno aplicativo web com o Flask, adicionou rotas estáticas e dinâmicas e aprendeu a usar o depurador. A partir daqui, você pode expandir seu aplicativo, integrando-o com bancos de dados, formulários e aprimorando seu visual com CSS e HTML. A exportação de modelos em formato pickle é uma prática eficiente para a implantação de modelos de ML em produção, oferecendo uma forma rápida de disponibilizar as capacidades preditivas do modelo com a eficiência necessária para aplicações em tempo real.
+O MLOps é uma abordagem essencial para garantir que os modelos de Machine Learning sejam confiáveis, escaláveis e facilmente mantidos em produção. A exportação de modelos em formato `pickle` é uma prática eficiente para a implantação de modelos de ML em produção, oferecendo uma forma rápida de disponibilizar as capacidades preditivas do modelo com a eficiência necessária para aplicações em tempo real. Além disso, você criou um pequeno aplicativo web com o Flask, adicionou rotas estáticas e dinâmicas e aprendeu a usar o depurador. Com isso, você aprendeu a base para colocar um modelo de Machine Learning em produção. No futuro, poderá explorar outros formatos de exportação de modelo e implementar estratégias de monitoramento contínuo para garantir que o modelo mantenha sua precisão diante de mudanças nos dados.
+
+<!--
+
+A partir daqui, você pode expandir seu aplicativo, integrando-o com bancos de dados, formulários e aprimorando seu visual com CSS e HTML. 
+
+Você criou um pequeno aplicativo web com o Flask, adicionou rotas estáticas e dinâmicas e aprendeu a usar o depurador. A exportação de modelos em formato pickle é uma prática eficiente para a implantação de modelos de ML em produção, oferecendo uma forma rápida de disponibilizar as capacidades preditivas do modelo com a eficiência necessária para aplicações em tempo real.
+
+O MLOps é uma abordagem essencial para garantir que os modelos de Machine Learning sejam confiáveis, escaláveis e facilmente mantidos em produção. Ele permite que os modelos sejam implantados, monitorados e ajustados de maneira contínua, garantindo que mantenham seu desempenho ao longo do tempo.
+
+Nesta aula, você aprendeu a base para colocar um modelo de Machine Learning em produção. No futuro, poderá explorar outros formatos de exportação de modelo, como joblib, e implementar estratégias de monitoramento contínuo para garantir que o modelo mantenha sua precisão, mesmo diante de mudanças nos dados.
+
+-->
