@@ -225,7 +225,7 @@ Utilize o conjunto de dados escolhido para desenvolver e treinar um modelo de ML
 
 ## Conclusão 
 
-O MLOps é uma abordagem essencial para garantir que os modelos de Machine Learning sejam confiáveis, escaláveis e facilmente mantidos em produção. A exportação de modelos em formato `pickle` é uma prática eficiente para a implantação de modelos de ML em produção, oferecendo uma forma rápida de disponibilizar as capacidades preditivas do modelo com a eficiência necessária para aplicações em tempo real. Além disso, você criou um pequeno aplicativo web com o Flask, adicionou rotas estáticas e dinâmicas e aprendeu a usar o depurador. Com isso, você aprendeu a base para colocar um modelo de Machine Learning em produção. No futuro, poderá explorar outros formatos de exportação de modelo e implementar estratégias de monitoramento contínuo para garantir que o modelo mantenha sua precisão diante de mudanças nos dados.
+O MLOps é uma abordagem essencial para garantir que os modelos de Machine Learning sejam confiáveis, escaláveis e facilmente mantidos em produção. A exportação de modelos em formato `pickle` para uso por uma web API com o Flask é uma prática eficiente para a implantação de modelos de ML em produção, disponibilizando rapidamente as capacidades preditivas de modelo um modelo para aplicações em tempo real. No futuro, poderermos explorar outros formatos de exportação de modelo e estratégias de monitoramento contínuo para garantir que o modelo mantenha sua efetividade, diante de mudanças de padrões e comportamentos dos usuários. 
 
 <!--
 
