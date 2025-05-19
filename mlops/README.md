@@ -206,8 +206,7 @@ curl -X POST -H "Content-Type: application/json" -d @ruim.json http://localhost:
 
 ### Depurando seu aplicativo
 
-O Flask possui um depurador embutido. No nosso ambiente, quando você executa o comando `docker-compose logs`, poderá verificar quais são os eventuais erros e assim corrigir o código de seu aplicativo. 
-
+O Flask possui um depurador embutido. No nosso ambiente, quando você executa o comando `docker-compose logs`, poderá verificar quais são os eventuais erros e assim corrigir o código de seu aplicativo.
 
 ## 5. Tarefa: Coloque outro modelo de ML em Produção
 
@@ -217,15 +216,18 @@ Nesta atividade, você vai selecionar um problema de classificação ou regress�
 
 ### Instruções
 
-Escolha um problema de classificação ou regressão de sua preferência. Por exemplo, você pode optar por utilizar alguns dos datasets que já trabalhamos, como o Air Quality para prever a qualidade do ar, California Housing, para prever o preço de casas, que são tarefas de regressão, ou Bank Marketing para prever se um cliente irá adquirir ou não um produto (classificação) ou, ainda, o pacote `sklearn.datasets`, que disponibiliza alguns conjuntos de dados como o Iris para prever o tipo de uma flor, e outros mais. Caso deseje, você também pode optar por algum dataset diferente! Pesquise no [Kaggle](https://kaggle.com) um conjunto de dados popular para desenvolver sua aplicação. 
+Escolha um problema de classificação ou regressão de sua preferência. Por exemplo, você pode optar por utilizar alguns dos datasets que já trabalhamos, como o Air Quality para prever a qualidade do ar, California Housing, para prever o preço de casas, que são tarefas de regressão, ou Bank Marketing para prever se um cliente irá adquirir ou não um produto (classificação) ou, ainda, o pacote `sklearn.datasets`, que disponibiliza alguns conjuntos de dados como o Iris para prever o tipo de uma flor, e outros mais.
 
-### Treinamento do modelo:
+### Treinamento do modelo
 
-Utilize o conjunto de dados escolhido para desenvolver e treinar um modelo de ML, optando por um algortimo como RandomForest, Decision Tree, Linear Regression, ExtraTrees, LightGBM, XGBoost, etc. Após o treinamento, exporte o modelo para um arquivo `.pkl` e adapte a aplicação Flask que apresentamos acima para corresponder à sua escolha. Use os arquivos `.ipynb` e `.json` [desta pasta](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production/models) como referência para a exportação do modelo e faça os ajustes necessários. 
+Utilize o conjunto de dados escolhido para desenvolver e treinar um modelo de ML, optando por um algoritmos como RandomForest, Decision Tree, Linear Regression, ExtraTrees, LightGBM, XGBoost, etc. Após o treinamento, exporte o modelo para um arquivo `.pkl` e adapte a aplicação Flask que apresentamos acima para corresponder à sua escolha.
 
-## Conclusão 
+<!--
+Use os arquivos `.ipynb` e `.json` [desta pasta](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production/models) como referência para a exportação do modelo e faça os ajustes necessários.-->
 
-O MLOps é uma abordagem essencial para garantir que os modelos de Machine Learning sejam confiáveis, escaláveis e facilmente mantidos em produção. A exportação de modelos em formato `pickle` para uso por uma web API com o Flask é uma prática eficiente para a implantação de modelos de ML em produção, disponibilizando rapidamente as capacidades preditivas de modelo um modelo para aplicações em tempo real. No futuro, poderermos explorar outros formatos de exportação de modelo e estratégias de monitoramento contínuo para garantir que o modelo mantenha sua efetividade, diante de mudanças de padrões e comportamentos dos usuários. 
+## Conclusão
+
+O MLOps é uma abordagem essencial para garantir que os modelos de Machine Learning sejam confiáveis, escaláveis e facilmente mantidos em produção. A exportação de modelos em formato `pickle` para uso por uma web API com o Flask é uma prática eficiente para a implantação de modelos de ML em produção, disponibilizando rapidamente as capacidades preditivas de modelo um modelo para aplicações em tempo real. No futuro, poderermos explorar outros formatos de exportação de modelo e estratégias de monitoramento contínuo para garantir que o modelo mantenha sua efetividade, diante de mudanças de padrões e comportamentos dos usuários.
 
 <!--
 
