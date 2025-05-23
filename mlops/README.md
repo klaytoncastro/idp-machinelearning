@@ -119,7 +119,7 @@ Clone o repositório `ìdp-machinelearning` e acesse a pasta `production` e o ar
 ```bash
 cd /opt
 git clone https://github.com/klaytoncastro/idp-machinelearning
-cd idp-machinelearning/production
+cd idp-machinelearning/mlops
 
 ```
 
@@ -128,8 +128,7 @@ cd idp-machinelearning/production
 Vá até o diretório `/opt/idp-machinelearning/production` e suba o container do aplicativo web. 
 
 ```bash
-docker-compose build
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 Verifique se o contêiner está ativo e sem erros de implantação. 
@@ -140,9 +139,18 @@ docker-compose logs
 ```
 Agora, acesse `http://127.0.0.1:5000/example` e verifique o retorno do `.json` de exemplo. 
 
+Como ambiente já foi construído, precisará de novo processo de build apenas se forem adicionadas novas biblitecas (`requirements.txt`). Para parar ou iniciar o container ou subir o container basta usar os comandos abaixo: 
+
+```bash
+#Parar
+docker-compose down
+#Iniciar
+docker-compose up -d
+```
+
 ### Roteamento e visualizações
 
-Roteamento refere-se ao mapeamento de URLs específicas para funções em um aplicativo web. Em outras palavras, quando você acessa um determinado endereço em um navegador web (ou através de uma chamada API), o aplicativo precisa saber qual função deve ser executada e o que deve ser retornado para o usuário. No Flask, isso é feito através do uso de decoradores, como `@app.route()`, para associar funções específicas a URLs. Por exemplo:
+Roteamento refere-se ao mapeamento de URLs específicas para funções em um aplicativo web. Em outras palavras, quando você acessa um determinado endereço em um navegador web (ou através de uma chamada API), o aplicativo precisa saber qual função deve ser executada e o que deve ser retornado para o usuário. No Flask, isso é feito através do uso de decoradores, como `@app.route()`, para associar funções específicas a URLs. Por exemplo, adicione isso ao arquivo `app.py`:
 
 ```python
 @app.route('/inicio')
@@ -150,7 +158,7 @@ def inicio():
     return "Página Inicial"
 ```
 
-Dessa forma, você poderá acessar os *end-points* `http://127.0.0.1:5000/<nome_end-point>` e verá as respectivas páginas em seu navegador. 
+Dessa forma, você poderá parar e iniciar o container acessar os *end-points* `http://127.0.0.1:5000/<nome_end-point>` e verá as respectivas páginas em seu navegador. 
 
 ### Rotas Dinâmicas
 
