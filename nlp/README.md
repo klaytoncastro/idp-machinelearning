@@ -94,7 +94,7 @@ Antes de alimentar o texto em modelos de NLP, é necessário transformá-lo em u
 
 ### Tarefa 1: Análise de Sentimentos com Hugging Face Transformers
 
-Nesta tarefa, usaremos a biblioteca Hugging Face Transformers para realizar análise de sentimentos em texto. O modelo pré-treinado de análise de sentimentos permite classificar um texto como "positivo", "negativo" ou "neutro". Utilizem como base a infraestrutura que implementamos com Flask em [Production](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production). Implementem uma nova rota na aplicação para avaliar textos utilizando um modelo de classificação de sentimentos pré-treinado da [Hugging Face](https://huggingface.co/blog/sentiment-analysis-python). 
+Nesta tarefa, usaremos a biblioteca Hugging Face Transformers para realizar análise de sentimentos em texto. O modelo pré-treinado de análise de sentimentos permite classificar um texto como "positivo", "negativo" ou "neutro". Utilizem como base a infraestrutura que implementamos com Flask em [mlops](https://github.com/klaytoncastro/idp-machinelearning/tree/main/mlops). Implementem uma nova rota na aplicação para avaliar textos utilizando um modelo de classificação de sentimentos pré-treinado da [Hugging Face](https://huggingface.co/blog/sentiment-analysis-python). 
 
 Vocês deverão modificar o código existente para carregar o modelo de análise de sentimentos e criar uma rota `/analyze_sentiment` que aceite requisições `POST` com um `JSON` contendo um texto e retorne o sentimento classificado como 'positivo', 'negativo' ou 'neutro'. Essa rota deve aceitar requisições POST com um JSON contendo o texto a ser analisado, conforme exemplo abaixo: 
 
@@ -102,7 +102,7 @@ Vocês deverão modificar o código existente para carregar o modelo de análise
 { "text": "Seu texto aqui" }
 ```
 
-Testem a nova funcionalidade utilizando a ferramenta `curl`, similares aos mostrados anteriormente na atividade [Production](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production): 
+Testem a nova funcionalidade utilizando a ferramenta `curl`, similares aos mostrados anteriormente na atividade [mlops](https://github.com/klaytoncastro/idp-machinelearning/tree/main/mlops): 
 
 ```bash
 curl -X POST http://localhost:5000/analyze_sentiment \

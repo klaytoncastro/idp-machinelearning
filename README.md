@@ -73,13 +73,13 @@ O repositório é organizado em subpastas, cada uma correspondente a um desafio 
 
 Cada desafio é uma experiência prática, onde você aplicará o conhecimento adquirido para explorar novas ferramentas, técnicas e resolver problemas reais. Desde a análise exploratória de dados até a construção e otimização de modelos de Machine Learning, você terá a oportunidade de aprofundar seu aprendizado de forma progressiva.
 
+<!--
+
 | #  |Tarefa                          | Tipo de Problema | Prazo      |
 |----|--------------------------------|------------------|------------|
 | 01 | [Wine Quality](./winequality/) | Classificação    | 14/03/2025 |
 | 02 | [Air Quality](./airquality/)   | Regressão        | 28/03/2025 |
 | 03 | [Bank](./bank/)                | Agrupamento      | 18/04/2025 |
-
-<!--
 
 | 02 | [Wine Quality - Tarefa de Regressão](./airquality/) | 28/02/2025 |
 

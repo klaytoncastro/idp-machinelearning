@@ -1,0 +1,53 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontSize 12
+left to right direction
+
+title Rede Neural - Estrutura com Ligações Claras
+
+' Entrada
+package "Camada de Entrada\n(recebe os dados)" {
+    () x1
+    () x2
+    () x3
+}
+
+' Oculta
+package "Camada Oculta\n(processamento intermediário)" {
+    () h1
+    () h2
+    () h3
+}
+
+' Saída
+package "Camada de Saída\n(previsão ou classificação)" {
+    () y1
+}
+
+' Forçar ordem vertical
+x1 -[hidden]-> x2
+x2 -[hidden]-> x3
+
+h1 -[hidden]-> h2
+h2 -[hidden]-> h3
+
+' Conexões entrada → oculta
+x1 --> h1
+x1 --> h2
+x1 --> h3
+
+x2 --> h1
+x2 --> h2
+x2 --> h3
+
+x3 --> h1
+x3 --> h2
+x3 --> h3
+
+' Conexões oculta → saída
+h1 --> y1
+h2 --> y1
+h3 --> y1
+
+@end
