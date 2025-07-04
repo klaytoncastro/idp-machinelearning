@@ -73,14 +73,24 @@ O repositório é organizado em subpastas, cada uma correspondente a um desafio 
 
 Cada desafio é uma experiência prática, onde você aplicará o conhecimento adquirido para explorar novas ferramentas, técnicas e resolver problemas reais. Desde a análise exploratória de dados até a construção e otimização de modelos de Machine Learning, você terá a oportunidade de aprofundar seu aprendizado de forma progressiva.
 
+| #  |Tarefa                            | Tipo de Problema                       | Prazo      |
+|----|----------------------------------|----------------------------------------|------------|
+| 01 | [Wine Quality](./winequality/)   | Classificação                          | xx/xx/2025 |
+| 02 | [Air Quality](./airquality/)     | Regressão                              | xx/xx/2025 |
+| 03 | [California](./california/)      | Regressão                              | xx/xx/2025 |
+| 04 | [Mall](./mall/)                  | Agrupamento                            | xx/xx/2025 |
+| 05 | [Iris](./iris/)                  | Agrupamento                            | xx/xx/2025 |
+| 05 | [Bank](./bank/)                  | Agrupamento & Classificação            | xx/xx/2025 |
+| 06 | [Datasets](./datasets/)          | Classificação, Regressão & Agrupamento | xx/xx/2025 |
+| 07 | [Rules](./rules/)                | Regras de Associação                   | xx/xx/2025 |
+| 08 | [Optimization](./optimization/)  | Otimização de Modelos de ML            | xx/xx/2025 |
+| 09 | [Reinforcement](./reinforcement/)| Aprendizagem por Reforço               | xx/xx/2025 |
+| 10 | [RNA](./rna/)                    | Redes Neurais Artificiais              | xx/xx/2025 |
+| 11 | [NLP](./nlp/)                    | Processamento de Linguagem Natural     | xx/xx/2025 |
+| 12 | [MLOps](./mlops/)                | Implantação de Aplicações de ML        | xx/xx/2025 |
+| 14 | [CRISP-DM](./crisp/)             | Projeto Fim a Fim de ML                | xx/xx/2025 |
+
 <!--
-
-| #  |Tarefa                          | Tipo de Problema | Prazo      |
-|----|--------------------------------|------------------|------------|
-| 01 | [Wine Quality](./winequality/) | Classificação    | 14/03/2025 |
-| 02 | [Air Quality](./airquality/)   | Regressão        | 28/03/2025 |
-| 03 | [Bank](./bank/)                | Agrupamento      | 18/04/2025 |
-
 | 02 | [Wine Quality - Tarefa de Regressão](./airquality/) | 28/02/2025 |
 
 Submeta aqui todos os notebooks em formato .ipynb contendo a resolução das atividades que você realizou individualmente durante nossas aulas práticas. 
