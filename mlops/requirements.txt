@@ -1,5 +1,7 @@
-flask
-joblib
+Flask==2.2.5
+Werkzeug==2.2.3
+joblib==1.3.2
 scikit-learn==1.2.2
-flasgger
-python-dotenv
+numpy==1.24.4
+flasgger==0.9.7.1
+python-dotenv==1.0.1
