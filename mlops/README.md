@@ -125,7 +125,7 @@ cd idp-machinelearning/mlops
 
 ### Executando o aplicativo 
 
-Vá até o diretório `/opt/idp-machinelearning/production` e suba o container do aplicativo web. 
+Vá até o diretório `/opt/idp-machinelearning/mlops` e suba o container do aplicativo web. 
 
 ```bash
 docker-compose up -d --build
@@ -231,7 +231,7 @@ Escolha um problema de classificação ou regressão de sua preferência. Por ex
 Utilize o conjunto de dados escolhido para desenvolver e treinar um modelo de ML, optando por um algoritmos como RandomForest, Decision Tree, Linear Regression, ExtraTrees, LightGBM, XGBoost, etc. Após o treinamento, exporte o modelo para um arquivo `.pkl` e adapte a aplicação Flask que apresentamos acima para corresponder à sua escolha.
 
 <!--
-Use os arquivos `.ipynb` e `.json` [desta pasta](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production/models) como referência para a exportação do modelo e faça os ajustes necessários.-->
+Use os arquivos `.ipynb` e `.json` [desta pasta](https://github.com/klaytoncastro/idp-machinelearning/tree/main/mlops/models) como referência para a exportação do modelo e faça os ajustes necessários.-->
 
 ## Conclusão
 
