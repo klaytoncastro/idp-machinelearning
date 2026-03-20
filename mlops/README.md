@@ -2,63 +2,9 @@
 
 ## 1. Introdução
 
-O Machine Learning (ML) é uma tecnologia cada vez mais presente em aplicações modernas, oferecendo soluções para personalização de conteúdo, automação de decisões e previsões em tempo real. Seu uso vai além da ciência de dados, alcançando áreas como e-commerce, saúde, redes sociais, entre outras. Neste projeto, você criará uma API simples para executar seu modelo de ML, aprenderá sobre roteamento de aplicativos web, conteúdo estático e dinâmico, além de utilizar o depurador para corrigir eventuais erros.
+O Machine Learning (ML) está cada vez mais presente no dia a dia de aplicações modernas, oferecendo soluções para personalização de conteúdo, automação de decisões e previsões em tempo real. Seu uso vai além da ciência de dados, alcançando áreas como e-commerce, saúde, redes sociais, entre outras. Neste projeto, você criará uma API simples para executar seu modelo de ML, aprenderá sobre roteamento de aplicativos web, conteúdo estático e dinâmico, além de utilizar o depurador para corrigir eventuais erros.
 
-<!--
-Nesse cenário, o Flask é um microframework Python para desenvolvimento ágil de aplicativos web, adequado tanto para iniciantes quanto para desenvolvedores mais experientes. Ele é bastante leve e extensível, permitindo expandir facilmente seu aplicativo para operar com bibliotecas mais avançadas, aproveitando todo o poder da linguagem Python e a flexibilidade da web, permitindo que você comece pequeno, escolhendo apenas as peças necessárias, e cresça à medida que seu projeto se desenvolve. 
-
-Também utilizaremos o Docker, uma solução de virtualização leve que permite empacotar aplicações e todas as suas dependências (bibliotecas, configurações e código) em ambientes isolados, chamados containers. Esses containers são altamente portáveis e podem ser executados em qualquer sistema operacional compatível. Essa solução é amplamente adotada no mercado para criar ambientes replicáveis e consistentes, eliminando a necessidade de configurar e instalar manualmente cada aplicação em diferentes máquinas.
-
----
-
-## 3. Preparação do Ambiente
-
-Nos sistemas Microsoft Windows, recomenda-se a utilização do WSL (Windows Subsystem for Linux) para a instalação do Docker. O WSL é um recurso nativo do Windows que permite a execução de distribuições Linux sem a necessidade de emulação ou virtualização completa, como o Microsoft Hyper-V ou Oracle VirtualBox. Projetado para facilitar o desenvolvimento de software no Windows, o WSL oferece uma integração simplificada entre os dois sistemas operacionais, tornando o uso do Docker mais eficiente e acessível. O uso do Docker, em conjunto com o WSL, é essencial para garantir a replicabilidade do ambiente de desenvolvimento, independentemente do sistema operacional usado por cada estudante.
-
-**Nota**: Usuários de sistemas baseados em Linux ou MacOS não precisam utilizar o WSL, pois esses sistemas já possuem suporte nativo ao Docker. Para executar containers, basta instalar o Docker diretamente, sem a necessidade de qualquer subsistema ou ferramenta adicional.
-
-### Passo 1: Verificação dos Requisitos
-Certifique-se de ter uma versão compatível do Windows 10 ou superior e o recurso de virtualização habilitado (VT-x para os processadores da família Intel e AMD-V para os processadores da família AMD). 
-
-### Passo 2: Ativação do WSL
-No PowerShell ISE como administrador, execute:
-
-```bash
-# Ativa o subsistema Windows para Linux
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-
-# Ativa a plataforma de máquina virtual necessária para o WSL 2
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-
-# Instala o WSL
-wsl --install
-
-# Define a versão 2 do WSL como padrão
-wsl --set-default-version 2
-```
-### Passo 3: Escolha de uma Distribuição
-
-- Caso ainda não utilize uma distribuição Linux embarcada no Windows, instale uma distribuição pela Microsoft Store. Recomenda-se o Ubuntu 24.04 LTS.
-- Após a instalação, reinicie o seu computador. 
-
-### Passo 4: Configuração Inicial
-
-- Inicie o aplicativo WSL, configure o usuário e senha da distribuição. Pronto, você já tem acesso a um kernel e terminal Linux. 
-
-### Passo 5: Instalação do Docker
-
-- O Docker Desktop for Windows fornece uma interface gráfica e integra o Docker ao sistema, facilitando a execução e o gerenciamento de containers diretamente no Windows.
-- Baixe e instale o [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/#:~:text=Docker%20Desktop%20for%20Windows%20%2D%20x86_64). Após a instalação, o Windows pode solicitar que você faça o logout e o login novamente para aplicar as alterações. 
-
-### Passo 6: Utilização do Ambiente
-
-- Ao longo do curso, você será guiado pelo Professor nas atividades práticas que envolverá o conteúdo das subpastas deste repositório.
-- Para começar, inicie o Docker Desktop e, depois, o aplicativo WSL. Se preferir, você pode utilizar o terminal com Powershell e invocar o wsl.exe diretamente no Visual Studio Code (VS Code) para gerenciar seus containers e desenvolver seus projetos.
-- A partir daqui, você poderá seguir as instruções do professor para completar os exercícios práticos. Se surgir qualquer dúvida, consulte os materiais de apoio indicados no Canvas e neste repositório. 
-
--->
-
-## 2. Conceitos de MLOps
+## 2. Fundamentos de MLOps
 
 Em muitos cenários, construir um modelo de Machine Learning (ML) é apenas o começo. Com o tempo, esses modelos podem se degradar à medida que os dados utilizados para treinamento se tornam obsoletos ou mudam significativamente. Manter o modelo operacional e preciso em produção torna-se um grande desafio.
 
@@ -71,6 +17,7 @@ O monitoramento contínuo é outra prática essencial do MLOps. Ele inclui o reg
 Um conceito importante relacionado ao monitoramento é o drift, que ocorre quando os padrões dos dados de entrada ou a relação entre as variáveis e o alvo mudam. O drift de dados reflete mudanças nos padrões dos dados, enquanto o drift de conceito afeta diretamente a capacidade do modelo de realizar previsões corretas. Monitorar a distribuição das variáveis de entrada e o desempenho do modelo ao longo do tempo permite detectar esses problemas.
 
 Finalmente, um pipeline de avaliação contínua é recomendável para garantir que o modelo permaneça confiável. Esse pipeline deve registrar automaticamente as previsões do modelo, armazenar os resultados reais, calcular métricas periodicamente e gerar alertas caso o desempenho caia abaixo de um limite aceitável. Dessa forma, o modelo mantém sua precisão e utilidade em um ambiente de produção.
+
 
 ## 3. Primeiro Passo: Exportação do Modelo Treinado
 
@@ -112,6 +59,10 @@ prediction = loaded_model.predict(X_new)
 
 ## 4. Implantação do Aplicativo Web
 
+Nesse laboratório, usaremos o Flask, um microframework Python para desenvolvimento ágil de aplicativos web, adequado tanto para iniciantes quanto para desenvolvedores mais experientes. Ele é bastante leve e extensível, permitindo expandir facilmente seu aplicativo para operar com bibliotecas mais avançadas, aproveitando todo o poder da linguagem Python e a flexibilidade da web, permitindo que você comece pequeno, escolhendo apenas as peças necessárias, e cresça à medida que seu projeto se desenvolve. 
+
+Também utilizaremos o Docker, uma solução de virtualização leve que permite empacotar aplicações e todas as suas dependências (bibliotecas, configurações e código) em ambientes isolados, chamados containers. Esses containers são altamente portáveis e podem ser executados em qualquer sistema operacional compatível. Essa solução é amplamente adotada no mercado para criar ambientes replicáveis e consistentes, eliminando a necessidade de configurar e instalar manualmente cada aplicação em diferentes máquinas.
+
 ### Criando o aplicativo
 
 Clone o repositório `ìdp-machinelearning` e acesse a pasta `production` e o arquivo arquivo `app.py` com o `vim` (use o comando `vim app.py`) ou o editor de sua preferência para dar manutenção ao código, como VS Code.
@@ -120,7 +71,6 @@ Clone o repositório `ìdp-machinelearning` e acesse a pasta `production` e o ar
 cd /opt
 git clone https://github.com/klaytoncastro/idp-machinelearning
 cd idp-machinelearning/mlops
-
 ```
 
 ### Executando o aplicativo 
