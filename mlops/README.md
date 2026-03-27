@@ -135,19 +135,20 @@ Vamos permitir que os usuários interajam com o aplicativo por meio de rotas din
 
 ```shell
  curl -X POST   -H "Content-Type: application/json"   -d '{
-        "fixed acidity": 7.0,
-        "volatile acidity": 0.27,
-        "citric acid": 0.36,
-        "residual sugar": 20.7,
-        "chlorides": 0.045,
-        "free sulfur dioxide": 45.0,
-        "total sulfur dioxide": 170.0,
-        "density": 1.0010,
-        "pH": 3.00,
-        "sulphates": 0.45,
-        "alcohol": 8.8,
-        "color": 1
-      }'   http://localhost:5000/predict
+        "fixed acidity":7.7,
+        "volatile acidity":0.44,
+        "citric acid":0.24,
+        "residual sugar":11.2,
+        "chlorides":0.031,
+        "free sulfur dioxide":41.0,
+        "total sulfur dioxide":167.0,
+        "density":0.9948,
+        "pH":3.12,
+        "sulphates":0.43,
+        "alcohol":11.3,
+        "quality":7,
+        "color":1
+    }'   http://localhost:5000/predict
 ```
 
 - Você também pode utilizar um arquivo para fazer `POST` do arquivo `.json`. Seguem exemplos: 
