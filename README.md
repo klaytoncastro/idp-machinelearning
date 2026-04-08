@@ -65,7 +65,7 @@ O repositório é organizado em subpastas, cada uma correspondente a um desafio 
 
 - **Instruções:** Cada desafio vem com um conjunto de orientações e requisitos necessários para completá-lo com sucesso.
 
-- **Recursos Adicionais:** Para ajudá-lo a entender melhor os conceitos ou ferramentas específicas usadas nos desafios consulte o material disponível no Canvas. 
+- **Recursos Adicionais:** Para ajudá-lo a entender melhor os conceitos ou ferramentas específicas usadas nos desafios consulte o material disponível no [Canvas](https://ambientevirtual.idp.edu.br/courses/8242). 
 
 - **Feedback e Avaliação:** Ao longo do curso, você terá a oportunidade de receber feedback sobre seu trabalho e ver como seus colegas abordaram os mesmos problemas.
 
