@@ -71,12 +71,16 @@ O repositório é organizado em subpastas, cada uma correspondente a um desafio 
 
 ## 3. Desafios de Machine Learning
 
-Cada desafio é uma experiência prática, onde você aplicará o conhecimento adquirido para explorar novas ferramentas, técnicas e resolver problemas reais. Desde a análise exploratória de dados até a construção e otimização de modelos de Machine Learning, você terá a oportunidade de aprofundar seu aprendizado de forma progressiva.
+Cada desafio é uma experiência prática, onde você aplicará o conhecimento adquirido para explorar novas ferramentas, técnicas e resolver problemas reais. Desde a análise exploratória de dados até a construção, implantação e otimização de modelos de Machine Learning, você terá a oportunidade de aprofundar seu aprendizado de forma progressiva.
 
-| #  |Tarefa                            | Tipo de Problema                       | Prazo      |
-|----|----------------------------------|----------------------------------------|------------|
-| 01 | [Wine Quality](./winequality/)   | Classificação                          | xx/xx/2025 |
-| 02 | [Air Quality](./airquality/)     | Regressão                              | xx/xx/2025 |
+| #  |Tarefa                            | Tipo de Problema                                    | Prazo      |
+|----|----------------------------------|-----------------------------------------------------|------------|
+| 01 | [Wine Quality](./winequality/)   | Fluxo de Trabalho para um problema de Classificação | 31/03/2026 |
+| 02 | [MLOps](./mlops/)                | Implantação de uma API para servir Modelos de ML    | 08/04/2026 |
+| 03 | [Air Quality](./airquality/)     | Fluxo de Trabalho para um problema de Regressão     | 15/04/2026 |
+
+<!--
+| 02 | [Wine Quality - Tarefa de Regressão](./airquality/) | 28/02/2025 |
 | 03 | [California](./california/)      | Regressão                              | xx/xx/2025 |
 | 04 | [Mall](./mall/)                  | Agrupamento                            | xx/xx/2025 |
 | 05 | [Iris](./iris/)                  | Agrupamento                            | xx/xx/2025 |
@@ -87,11 +91,8 @@ Cada desafio é uma experiência prática, onde você aplicará o conhecimento a
 | 09 | [Reinforcement](./reinforcement/)| Aprendizagem por Reforço               | xx/xx/2025 |
 | 10 | [RNA](./rna/)                    | Redes Neurais Artificiais              | xx/xx/2025 |
 | 11 | [NLP](./nlp/)                    | Processamento de Linguagem Natural     | xx/xx/2025 |
-| 12 | [MLOps](./mlops/)                | Implantação de Aplicações de ML        | xx/xx/2025 |
-| 14 | [CRISP-DM](./crisp/)             | Projeto Fim a Fim de ML                | xx/xx/2025 |
 
-<!--
-| 02 | [Wine Quality - Tarefa de Regressão](./airquality/) | 28/02/2025 |
+| 14 | [CRISP-DM](./crisp/)             | Projeto Fim a Fim de ML                | xx/xx/2025 |
 
 Submeta aqui todos os notebooks em formato .ipynb contendo a resolução das atividades que você realizou individualmente durante nossas aulas práticas. 
 •	Air Quality Dataset:
