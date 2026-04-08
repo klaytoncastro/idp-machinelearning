@@ -65,6 +65,7 @@ Como Cientista de Dados / Engenheiro de Machine Learning, desenvolva um modelo q
 
 Utilize validação cruzada para avaliar a robustez do modelo.
 
+<!--
 ## Otimização de Hiperparâmetros
 
 - Utilize métodos como Random Search e Grid Search para encontrar os melhores hiperparâmetros para os algoritmos que desempenharem melhor a tarefa.  
@@ -74,6 +75,7 @@ Utilize validação cruzada para avaliar a robustez do modelo.
 1. **Avaliação do Modelo**: Use métricas como Mean Squared Error (MSE), Mean Absolute Error (MAE) e R² para avaliar o desempenho do modelo.
 2. **Importância das Features**: Analise a importância das features para entender quais variáveis têm maior influência na predição da concentração de CO.
 3. **Resíduos do Modelo**: Examine os resíduos (diferença entre valores preditos e reais) para identificar padrões ou anomalias.
+--> 
 
 >Utilizem o Google Colab ou Jupyter para implementar o modelo. Testem outros algortimos e avaliem as métricas da regressão. Ao final, exportem o modelo em formato .pkl e implementem uma API para consumo de uma aplicação, assim como fizemos em [https://github.com/klaytoncastro/idp-machinelearning/tree/main/mlops](https://github.com/klaytoncastro/idp-machinelearning/tree/main/mlops) 
 
