@@ -75,7 +75,8 @@ Utilize validação cruzada para avaliar a robustez do modelo.
 2. **Importância das Features**: Analise a importância das features para entender quais variáveis têm maior influência na predição da concentração de CO.
 3. **Resíduos do Modelo**: Examine os resíduos (diferença entre valores preditos e reais) para identificar padrões ou anomalias.
 
-<!--
+>Utilizem o Google Colab ou Jupyter para implementar o modelo. Testem outros algortimos e avaliem as métricas da regressão. Ao final, exportem o modelo em formato .pkl e implementem uma API para consumo de uma aplicação, assim como fizemos em [https://github.com/klaytoncastro/idp-machinelearning/tree/main/mlops](https://github.com/klaytoncastro/idp-machinelearning/tree/main/mlops) 
+
 ```python
 # Importando as bibliotecas
 import pandas as pd
@@ -233,4 +234,3 @@ plt.title('Valores previstos x Valores reais')
 plt.legend()
 plt.show()
 ```
--->
