@@ -1,199 +1,331 @@
-# 1. Introdução ao Uso de Datasets para Aprendizado de Máquina
+# Fluxo de Trabalho e Otimização em Aprendizado de Máquina
 
-Antes de aplicar algoritmos de aprendizado de máquina, é essencial entender o que são **dados**, como eles são organizados em **datasets**, e por que precisam ser cuidadosamente **preparados** para modelagem.
+## 1. Objetivo da Tarefa
 
-## 1.1. O que é um dataset?
+Nesta tarefa, cada aluno deverá desenvolver três fluxos completos de aprendizado de máquina, contemplando três tipos fundamentais de problema:
 
-Um dataset é uma coleção estruturada de dados, normalmente organizada em forma de tabela, onde:
-- Cada linha representa um exemplo, instância ou registro;
-- Cada coluna representa uma variável, característica ou atributo;
-- Em tarefas supervisionadas, há uma coluna especial chamada **rótulo** ou **variável-alvo**, usada para treinamento do modelo.
+- **Classificação**
+- **Regressão**
+- **Clusterização**
 
-## 1.2. A importância da preparação dos dados
+O foco é entender o processo, justificar as escolhas e interpretar os resultados, praticando o ciclo completo de trabalho em machine learning:
 
-Na prática, os dados raramente estão prontos para uso direto. Eles podem conter:
-- **Valores ausentes**, **ruídos** ou **erros**
-- **Tipos mistos de atributos** (numéricos, categóricos, binários)
-- **Escalas incompatíveis** ou **valores discrepantes**
-- **Redundâncias** ou **informações não relevantes**
+```text
+→ entendimento do problema
+→ escolha do dataset
+→ análise exploratória
+→ pré-processamento
+→ modelagem inicial
+→ avaliação
+→ otimização de hiperparâmetros
+→ comparação dos resultados
+→ conclusão
+```
 
-Por isso, o **pré-processamento** é uma etapa crítica no pipeline de aprendizado de máquina. Esse processo envolve:
+## 2. Entrega
 
-- **Limpeza de dados**: tratar valores ausentes, inconsistências e outliers
-- **Transformação de dados**: normalizar escalas, converter variáveis categóricas, discretizar, codificar
-- **Integração e enriquecimento**: combinar dados de fontes distintas e adicionar atributos úteis
-- **Armazenamento e documentação**: salvar versões limpas e reprodutíveis para uso futuro
+A entrega deverá ser feita no Canvas, em **3 notebooks distintos**, no formato `.ipynb`, contemplando obrigatoriamente:
 
-Essas etapas são abordadas nos conceitos de **Data Wrangling**, amplamente utilizados tanto em ciência de dados quanto em engenharia de machine learning.
+| Notebook | Tipo de problema | Objetivo |
+|---|---|---|
+| 1 | Classificação | Prever uma classe ou categoria |
+| 2 | Regressão | Prever um valor numérico contínuo |
+| 3 | Clusterização | Identificar grupos ou padrões nos dados |
 
----
+Nomenclatura sugerida:
 
-# 2. Do Weka ao Python: por que atualizar a abordagem?
+```text
+classificacao_nome_sobrenome.ipynb
+regressao_nome_sobrenome.ipynb
+clusterizacao_nome_sobrenome.ipynb
+```
 
-O **Weka** é uma ferramenta didática clássica, mas hoje o ecossistema Python com bibliotecas como `pandas`, `scikit-learn`, `matplotlib`, `seaborn` e `numpy` é o padrão de mercado por:
+## 3. Datasets disponíveis
 
-- **Flexibilidade e automação**
-- **Reprodutibilidade científica**
-- **Integração com projetos reais e pipelines robustos**
-- **Amplo suporte da comunidade e evolução constante**
+```text
+https://github.com/klaytoncastro/idp-machinelearning/tree/main/datasets
+```
 
----
+Exemplos com vários algoritmos e implementação das técnicas de otimização de hiperparâmetros fundamentais (grid search, randomized search, bayesian search):
 
-# 3. Datasets Clássicos Utilizados
+```text
+https://github.com/klaytoncastro/idp-machinelearning/tree/main/optimization
+```
 
-## 3.1. Iris Dataset
-- Tipo: Classificação multiclasse  
-- Instâncias: 150  
-- Atributos: 4 + classe  
-- Fonte: UCI
+O aluno poderá utilizar os datasets disponíveis no repositório da disciplina ou escolher outros datasets. A entrega deve conter análise própria, justificativas e interpretação dos resultados.
 
-## 3.2. Vote Dataset
-- Tipo: Classificação binária  
-- Instâncias: 435  
-- Atributos: 16 + classe  
-- Fonte: UCI
+### 3.1. Datasets para Classificação
 
-## 3.3. Diabetes Dataset
-- Tipo: Classificação binária  
-- Instâncias: 768  
-- Atributos: 8 + classe  
-- Fonte: Kaggle
+| Dataset | Arquivo sugerido | Descrição | Desafio |
+|---|---|---|---|
+| Iris | `iris.csv` | Medidas de flores de três espécies diferentes | Prever a espécie da flor |
+| Vote | `vote.csv` | Votos de congressistas em pautas legislativas | Prever o partido político |
+| Diabetes | `diabetes.csv` | Dados clínicos de pacientes | Prever ocorrência de diabetes |
+| Ionosphere | `ionosphere.csv` | Sinais de radar classificados como bons ou ruins | Classificar o sinal de radar |
+| Segment | `segment-test.csv` | Atributos extraídos de segmentos de imagem | Classificar o tipo de segmento |
+| Bank | `bank-data.csv` | Perfil socioeconômico de clientes bancários | Prever adesão a produto financeiro |
 
-## 3.4. Ionosphere Dataset
-- Tipo: Classificação binária  
-- Instâncias: 351  
-- Atributos: 34 + classe  
-- Fonte: UCI
+### 3.2. Datasets para Regressão
 
-## 3.5. Segment Dataset
-- Tipo: Classificação ou Clusterização  
-- Instâncias: 2100  
-- Atributos: 19 + classe  
-- Fonte: UCI
+| Dataset | Arquivo sugerido | Descrição | Desafio |
+|---|---|---|---|
+| CPU with Vendor | `cpu.with.vendor.csv` | Características técnicas de CPUs | Prever desempenho da CPU |
+| AirQuality | `AirQualityUCI.csv` | Leituras ambientais e sensores químicos | Prever concentração de poluentes ou variável ambiental |
+| Ames Housing | [Kaggle](https://www.kaggle.com/datasets/shashanknecrothapa/ames-housing-dataset) | Dados de imóveis com aproximadamente 79 atributos | Prever preço de venda |
+| Energy Efficiency | [UCI](https://archive.ics.uci.edu/ml/datasets/energy+efficiency) | Dados de eficiência energética de edifícios | Prever carga de aquecimento ou resfriamento |
 
-## 3.6. CPU with Vendor Dataset
-- Tipo: Regressão  
-- Instâncias: 209  
-- Atributos: 8 + performance  
-- Fonte: UCI
+### 3.3. Datasets para Clusterização
 
-## 3.7. Telecom Dataset
-- Tipo: Clusterização  
-- Fonte: Convertido de ARFF
+| Dataset | Arquivo sugerido | Descrição | Desafio |
+|---|---|---|---|
+| Segment | `segment-test.csv` | Atributos visuais de segmentos de imagem | Agrupar segmentos semelhantes |
+| Telecom | `telecom-customer-data.csv` | Perfil e consumo de clientes de telecomunicações | Agrupar clientes por perfil de consumo |
+| Bank | `bank-data.csv` | Perfil socioeconômico e bancário de clientes | Segmentar clientes por perfil |
 
-## 3.8. AirQuality Dataset
-- Tipo: Regressão  
-- Fonte: UCI
+## 4. Fluxo Obrigatório de Cada Notebook
 
-## 3.9. Bank Dataset
-- Tipo: Classificação e Clusterização  
-- Fonte: WekaLearningDataset
+Cada notebook deverá seguir o fluxo abaixo.
 
----
+### 4.1. Definição do Problema
 
-# 4. Prova Prática — 1ª Avaliação (AV1)
+O aluno deverá explicar:
 
-## 4.1. Instruções
+- qual problema será resolvido;
+- qual dataset foi escolhido;
+- qual é o tipo de problema;
+- qual é a variável-alvo, quando houver;
+- qual é o objetivo do modelo.
 
-Escolha e resolva **1 desafio de cada tipo**:
+Exemplos:
 
-- 1 de Classificação
-- 1 de Regressão
-- 1 de Clusterização
+- Classificação: prever a espécie de uma flor, o partido político ou a presença de diabetes.
+- Regressão: prever desempenho de CPU ou concentração de poluentes.
+- Clusterização: agrupar clientes ou segmentos de imagem por similaridade.
 
-Cada notebook deve conter:
-1. Descrição do problema  
-2. Análise exploratória dos dados  
-3. Estratégia de pré-processamento  
-4. Escolha de modelo(s) e justificativa  
-5. Avaliação dos resultados com métricas ou visualizações  
-6. Conclusões interpretadas
+### 4.2. Carregamento do Dataset
 
-## 4.2. Datasets disponíveis
+O aluno deverá carregar o dataset escolhido e apresentar informações iniciais, como:
 
-### Classificação 
-- `iris.csv`  
-- `vote.csv`  
-- `diabetes.csv`  
-- `ionosphere.csv`  
-- `segment-test.csv`  
-- `bank.csv`  
+- quantidade de linhas e colunas;
+- nomes das colunas;
+- tipos de dados;
+- primeiras linhas do dataset;
+- descrição inicial das variáveis.
 
-### Regressão
-- `cpu.with.vendor.csv`  
-- `airquality.csv`  
 
-### Clusterização
-- `segment-test.csv`  
-- `telecom.csv`  
-- `bank.csv`  
+### 4.3. Análise Exploratória dos Dados
 
-## 4.3. Avaliação
+O aluno deverá realizar uma análise exploratória, incluindo, conforme aplicável:
 
-| Critério                                | Pontos por desafio |
-|-----------------------------------------|--------------------|
-| Organização e estrutura do notebook     | 1.0                |
-| Qualidade da análise e pré-processamento| 1.0                |
-| Aplicação e justificativa do modelo     | 1.0                |
-| Avaliação dos resultados                | 1.0                |
-| Clareza das conclusões                  | 1.0                |
+- estatísticas descritivas;
+- verificação de valores ausentes;
+- distribuição das variáveis;
+- análise de variáveis categóricas;
+- análise de correlação;
+- identificação de possíveis outliers;
+- análise da variável-alvo, quando houver;
+- gráficos ou visualizações relevantes.
 
-Total por desafio: **5.0 pontos × 3 = 15.0 pontos**  
-Nota será proporcionalizada.
+O objetivo desta etapa é entender os dados antes de aplicar algoritmos e definir os modelos.
 
-## 4.4. Bônus (até +1.0 ponto)
+### 4.4. Pré-processamento
 
-Implemente **otimização de hiperparâmetros** com:
+O aluno deverá preparar os dados para modelagem, aplicando as etapas necessárias, como:
 
-- `GridSearchCV`  
-- `RandomizedSearchCV`  
-- `Otimização Bayesiana` 
+- tratamento de valores ausentes;
+- conversão de variáveis categóricas;
+- normalização ou padronização;
+- remoção de atributos irrelevantes;
+- separação entre atributos preditores e variável-alvo;
+- divisão entre treino e teste, quando for problema supervisionado.
 
-> Apresente e compare os resultados. Mostre os melhores parâmetros e o impacto nas métricas.
+Para clusterização, o aluno deverá justificar quais atributos serão utilizados para formar os grupos.
 
----
+### 4.5. Modelagem Inicial
 
-# 5. Otimização de Hiperparâmetros em Machine Learning
+O aluno deverá aplicar pelo menos um modelo adequado ao tipo de problema e justificar sua escolha.
 
-## 5.1. Métodos
+#### Classificação
 
-- **Grid Search**  
-- **Randomized Search**  
-- **Otimização Bayesiana (com skopt)**
+Exemplos de algoritmos:
 
-## 5.2. Algoritmos Sugeridos
+- Decision Tree;
+- Random Forest;
+- Logistic Regression;
+- Naive Bayes;
+- SVM;
+- k-NN;
+- Extra Trees;
+- XGBoost;
+- LightGBM.
 
-- Decision Tree  
-- Random Forest  
-- Extra Tree  
-- Extra Trees  
-- XGBoost  
-- LightGBM  
-- Naive Bayes  
-- Logistic Regression  
-- SVM  
-- k-NN  
+#### Regressão
 
-## 5.3. Métricas
+Exemplos de algoritmos:
 
-- **Acurácia**  
-- **Precisão**  
-- **Recall**  
-- **F1-Score**
+- Linear Regression;
+- Decision Tree Regressor;
+- Random Forest Regressor;
+- Extra Trees Regressor;
+- Gradient Boosting Regressor;
+- SVR;
+- k-NN Regressor;
+- XGBoost Regressor;
+- LightGBM Regressor.
 
-Para regressão:
-- **MAE**
-- **MSE**
-- **RMSE**
-- **R²**
+#### Clusterização
 
-## 5.4. Relatório Sucinto no Notebook (Markdown)
+Exemplos de algoritmos:
 
-1. Introdução ao Algoritmo  
-2. Metodologia  
-3. Resultados com gráficos e comparação  
-4. Discussão sobre impacto e custo computacional
+- K-Means;
+- DBSCAN;
+- Agglomerative Clustering;
+- Gaussian Mixture Models.
 
----
+## 5. Avaliação dos Resultados
 
-**Boa sorte!**
+Cada tipo de problema exige formas diferentes de avaliação.
+
+### 5.1. Avaliação em Classificação
+
+O aluno deverá avaliar o modelo usando métricas como:
+
+- acurácia;
+- precisão;
+- recall;
+- F1-score;
+- matriz de confusão.
+
+Também deverá interpretar os resultados, explicando quais classes foram melhor ou pior classificadas.
+
+### 5.2. Avaliação em Regressão
+
+O aluno deverá avaliar o modelo usando métricas como:
+
+- MAE;
+- MSE;
+- RMSE;
+- R².
+
+Também deverá interpretar o erro obtido e discutir se o modelo apresenta bom desempenho para o problema escolhido.
+
+### 5.3. Avaliação em Clusterização
+
+O aluno deverá avaliar os agrupamentos usando recursos como:
+
+- método do cotovelo, como heurística para escolha do número de clusters;
+- Silhouette Score;
+- Davies-Bouldin Index;
+- visualização dos clusters;
+- interpretação dos grupos encontrados.
+
+O aluno deverá explicar o que os clusters representam e se os agrupamentos fazem sentido em relação aos atributos utilizados.
+
+## 6. Otimização de Hiperparâmetros
+
+Além da modelagem inicial, o aluno deverá aplicar técnicas de otimização de hiperparâmetros nos problemas supervisionados, isto é, classificação e regressão.
+
+As três abordagens abaixo deverão ser demonstradas nos notebooks de Classificação e/ou Regressão:
+
+- `GridSearchCV`;
+- `RandomizedSearchCV`;
+- Otimização Bayesiana.
+
+Estes métodos, contudo, não são geralmente adequados aos problemas não supervisionados, como na clusterização. No entanto, você deve explorar ajustes de parâmetros como:
+
+- k-Elbow para definir o número de clusters no K-Means ou K-Medoids;
+- inicialização dos centróides;
+- parâmetros `eps` e `min_samples` no DBSCAN;
+
+Nesses casos, a avaliação poderá se valer de métricas como `Silhouette Score`, `Davies-Bouldin Index` ou análise visual dos agrupamentos para justificar a escolha dos parâmetros.
+
+### 6.1. Grid Search
+
+O aluno deverá aplicar `GridSearchCV` em pelo menos um modelo.
+
+Deve apresentar:
+
+- o modelo escolhido;
+- a grade de hiperparâmetros testada;
+- os melhores parâmetros encontrados;
+- a métrica obtida;
+- comparação com o modelo inicial.
+
+### 6.2. Randomized Search
+
+O aluno deverá aplicar `RandomizedSearchCV` em pelo menos um modelo.
+
+Deve apresentar:
+
+- o modelo escolhido;
+- o espaço de busca utilizado;
+- número de combinações testadas;
+- melhores parâmetros encontrados;
+- comparação com o modelo inicial e com o Grid Search.
+
+### 6.3. Otimização Bayesiana
+
+O aluno deverá aplicar uma abordagem de otimização bayesiana, por exemplo com `skopt`.
+
+Deve apresentar:
+
+- o modelo escolhido;
+- o espaço de busca;
+- os melhores parâmetros encontrados;
+- a métrica obtida;
+- comparação com Grid Search e Randomized Search;
+- discussão sobre desempenho e custo computacional.
+
+## 7. Comparação Final e Documentação da Decisão
+
+O custo computacional poderá ser estimado de forma simples, usando recursos como `%time`, `%timeit` ou a biblioteca `time`, registrando o tempo aproximado de execução das buscas de hiperparâmetros. Ao final, seu relatório deve apresentar uma comparação entre:
+
+- modelo inicial;
+- modelo otimizado com Grid Search;
+- modelo otimizado com Randomized Search;
+- modelo otimizado com Otimização Bayesiana.
+
+Essa comparação deve mostrar:
+
+- melhores hiperparâmetros encontrados;
+- métricas antes e depois da otimização;
+- impacto no desempenho;
+- custo computacional aproximado;
+- qual abordagem produziu o melhor resultado.
+
+A conclusão deve responder:
+
+- o problema foi resolvido de forma satisfatória?
+- quais modelos tiveram melhor desempenho?
+- a otimização melhorou os resultados?
+- quais limitações foram observadas?
+- o que poderia ser melhorado em uma próxima versão?
+
+## 8. Avaliação
+
+A tarefa será avaliada considerando a qualidade geral do fluxo desenvolvido nos três notebooks. Serão observados:
+
+- organização dos notebooks;
+- clareza na definição dos problemas;
+- qualidade da análise exploratória;
+- coerência do pré-processamento;
+- escolha adequada dos modelos;
+- correta aplicação das métricas;
+- aplicação das técnicas de otimização;
+- comparação entre os resultados;
+- interpretação técnica das conclusões;
+- reprodutibilidade dos notebooks.
+
+A nota será atribuída de forma global, considerando a consistência da solução nos três tipos de problema. A tarefa não consiste apenas em executar algoritmos prontos. O aluno deve demonstrar domínio do fluxo completo de aprendizado de máquina:
+
+```text
+→ problema
+→ dataset
+→ análise exploratória
+→ pré-processamento
+→ modelo inicial
+→ avaliação
+→ otimização
+→ comparação
+→ conclusão
+```
