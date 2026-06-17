@@ -94,7 +94,7 @@ Antes de alimentar o texto em modelos de NLP, é necessário transformá-lo em u
 
 ### Tarefa 1: Análise de Sentimentos com Hugging Face Transformers
 
-Nesta tarefa, usaremos a biblioteca Hugging Face Transformers para realizar análise de sentimentos em texto. O modelo pré-treinado de análise de sentimentos permite classificar um texto como "positivo", "negativo" ou "neutro". Utilizem como base a infraestrutura que implementamos com Flask em [mlops](https://github.com/klaytoncastro/idp-machinelearning/tree/main/mlops). Implementem uma nova rota na aplicação para avaliar textos utilizando um modelo de classificação de sentimentos pré-treinado da [Hugging Face](https://huggingface.co/blog/sentiment-analysis-python). 
+Nesta tarefa, usaremos a biblioteca Hugging Face Transformers para realizar análise de sentimentos em texto. O modelo pré-treinado de análise de sentimentos permite classificar um texto como "positivo", "negativo" ou "neutro". Utilizem como base a infraestrutura que implementamos com Flask em [Production](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production). Implementem uma nova rota na aplicação para avaliar textos utilizando um modelo de classificação de sentimentos pré-treinado da [Hugging Face](https://huggingface.co/blog/sentiment-analysis-python). 
 
 Vocês deverão modificar o código existente para carregar o modelo de análise de sentimentos e criar uma rota `/analyze_sentiment` que aceite requisições `POST` com um `JSON` contendo um texto e retorne o sentimento classificado como 'positivo', 'negativo' ou 'neutro'. Essa rota deve aceitar requisições POST com um JSON contendo o texto a ser analisado, conforme exemplo abaixo: 
 
@@ -102,7 +102,7 @@ Vocês deverão modificar o código existente para carregar o modelo de análise
 { "text": "Seu texto aqui" }
 ```
 
-Testem a nova funcionalidade utilizando a ferramenta `curl`, similares aos mostrados anteriormente na atividade [mlops](https://github.com/klaytoncastro/idp-machinelearning/tree/main/mlops): 
+Testem a nova funcionalidade utilizando a ferramenta `curl`, similares aos mostrados anteriormente na atividade [Production](https://github.com/klaytoncastro/idp-machinelearning/tree/main/production): 
 
 ```bash
 curl -X POST http://localhost:5000/analyze_sentiment \
@@ -148,6 +148,8 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
 ```
 --> 
+
+
 
 ### Tarefa 2: Vetorização com NLTK e TF-IDF
 
@@ -241,42 +243,58 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
 -->
 
-### Desafio Extra: Utilização de Bases de Dados em NLP
+## 7. Execução com Docker
 
-Neste desafio, vocês terão a oportunidade de escolher uma das bases de dados sugeridas para explorar de forma mais rica o potencial do NLP, praticando análise de sentimentos, classificação de texto e vetorização com TF-IDF. Vocês podem escolher uma base para realizar alguma das seguintes tarefas:
+Esta prática utiliza Docker e Docker Compose para executar a API Flask em container.
+
+Antes de subir a aplicação, crie a rede Docker externa usada no `docker-compose.yml`, caso ela ainda não exista:
+
+```bash
+docker network inspect mybridge >/dev/null 2>&1 || docker network create mybridge
+docker compose build
+docker compose up -d
+# Em outra aba de terminal: 
+docker compose logs -f
+```
+
+- A API ficará disponível em: `http://localhost:5000`
+- A documentação no padrão Swagger ficará disponível em: `http://localhost:5000/apidocs`
 
 
-- **Análise de Sentimentos**: Usar a pipeline da Hugging Face ou vetorização com TF-IDF e classificadores para prever a polaridade de opiniões.
-- **Classificação de Tópicos**: Implementar classificadores usando TF-IDF e embeddings de palavras, categorizando textos em temas específicos.
-- **Pré-processamento de Texto**: Aplicar técnicas de NLTK para tokenização, remoção de stopwords e normalização dos textos antes da análise.
+### 7.1 Verificar se a API está disponível
+```bash
+curl http://localhost:5000/
+```
 
-Abaixo, encontram-se descrições das bases de dados e links para download: 
+### 7.2 Health check
 
-- **[IMDB Reviews Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)**  
-   Este dataset de avaliações de filmes da IMDB é amplamente utilizado para **análise de sentimentos**. Com ele, é possível treinar modelos que classificam comentários como positivos ou negativos. A aplicação deste dataset é direta para análise de sentimentos usando a pipeline da Hugging Face ou modelos tradicionais de classificação de texto com TF-IDF.
+```bash
+curl http://localhost:5000/health
+```
 
-<!--
-- **[Sentiment140](http://help.sentiment140.com/for-students)**  
-   O Sentiment140 é uma coleção de tweets rotulados, contendo análises positivas, neutras e negativas. É ideal para projetos de **análise de sentimentos** e **processamento de texto em redes sociais**. O uso desta base desafia vocês a lidar com ruídos e abreviações comuns em tweets, sendo um excelente exercício para pré-processamento de texto com NLTK.
--->
+### 7.3 Análise de sentimentos com Transformers
 
-- **[Amazon Reviews](https://www.kaggle.com/datasets/bittlingmayer/amazonreviews)**  
-   Com milhões de avaliações de produtos, este dataset é ideal para **classificação de sentimentos** e **identificação de temas**. É possível classificar textos por polaridade ou explorar aspectos de produtos com embeddings de palavras para entender o contexto semântico das opiniões.
+```bash
+curl -X POST http://localhost:5000/analyze_sentiment \
+-H "Content-Type: application/json" \
+-d '{"text": "This class is excellent and very useful"}'
+```
 
-- **[Yelp Reviews](https://www.yelp.com/dataset)**  
-   O Yelp Open Dataset oferece avaliações de estabelecimentos e pode ser utilizado para análise de sentimentos e classificação por categorias de negócios, como "Restaurantes" ou "Serviços". Esta base é interessante para tarefas de classificação de texto com TF-IDF ou vetorização com embeddings contextuais.
+### 7.4 Vetorização com TF-IDF
 
-- **[Common Crawl](https://commoncrawl.org/the-data/)**  
-   Esta é uma base de dados de texto muito ampla, extraída da web, com diversas possibilidades de análise, desde **classificação de temas** até **modelagem de linguagem**. Ela é ideal para projetos que exigem grandes volumes de dados e permitem aplicar técnicas de embeddings de palavras, como Word2Vec e TF-IDF, para classificação de tópicos ou sumarização.
+```bash
+curl -X POST http://localhost:5000/vectorize \
+-H "Content-Type: application/json" \
+-d '{"texts": ["o juiz julgou o processo", "o magistrado analisou os autos", "o processo foi analisado pelo juiz"]}'
+```
 
-- **[20 Newsgroups](http://qwone.com/~jason/20Newsgroups/)**  
-   Esta coleção de posts de newsgroups está organizada em 20 categorias e é excelente para tarefas de **classificação de temas**. Vocês podem treinar modelos para categorizar os textos em tópicos específicos, aplicando vetorização com TF-IDF e classificadores como Naive Bayes ou SVM.
+## 8. Conclusão
 
-- **[TREC Question Classification](http://cogcomp.org/Data/QA/QC/)**  
-   Este dataset de perguntas rotuladas por categoria é excelente para tarefas de **classificação de perguntas** e **resposta a perguntas**. É um ótimo exercício para a criação de pipelines de classificação e para experimentar o uso de embeddings com técnicas de NLTK.
+Nesta prática, comparamos duas abordagens de NLP:
 
-**Boa sorte!**
+- TF-IDF: técnica clássica que transforma textos em vetores com base na frequência e importância das palavras.
+- Transformers: abordagem moderna que utiliza modelos pré-treinados capazes de capturar contexto linguístico.
 
-## 7. Conclusão
+Assim, vimos que o processamento de Linguagem Natural (NLP) permite que máquinas analisem e respondam ao texto humano em aplicações como atendimento ao cliente, análise de dados e automação de respostas, análise de sentimentos, classificação de texto, dentre outras aplicações. 
 
-O Processamento de Linguagem Natural (NLP) permite que máquinas analisem e respondam ao texto humano em aplicações como atendimento ao cliente, análise de dados e automação de respostas. Técnicas como TF-IDF e modelos avançados (transformers) viabilizam tarefas importantes, como análise de sentimentos, classificação de texto e geração de respostas automáticas. Dominar esses conceitos permite transformar dados textuais em informações úteis, gerando conhecimento e valor em diversas áreas.
+Aprofundar esses conceitos permite transformar dados textuais em informações úteis, gerando conhecimento e valor em diversas áreas.

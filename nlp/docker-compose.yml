@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  app:
+    build: .
+    container_name: flask_app
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - ./app.py:/app/app.py
+      - ./templates:/app/templates
+      - ./static:/app/static
+      - ./models:/app/models  # Mapeia a pasta models
+    networks:
+      - mybridge
+
+networks:
+  mybridge:
+    external: true
