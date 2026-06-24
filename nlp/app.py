@@ -7,7 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from transformers import pipeline
 
 
-# Evita warning chato do tokenizer em ambiente containerizado
+# Evita warning
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 app = Flask(__name__)
@@ -24,9 +24,12 @@ swagger = Swagger(app, template={
 # Modelo padrão de sentiment-analysis:
 # distilbert-base-uncased-finetuned-sst-2-english
 
+MODEL_NAME = "distilbert-base-uncased-finetuned-sst-2-english"
+
 sentiment_pipeline = pipeline(
     task="sentiment-analysis",
-    framework="tf"
+    model=MODEL_NAME,
+    framework="pt"
 )
 
 STOPWORDS_PT = {
@@ -141,7 +144,7 @@ def analyze_sentiment():
 
     return jsonify({
         "input": text,
-        "model": "distilbert-base-uncased-finetuned-sst-2-english",
+        "model": MODEL_NAME,
         "result": result
     })
 
@@ -232,5 +235,6 @@ if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
         port=5000,
-        debug=True
+        debug=False,
+        use_reloader=False
     )
