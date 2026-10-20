@@ -57,7 +57,7 @@ def predict():
     predicao = modelo.predict([[fixed_acidity, volatile_acidity, citric_acid, residual_sugar, chlorides,free_sulfur_dioxide, total_sulfur_dioxide, density, pH, sulphates, alcohol, color]])
 
     # Mapear o resultado da previsão para uma resposta legível
-    resultado = ['ruim' if pred == 1 else 'bom' for pred in predicao]
+    resultado = ['Vinho Mediano' if pred == 1 else 'Vinho Excelente' for pred in predicao]
 
     # Retornar o resultado como JSON
     return jsonify(resultado)
