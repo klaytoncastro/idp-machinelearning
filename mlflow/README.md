@@ -148,7 +148,7 @@ git add params.yaml dvc.lock metrics.json
 git commit -m "Compara modelo com 100 árvores"
 ```
 
-## 4. Versionar uma nova versão do CSV
+## 4. Versionar o dataset
 
 O script `src/change_data.py` altera os dados para demonstrar uma nova versão: ele soma duas horas de estudo às dez primeiras linhas, respeitando o limite definido no código. Isso é uma alteração controlada. Como o arquivo pode estar protegido pelo DVC, libere a cópia de trabalho antes de executar o script:
 
