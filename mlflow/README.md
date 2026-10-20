@@ -7,12 +7,11 @@ O objetivo desta prática é versionar um dataset CSV e rodar um pipeline com DV
 - **MLflow Tracking** registra execuções, parâmetros, métricas, identificação do conjunto de dados e artefato do modelo.
 - O contêiner de treinamento permanece ativo para uso em terminal interativo.
 
-
 ## Estrutura
 
 ```text
 mlflow/
-├── data/avaliacoes.csv
+├── data/avaliacoes.csv #Será criado sinteticamente
 ├── src/
 │   ├── train.py
 │   └── change_data.py
@@ -45,36 +44,61 @@ docker exec -it mlops-lab-trainer bash
 
 Os comandos seguintes são executados dentro do contêiner, em `/workspace`.
 
-## 1. Inicializar o DVC e versionar o CSV
+## 1. Inicializar o Git e o DVC e versionar o CSV
 
-O diretório `/workspace` já está dentro de um repositório Git. Confirme a raiz:
+Configure a identificação utilizada nos commits e inicialize o repositório Git do laboratório:
 
 ```bash
-git rev-parse --show-toplevel
+git config --global user.name "Aluno"
+git config --global user.email "aluno@example.org"
+git init -b main
 git status
 ```
 
-Não execute `git init` se o repositório já existir. No ambiente da prática, o Git já estava inicializado; por isso, `git init -b main` apenas o reinicializou e manteve a branch `master`.
+Crie o conjunto de dados sintético para a prática:
 
-Inicialize o DVC uma única vez:
+```bash
+mkdir -p data
+python - <<'PY'
+import numpy as np
+import pandas as pd
+
+rng = np.random.default_rng(42)
+n = 120
+study_hours = rng.integers(1, 21, n)
+attendance_pct = rng.integers(50, 101, n)
+previous_grade = rng.integers(30, 101, n)
+final_grade = (
+    2.0 * study_hours
+    + 0.25 * attendance_pct
+    + 0.40 * previous_grade
+    - 10
+    + rng.normal(0, 5, n)
+)
+pd.DataFrame({
+    "study_hours": study_hours,
+    "attendance_pct": attendance_pct,
+    "previous_grade": previous_grade,
+    "final_grade": np.round(np.clip(final_grade, 0, 100), 2),
+}).to_csv("data/avaliacoes.csv", index=False)
+PY
+```
+
+Inicialize o DVC e adicione o CSV:
 
 ```bash
 dvc init
+dvc add data/avaliacoes.csv
 ```
 
-Como o CSV já havia sido adicionado ao Git nesse ambiente, remova-o do índice do Git sem apagar o arquivo local. Depois, adicione-o ao DVC:
+O Git passa a registrar `data/avaliacoes.csv.dvc`, que contém o identificador da versão; o conteúdo fica no cache local do DVC. O CSV permanece disponível em `data/avaliacoes.csv` e é ignorado pelo Git.
+
+Registre a versão inicial:
 
 ```bash
-git rm --cached -- data/avaliacoes.csv
-dvc add data/avaliacoes.csv
-git status
 git add .
-git commit -m "Versiona o CSV com DVC"
+git commit -m "Base inicial e dados versionados com DVC"
 ```
-
-A mensagem `rm 'data/avaliacoes.csv'` informa que o Git deixou de acompanhar o arquivo diretamente. O CSV continua na pasta de trabalho. O Git passa a registrar `data/avaliacoes.csv.dvc`, que contém o identificador da versão; o conteúdo fica no cache local do DVC.
-
-Se o CSV ainda não estiver rastreado pelo Git, pule o comando `git rm --cached`.
 
 ## 2. Executar o pipeline
 
@@ -88,20 +112,26 @@ git commit -m "Registra execução de referência"
 
 O DVC lê os parâmetros de `params.yaml`, executa `src/train.py` e atualiza `metrics.json`. O treinamento também envia parâmetros, métricas e o modelo ao experimento `avaliacoes-academicas` no MLflow.
 
-O `train.py` precisa passar `skops_trusted_types=["sklearn.tree._tree.Tree"]` para `mlflow.sklearn.log_model`. Essa classe é usada internamente pelo Random Forest e, sem essa permissão explícita, o MLflow interrompe o registro do modelo. 
+O `train.py` utiliza `skops_trusted_types=["sklearn.tree._tree.Tree"]` em `mlflow.sklearn.log_model` para permitir a serialização do modelo Random Forest.
 
-## 3. Comparar duas execuções — 22 a 32 min
+## 3. Comparar duas execuções
 
 Altere `n_estimators` de `30` para `100` em `params.yaml` e rode:
 
 ```bash
+python - <<'PY'
+from pathlib import Path
+p = Path("params.yaml")
+s = p.read_text().replace("n_estimators: 30", "n_estimators: 100")
+p.write_text(s)
+PY
 dvc repro
 dvc metrics diff HEAD
 ```
 
 No MLflow, compare as execuções. Observe os parâmetros, `mae`, `rmse`, `r2`, `dataset_sha256` e o artefato do modelo. O hash do CSV deve permanecer igual; nesta comparação, o parâmetro alterado foi o número de árvores.
 
-Exemplo: 
+Exemplo ilustrativo (os valores dependerão do dataset e da execução):
 
 | Métrica | 30 árvores | 100 árvores |
 |---|---:|---:|
@@ -109,7 +139,7 @@ Exemplo:
 | RMSE | 5,3607 | 5,3033 |
 | R² | 0,8695 | 0,8723 |
 
-A melhora é pequena e vale para essa divisão dos dados. Uma execução não demonstra que 100 árvores sejam sempre melhores.
+A melhora é pequena neste exemplo e vale para essa divisão dos dados. Uma execução não demonstra que 100 árvores sejam sempre melhores.
 
 Registre a segunda execução:
 
@@ -138,11 +168,10 @@ git add src/change_data.py data/avaliacoes.csv.dvc dvc.lock metrics.json
 git commit -m "Registra nova versão do CSV"
 ```
 
-Para restaurar a versão anterior, localize o commit anterior à alteração e recupere o ponteiro:
+Para restaurar a versão anterior, recupere o ponteiro do commit imediatamente anterior à alteração do CSV:
 
 ```bash
-git log --oneline -- data/avaliacoes.csv.dvc
-git checkout HASH_ANTERIOR -- data/avaliacoes.csv.dvc
+git restore --source=HEAD~1 -- data/avaliacoes.csv.dvc
 dvc checkout
 dvc repro
 ```
@@ -150,6 +179,14 @@ dvc repro
 O Git recupera o ponteiro versionado; o `dvc checkout` materializa o CSV correspondente a partir do cache local. O `dvc repro` atualiza o treinamento para os dados restaurados.
 
 ## Parar os serviços
+
+Saia do contêiner:
+
+```bash
+exit
+```
+
+Na pasta `mlflow` do computador, execute:
 
 ```bash
 docker compose down
@@ -166,7 +203,7 @@ docker compose down -v
 DVC e MLflow organizam versões e evidências da execução; não garantem, por si só, que o desenho da avaliação esteja correto. A comparação desta prática mantém os dados e a partição fixos e altera um parâmetro do modelo.
 
 <!--
-Providenciar MinIO/S3 para um remoto DVC e GitLab local para hospedagem e CI/CD. 
+Providenciar MinIO/S3 para um remoto DVC e GitLab local para hospedagem e CI/CD.
 1. O que o Git guarda sobre o CSV e onde fica seu conteúdo?
 2. Qual é a diferença entre o papel do DVC e o do MLflow?
 3. Como identificar quais dados e parâmetros produziram um modelo?

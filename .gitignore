@@ -95,3 +95,13 @@ build/
 # Pastas temporárias do Dropbox
 .dropbox.attr
 .dropbox.attrs
+
+# MLOps
+
+# Laboratório MLOps - Git, DVC e MLflow
+/mlflow/.dvc/
+/mlflow/.dvcignore
+/mlflow/data/*.dvc
+/mlflow/data/.gitignore
+/mlflow/dvc.lock
+/mlflow/metrics.json
