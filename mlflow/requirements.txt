@@ -1,0 +1,5 @@
+mlflow==3.17.0
+dvc==3.67.1
+pandas==2.3.3
+scikit-learn==1.7.2
+dvc==3.67.1

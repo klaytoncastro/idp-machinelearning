@@ -1,0 +1,19 @@
+stages:
+  train:
+    cmd: >-
+      python src/train.py
+      --n-estimators ${train.n_estimators}
+      --max-depth ${train.max_depth}
+      --test-size ${train.test_size}
+      --random-state ${train.random_state}
+    deps:
+      - data/avaliacoes.csv
+      - src/train.py
+    params:
+      - train.n_estimators
+      - train.max_depth
+      - train.test_size
+      - train.random_state
+    metrics:
+      - metrics.json:
+          cache: false

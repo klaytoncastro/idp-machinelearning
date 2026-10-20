@@ -1,0 +1,6 @@
+outs:
+- md5: e9240f063b26f2008099838b5ab19724
+  size: 2269
+  isexec: true
+  hash: md5
+  path: avaliacoes.csv

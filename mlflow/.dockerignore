@@ -1,0 +1,6 @@
+.git
+.dvc/cache
+mlflow_data
+__pycache__
+*.py[cod]
+.venv
