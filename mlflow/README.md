@@ -198,9 +198,21 @@ O banco e os artefatos do MLflow permanecem no volume nomeado. Para apagá-los t
 docker compose down -v
 ```
 
-## Considerações Finais
+## Considerações finais
 
-DVC e MLflow organizam versões e evidências da execução; não garantem, por si só, que o desenho da avaliação esteja correto. A comparação desta prática mantém os dados e a partição fixos e altera um parâmetro do modelo.
+Neste laboratório, vimos como utilizar Git, DVC e MLflow desempenham funções complementares no gerenciamento de experimentos de Machine Learning.
+
+O **Git** permitiu preservar o histórico do código e das configurações. O **DVC** acrescentou o controle das versões dos dados e das dependências do pipeline, enquanto o **MLflow** registrou os experimentos, seus parâmetros, métricas e modelos.
+
+A comparação dos treinamentos mostrou que o aumento de 30 para 100 árvores no Random Forest não produziu necessariamente uma melhoria no desempenho do modelo. 
+
+Posteriormente, a alteração do conjunto de dados também modificou os resultados, evidenciando que tanto os parâmetros quanto os dados influenciam o comportamento do modelo.
+
+Também trabalhamos a recuperação de uma versão anterior do dataset. O DVC identificou que o treinamento correspondente já havia sido realizado e recuperou os resultados armazenados em cache, sem necessidade de novo processamento. 
+
+Assim, vimos como a reprodutibilidade envolve não apenas repetir uma execução, mas também preservar as condições e os resultados que permitem reconstruir o histórico dos experimentos.
+
+A principal contribuição dessas ferramentas é permitir que cada resultado de Machine Learning seja associado aos dados, ao código e aos parâmetros que o produziram. Dessa forma, o desenvolvimento deixa de depender de experimentos isolados e passa a contar com um processo organizado, rastreável e passível de reprodução.
 
 <!--
 Providenciar MinIO/S3 para um remoto DVC e GitLab local para hospedagem e CI/CD.
