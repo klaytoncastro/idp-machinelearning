@@ -298,3 +298,10 @@ Nesta prática, comparamos duas abordagens de NLP:
 Assim, vimos que o processamento de Linguagem Natural (NLP) permite que máquinas analisem e respondam ao texto humano em aplicações como atendimento ao cliente, análise de dados e automação de respostas, análise de sentimentos, classificação de texto, dentre outras aplicações. 
 
 Aprofundar esses conceitos permite transformar dados textuais em informações úteis, gerando conhecimento e valor em diversas áreas.
+
+<!--
+https://www.bing.com/search?pglt=41&q=NCM+vs+LLM&cvid=c0c3466230ec471e8808a5877982bc7c&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIICAEQ6QcY_FXSAQgzMjQ0ajBqN6gCALACAA&FORM=ANNAB1&DAF0=1&PC=U531
+https://phpscientist.com/blog/ncm-vs-llm-next-concept-modeling/
+https://www.bing.com/ck/a?!&&p=e8eda276fb6ee901789d1fa0dbc48ac8883146a692479386cbc8891867e7de36JmltdHM9MTc5MzIzMjAwMA&ptn=3&ver=2&hsh=4&fclid=1e737703-10cf-6c1b-0aee-60a411986d22&psq=NCM+vs+LLM&u=a1aHR0cHM6Ly93d3cubWluZHN0dWRpby5haS9ibG9nL25jbS12cy1sbG0tc3BlZWQtYmVuY2htYXJrLXRlc3Q
+https://blog.dsacademy.com.br/jev-e-laya-o-que-sao-os-modelos-de-decisao-system-one-e-quando-usa-los/
+-->
