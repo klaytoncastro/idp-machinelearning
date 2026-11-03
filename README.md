@@ -75,11 +75,12 @@ Cada desafio é uma experiência prática, onde você aplicará o conhecimento a
 
 | #  |Tarefa                            | Tipo de Problema                                    | Prazo      |
 |----|----------------------------------|-----------------------------------------------------|------------|
+
+
+<!--
 | 01 | [Wine Quality](./winequality/)   | Fluxo de Trabalho para um problema de Classificação | 31/03/2026 |
 | 02 | [MLOps](./mlops/)                | Implantação de uma API para servir Modelos de ML    | 08/04/2026 |
 | 03 | [Air Quality](./airquality/)     | Fluxo de Trabalho para um problema de Regressão     | 15/04/2026 |
-
-<!--
 | 02 | [Wine Quality - Tarefa de Regressão](./airquality/) | 28/02/2025 |
 | 03 | [California](./california/)      | Regressão                              | xx/xx/2025 |
 | 04 | [Mall](./mall/)                  | Agrupamento                            | xx/xx/2025 |
