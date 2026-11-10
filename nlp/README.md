@@ -447,7 +447,7 @@ curl -s -X POST http://localhost:5000/similarity/semantic -H 'Content-Type: appl
 
 Avalie se o modelo distingue adequadamente afirmação e negação. **Similaridade semântica elevada não garante equivalência lógica.**
 
-### 7.18 Validação de entradas inválidas
+### 7.18 Retorno para entradas inválidas
 
 A API deve responder com **HTTP 400** quando os dados obrigatórios não forem fornecidos ou estiverem incorretos:
 
