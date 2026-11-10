@@ -260,6 +260,54 @@ docker compose logs -f
 - A API ficará disponível em: `http://localhost:5000`
 - A documentação no padrão Swagger ficará disponível em: `http://localhost:5000/apidocs`
 
+A aplicação disponibiliza documentação interativa utilizando Flasgger (Swagger UI).
+
+Acesse no navegador: [http://localhost:5000/apidocs](http://localhost:5000/apidocs)
+
+Na interface Swagger:
+
+1. Localize a rota `POST /analyze_sentiment`.
+2. Clique em **Try it out**.
+3. Informe o JSON:
+
+```json
+{
+  "text": "This class is excellent and very useful"
+}
+```
+
+4. Clique em **Execute**.
+5. Observe o código HTTP, o sentimento classificado (`POSITIVE` ou `NEGATIVE`) e o score retornado.
+6. Repita o procedimento com as rotas `/vectorize`, `/similarity/tfidf`, `/embeddings` e `/similarity/semantic`, utilizando os exemplos das práticas anteriores.
+7. Além do terminal usando o `curl`, o Swagger permite pode explorar, testar e validar APIs REST diretamente pelo browser. Além da validação de entradas inválidas (HTTP 400), a aplicação implementa tratamento para rotas inexistentes e métodos HTTP não permitidos.
+
+**Teste 1 — HTTP 404: rota inexistente**
+
+```bash
+curl -s -i http://localhost:5000/rota-inexistente
+```
+
+Resultado esperado:
+
+```json
+{
+  "error": "Rota não encontrada"
+}
+```
+
+**Teste 2 — HTTP 405: método não permitido**
+
+```bash
+curl -s -i -X GET http://localhost:5000/vectorize
+```
+
+Resultado esperado:
+
+```json
+{
+  "error": "Método HTTP não permitido"
+}
+```
 
 ### 7.1 Verificar se a API está disponível
 ```bash
