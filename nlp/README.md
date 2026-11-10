@@ -288,6 +288,130 @@ curl -X POST http://localhost:5000/vectorize \
 -d '{"texts": ["o juiz julgou o processo", "o magistrado analisou os autos", "o processo foi analisado pelo juiz"]}'
 ```
 
+### 7.5 Sentimento negativo
+
+```bash
+curl -s -X POST http://localhost:5000/analyze_sentiment -H 'Content-Type: application/json' -d '{"text":"This application is terrible and completely useless"}' | jq
+```
+
+### 7.6 Negação na análise de sentimentos
+
+```bash
+curl -s -X POST http://localhost:5000/analyze_sentiment -H 'Content-Type: application/json' -d '{"text":"This movie is not good"}' | jq
+```
+
+Compare com o resultado de uma frase afirmativa. Observe como a negação pode alterar a classificação.
+
+### 7.7 Ironia na análise de sentimentos
+
+```bash
+curl -s -X POST http://localhost:5000/analyze_sentiment -H 'Content-Type: application/json' -d '{"text":"Great, another terrible experience. Just what I needed!"}' | jq
+```
+
+Discuta as limitações do classificador para interpretar ironia e contexto.
+
+### 7.8 Sentimento em português
+
+```bash
+curl -s -X POST http://localhost:5000/analyze_sentiment -H 'Content-Type: application/json' -d '{"text":"Esta aula é excelente e muito interessante"}' | jq
+```
+
+O modelo utilizado (`distilbert-base-uncased-finetuned-sst-2-english`) foi ajustado para textos em **inglês**. O resultado em português é um experimento, não uma avaliação confiável da polaridade.
+
+### 7.9 Matriz TF-IDF formatada
+
+O endpoint `/vectorize` já retorna `vocabulary`, `processed_texts` e `tfidf_vectors`. Exiba as linhas (documentos) e colunas (termos) em uma tabela:
+
+```bash
+curl -s -X POST http://localhost:5000/vectorize -H 'Content-Type: application/json' -d '{"texts":["o juiz julgou o processo","o magistrado analisou os autos","o processo foi analisado pelo juiz"]}' | jq -r '.vocabulary as $v | (["Documento"] + $v | @tsv), (.tfidf_vectors | to_entries[] | (["Doc. \(.key + 1)"] + [.value[] | (. * 10000 | round / 10000 | tostring)] | @tsv))' | column -t -s "$(printf '\t')"
+```
+
+Repare que a técnica representa a importância relativa dos termos, não o significado da frase.
+
+### 7.10 Similaridade lexical por cosseno
+
+A similaridade por cosseno **já está implementada** no `app.py`, na rota `/similarity/tfidf`. Não é necessário modificar o código nem reiniciar o serviço para acrescentá-la.
+
+```bash
+curl -s -X POST http://localhost:5000/similarity/tfidf -H 'Content-Type: application/json' -d '{"texts":["o juiz julgou o processo","o magistrado analisou os autos","o processo foi analisado pelo juiz"]}' | jq '.similarity_matrix'
+```
+
+A matriz compara cada texto com os demais; a diagonal representa a comparação de cada documento consigo mesmo.
+
+### 7.11 Limitação lexical: palavras diferentes, sentidos próximos
+
+```bash
+curl -s -X POST http://localhost:5000/similarity/tfidf -H 'Content-Type: application/json' -d '{"texts":["o juiz analisou o processo","o magistrado examinou os autos"]}' | jq '{processed_texts, vocabulary, similarity_matrix}'
+```
+
+Observe que TF-IDF depende da sobreposição de termos. Embora as frases tenham sentidos próximos, compartilham poucas palavras relevantes.
+
+### 7.12 Negação e similaridade lexical
+
+```bash
+curl -s -X POST http://localhost:5000/similarity/tfidf -H 'Content-Type: application/json' -d '{"texts":["This product is good","This product is not good","This product is very good"]}' | jq '{processed_texts, vocabulary, similarity_matrix}'
+```
+
+Investigue por que textos com significados opostos podem apresentar alta similaridade lexical.
+
+### 7.13 Embeddings semânticos
+
+A rota `/embeddings` utiliza o modelo multilíngue `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`. Cada texto é representado por um vetor de 384 dimensões.
+
+```bash
+curl -s -X POST http://localhost:5000/embeddings -H 'Content-Type: application/json' -d '{"texts":["o juiz analisou o processo","o magistrado examinou os autos"]}' | jq '{model, dimensions, texts, primeiros_valores: [.embeddings[][:8]]}'
+```
+
+Exibimos somente os oito primeiros valores de cada vetor para facilitar a leitura. Na primeira chamada, o carregamento do modelo pode demorar mais.
+
+### 7.14 Similaridade semântica por cosseno
+
+```bash
+curl -s -X POST http://localhost:5000/similarity/semantic -H 'Content-Type: application/json' -d '{"texts":["o juiz analisou o processo","o magistrado examinou os autos","o restaurante oferece comida italiana"]}' | jq '{model, similarity_matrix}'
+```
+
+Diferentemente da similaridade lexical, aqui o cosseno é calculado sobre **embeddings** obtidos a partir dos textos originais.
+
+### 7.15 Comparar TF-IDF e embeddings
+
+Execute as duas rotas com os **mesmos textos** e compare as matrizes:
+
+```bash
+curl -s -X POST http://localhost:5000/similarity/tfidf -H 'Content-Type: application/json' -d '{"texts":["o juiz analisou o processo","o magistrado examinou os autos","o restaurante oferece comida italiana"]}' | jq '{method, similarity_matrix}'
+curl -s -X POST http://localhost:5000/similarity/semantic -H 'Content-Type: application/json' -d '{"texts":["o juiz analisou o processo","o magistrado examinou os autos","o restaurante oferece comida italiana"]}' | jq '{method, similarity_matrix}'
+```
+
+Identifique quais pares são considerados semelhantes por cada método e explique a diferença.
+
+### 7.16 Similaridade entre idiomas
+
+```bash
+curl -s -X POST http://localhost:5000/similarity/semantic -H 'Content-Type: application/json' -d '{"texts":["o juiz analisou o processo","the judge examined the case","o restaurante serve pizza"]}' | jq '{model, similarity_matrix}'
+```
+
+Verifique se os embeddings multilíngues aproximam frases equivalentes em português e inglês.
+
+### 7.17 Negação e similaridade semântica
+
+```bash
+curl -s -X POST http://localhost:5000/similarity/semantic -H 'Content-Type: application/json' -d '{"texts":["O relatório foi aprovado","O relatório não foi aprovado","O relatório foi rejeitado"]}' | jq '{model, similarity_matrix}'
+```
+
+Avalie se o modelo distingue adequadamente afirmação e negação. **Similaridade semântica elevada não garante equivalência lógica.**
+
+### 7.18 Validação de entradas inválidas
+
+A API deve responder com **HTTP 400** quando os dados obrigatórios não forem fornecidos ou estiverem incorretos:
+
+```bash
+curl -s -i -X POST http://localhost:5000/analyze_sentiment -H 'Content-Type: application/json' -d '{}'
+curl -s -i -X POST http://localhost:5000/vectorize -H 'Content-Type: application/json' -d '{"texts":[]}'
+curl -s -i -X POST http://localhost:5000/similarity/tfidf -H 'Content-Type: application/json' -d '{"texts":["apenas um texto"]}'
+```
+
+> **Observação:** os testes 7.10 a 7.17 utilizam rotas já existentes no `app.py`. Não é necessário incluir `cosine_similarity` na resposta de `/vectorize`; a similaridade lexical está em `/similarity/tfidf` e a semântica em `/similarity/semantic`. Os comandos com `jq` e `column` pressupõem que essas ferramentas estejam instaladas no terminal.
+
+
 ## 8. Conclusão
 
 Nesta prática, comparamos duas abordagens de NLP:
@@ -298,10 +422,3 @@ Nesta prática, comparamos duas abordagens de NLP:
 Assim, vimos que o processamento de Linguagem Natural (NLP) permite que máquinas analisem e respondam ao texto humano em aplicações como atendimento ao cliente, análise de dados e automação de respostas, análise de sentimentos, classificação de texto, dentre outras aplicações. 
 
 Aprofundar esses conceitos permite transformar dados textuais em informações úteis, gerando conhecimento e valor em diversas áreas.
-
-<!--
-https://www.bing.com/search?pglt=41&q=NCM+vs+LLM&cvid=c0c3466230ec471e8808a5877982bc7c&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIICAEQ6QcY_FXSAQgzMjQ0ajBqN6gCALACAA&FORM=ANNAB1&DAF0=1&PC=U531
-https://phpscientist.com/blog/ncm-vs-llm-next-concept-modeling/
-https://www.bing.com/ck/a?!&&p=e8eda276fb6ee901789d1fa0dbc48ac8883146a692479386cbc8891867e7de36JmltdHM9MTc5MzIzMjAwMA&ptn=3&ver=2&hsh=4&fclid=1e737703-10cf-6c1b-0aee-60a411986d22&psq=NCM+vs+LLM&u=a1aHR0cHM6Ly93d3cubWluZHN0dWRpby5haS9ibG9nL25jbS12cy1sbG0tc3BlZWQtYmVuY2htYXJrLXRlc3Q
-https://blog.dsacademy.com.br/jev-e-laya-o-que-sao-os-modelos-de-decisao-system-one-e-quando-usa-los/
--->
