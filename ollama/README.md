@@ -86,12 +86,13 @@ O Ollama é responsável por **servir o modelo**; a aplicação é responsável 
 ```text
 ollama/
 ├── README.md
-├── docker-compose.yml
+├── docker-compose.yml          # base: CPU, funciona em qualquer sistema
+├── docker-compose.nvidia.yml   # overlay opcional: GPU NVIDIA
 ├── requirements.txt
 └── rag_minimo.py
 ```
 
-O arquivo `docker-compose.yml` contém:
+O arquivo `docker-compose.yml` contém a configuração base, que executa em **CPU** e funciona em Linux, Windows e macOS:
 
 ```yaml
 services:
@@ -112,18 +113,39 @@ volumes:
 
 O volume mantém os modelos baixados mesmo que o contêiner seja recriado. A porta publicada em `127.0.0.1` permite acesso **apenas pelo próprio computador**. A variável `OLLAMA_NO_CLOUD=1` desativa recursos de nuvem do Ollama, mantendo o laboratório no modo local.
 
+### 3.2.1. GPU NVIDIA (opcional)
+
+- **Linux:** o NVIDIA Container Toolkit (Ubuntu/Debian):
+
+  ```bash
+  curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+  curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+  sudo apt update && sudo apt install -y nvidia-container-toolkit
+  sudo nvidia-ctk runtime configure --runtime=docker
+  sudo systemctl restart docker
+  ```
+
 ### 3.3. Iniciar e verificar o serviço
 
 Execute no diretório `ollama/`:
 
 ```bash
+# CPU (qualquer sistema)
 docker compose up -d
+
+# GPU NVIDIA (Linux / Windows)
+# docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up -d
+
 docker compose ps
-docker compose logs --tail=30 ollama
 curl http://localhost:11434/api/tags
+
+# Confirmar CPU ou GPU: library=cpu ou library=CUDA
+docker compose logs ollama | grep "inference compute"
 ```
 
-A rota `/api/tags` retorna os modelos locais disponíveis. Na primeira execução, o campo `models` poderá estar vazio; isso **não significa falha**.
+A rota `/api/tags` retorna os modelos locais disponíveis; na primeira execução, `models` poderá estar vazio. Após carregar um modelo, `docker compose exec ollama ollama ps` mostra `100% GPU` ou `100% CPU` na coluna `PROCESSOR`; uma divisão como `40%/60% CPU/GPU` indica que o modelo não coube inteiro na VRAM.
 
 ### 3.4. Baixar os modelos
 
