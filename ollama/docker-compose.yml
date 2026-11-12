@@ -1,3 +1,5 @@
+# Para acelerar com GPU, combine com um overlay:
+#   NVIDIA (Linux / Windows+WSL2): docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up -d
 services:
   ollama:
     image: ollama/ollama:latest
